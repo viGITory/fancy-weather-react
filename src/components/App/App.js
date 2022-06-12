@@ -1,6 +1,7 @@
 import './App.css';
 
 import { useEffect, useState } from 'react';
+import CurrentWeather from '../CurrentWeather/CurrentWeather';
 
 const App = () => {
   const [lat, setLat] = useState([]);
@@ -27,7 +28,13 @@ const App = () => {
     getData();
   }, [lat, long]);
 
-  return <div className="app"></div>;
+  return weatherData.current ? (
+    <div className="app">
+      <CurrentWeather weatherData={weatherData} />
+    </div>
+  ) : (
+    <div></div>
+  );
 };
 
 export default App;
