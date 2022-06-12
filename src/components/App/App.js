@@ -2,6 +2,7 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 import CurrentWeather from '../CurrentWeather/CurrentWeather';
+import Preloader from '../Preloader/Preloader';
 
 const App = () => {
   const [lat, setLat] = useState([]);
@@ -33,7 +34,9 @@ const App = () => {
       <CurrentWeather weatherData={weatherData} />
     </div>
   ) : (
-    <div></div>
+    <div>
+      <Preloader />
+    </div>
   );
 };
 
