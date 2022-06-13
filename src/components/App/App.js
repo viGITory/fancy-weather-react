@@ -3,6 +3,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import DailyForecast from '../DailyForecast/DailyForecast';
+import HourlyForecast from '../HourlyForecast/HourlyForecast';
 import Preloader from '../Preloader/Preloader';
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
   return weatherData.current ? (
     <div className="app">
       <CurrentWeather weatherData={weatherData} />
+      <HourlyForecast weatherData={weatherData} />
       <DailyForecast weatherData={weatherData} />
     </div>
   ) : (
