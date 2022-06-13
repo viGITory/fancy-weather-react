@@ -1,0 +1,9 @@
+.daily-forecast {
+  display: flex;
+  gap: 10px;
+}
+
+.daily-forecast__icon {
+  width: 100px;
+  height: 100px;
+}
