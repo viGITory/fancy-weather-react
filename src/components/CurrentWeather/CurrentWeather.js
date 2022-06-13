@@ -1,10 +1,12 @@
 import './CurrentWeather.css';
+import Clock from '../Clock/Clock';
 
 import getIconSrc from '../../utils/getIconSrc';
 
 const CurrentWeather = ({ weatherData }) => {
   return (
     <div className="current-weather">
+      <Clock weatherData={weatherData} />
       <p className="current-weather__temp">
         {Math.round(weatherData.current.temp)}°C
       </p>
