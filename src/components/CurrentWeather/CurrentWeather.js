@@ -1,7 +1,9 @@
 import './CurrentWeather.css';
+
 import Clock from '../Clock/Clock';
 
 import getIconSrc from '../../utils/getIconSrc';
+import getWindDirection from '../../utils/getWindDirection';
 
 const CurrentWeather = ({ weatherData }) => {
   return (
@@ -27,9 +29,13 @@ const CurrentWeather = ({ weatherData }) => {
       <p className="current-weather__humidity">
         Humidity: {weatherData.current.humidity}%
       </p>
-      <p className="current-weather__wind">
-        Wind: {Math.round(weatherData.current.wind_speed)}m/s
-      </p>
+      <div>
+        <p className="current-weather__wind">
+          Wind: {Math.round(weatherData.current.wind_speed)}m/s,{' '}
+          {getWindDirection(weatherData.current.wind_deg)}
+        </p>
+      </div>
+
       <div className="current-weather__uvi">
         <p className="current-weather__uvi-title">UV:</p>
         <img
