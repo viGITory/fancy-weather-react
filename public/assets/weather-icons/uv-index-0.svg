@@ -1,0 +1,22 @@
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="0.932857" x2="0.75" y1="0.067143" x1="0.25" id="a">
+   <stop stop-color="#fbbf24" offset="0"/>
+   <stop stop-color="#fbbf24" offset="0.45"/>
+   <stop stop-color="#f59e0b" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <circle id="svg_1" fill="url(#a)" stroke-width="0.5" stroke-miterlimit="10" stroke="#f8af18" r="10.5" cy="32" cx="32"/>
+  <path id="svg_2" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke="#fbbf24" fill="none" d="m32,15.71l0,-6.21m0,45l0,-6.21m11.52,-27.81l4.39,-4.39m-31.82,31.82l4.39,-4.39m0,-23l-4.39,-4.39m31.82,31.78l-4.39,-4.39m-27.81,-11.52l-6.21,0m45,0l-6.21,0">
+    <animateTransform xmlns="http://www.w3.org/2000/svg" attributeName="transform" dur="45s" values="0 32 32; 360 32 32" repeatCount="indefinite" type="rotate"/>
+  </path>
+  <rect id="svg_3" stroke-width="2" stroke-miterlimit="10" stroke="#fff" fill="#91c700" rx="6" height="21" width="21" y="33.5" x="33.5"/>
+  <path id="svg_4" fill="#fff" d="m41.902804,40.626542a3.74,3.74 0 0 1 4.41,0a2.54,2.54 0 0 1 0.79,2l0,2.6a2.53,2.53 0 0 1 -0.79,2a3.09,3.09 0 0 1 -2.21,0.68a3.14,3.14 0 0 1 -2.21,-0.73a2.53,2.53 0 0 1 -0.8,-2l0,-2.6a2.51,2.51 0 0 1 0.81,-1.95zm3.1,1.16a1.33,1.33 0 0 0 -0.89,-0.27a1.35,1.35 0 0 0 -0.91,0.27a1,1 0 0 0 -0.32,0.79l0,2.65a1,1 0 0 0 0.32,0.79a1.31,1.31 0 0 0 0.91,0.28a1.28,1.28 0 0 0 0.89,-0.28a1,1 0 0 0 0.32,-0.79l0,-2.65a1,1 0 0 0 -0.32,-0.79z"/>
+ </g>
+</svg>
