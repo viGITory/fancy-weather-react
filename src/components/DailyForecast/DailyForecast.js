@@ -25,11 +25,12 @@ const DailyForecast = ({ weatherData }) => {
               </p>
               <div className="daily-forecast__description-wrapper">
                 <img
+                  className="daily-forecast__thermometer"
                   src={getIconSrc({ tempDiff: tempDiff })}
                   alt={tempDiff + ' temp'}
                 />
                 <p className="daily-forecast__temp">
-                  {Math.round(item.temp.day)}°C
+                  {Math.round(item.temp.day)}°
                 </p>
                 <img
                   className="daily-forecast__icon"
@@ -43,7 +44,7 @@ const DailyForecast = ({ weatherData }) => {
             </li>
           );
         }),
-      ].slice(1, 4)}
+      ].slice(1, 5)}
     </ul>
   );
 };

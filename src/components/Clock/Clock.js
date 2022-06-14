@@ -1,3 +1,5 @@
+import './Clock.css';
+
 import { useEffect, useState } from 'react';
 
 const Clock = ({ weatherData }) => {
@@ -10,7 +12,7 @@ const Clock = ({ weatherData }) => {
   };
   const dayOptions = {
     day: 'numeric',
-    weekday: 'short',
+    weekday: 'long',
     month: 'long',
   };
 
@@ -44,8 +46,8 @@ const Clock = ({ weatherData }) => {
 
   return (
     <div className="clock">
-      <p className="clock__day">{day}</p>
-      <p className="clock__time">{time}</p>
+      <p>{day}</p>
+      <p>{time}</p>
     </div>
   );
 };

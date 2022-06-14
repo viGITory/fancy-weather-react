@@ -1,9 +1,44 @@
-.daily-forecast {
+.daily-forecast,
+.daily-forecast__description-wrapper {
   display: flex;
-  gap: 10px;
+}
+
+.daily-forecast {
+  justify-content: space-between;
+  list-style: none;
+}
+
+.daily-forecast__item {
+  text-align: center;
+}
+
+.daily-forecast__day {
+  margin-bottom: 10px;
+
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.daily-forecast__description-wrapper {
+  align-items: center;
+  justify-content: center;
+}
+
+.daily-forecast__thermometer {
+  width: 50px;
+  height: 50px;
+}
+
+.daily-forecast__temp {
+  margin-left: -10px;
+  font-size: 44px;
 }
 
 .daily-forecast__icon {
-  width: 100px;
-  height: 100px;
+  align-self: flex-start;
+  width: 60px;
+  height: 60px;
+  margin-top: -20px;
+  margin-left: -5px;
 }

@@ -12,7 +12,7 @@ const HourlyForecast = ({ weatherData }) => {
               key={'hourly-forecast-' + index}
               className="hourly-forecast__item"
             >
-              <p className="hourly-forecast__time">
+              <p>
                 {new Date(item.dt * 1000).toLocaleTimeString().slice(0, -3)}
               </p>
               <img
@@ -23,11 +23,11 @@ const HourlyForecast = ({ weatherData }) => {
                 })}
                 alt={item.weather[0].description}
               />
-              <p className="hourly-forecast__temp">{Math.round(item.temp)}°C</p>
+              <p>{Math.round(item.temp)}°</p>
             </li>
           );
         }),
-      ].slice(1, 6)}
+      ].slice(1, 9)}
     </ul>
   );
 };
