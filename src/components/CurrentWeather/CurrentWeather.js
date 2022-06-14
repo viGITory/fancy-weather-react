@@ -31,7 +31,14 @@ const CurrentWeather = ({ weatherData }) => {
       </p>
       <div>
         <p className="current-weather__wind">
-          Wind: {Math.round(weatherData.current.wind_speed)}m/s,{' '}
+          Wind: {Math.round(weatherData.current.wind_speed)}m/s,
+          <img
+            className="current-weather__wind-icon"
+            src={getIconSrc({
+              windSpeed: weatherData.current.wind_speed,
+            })}
+            alt="Beaufort wind index"
+          />
           {getWindDirection(weatherData.current.wind_deg)}
         </p>
       </div>
