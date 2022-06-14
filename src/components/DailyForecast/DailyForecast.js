@@ -6,6 +6,13 @@ const DailyForecast = ({ weatherData }) => {
     <ul className="daily-forecast">
       {[
         ...weatherData.daily.map((item, index) => {
+          const tempDiff =
+            Math.round(item.temp.day) > weatherData.current.temp
+              ? 'warmer'
+              : Math.round(item.temp.day) < weatherData.current.temp
+              ? 'colder'
+              : 'equal';
+
           return (
             <li
               key={'daily-forecast-' + index}
@@ -16,17 +23,23 @@ const DailyForecast = ({ weatherData }) => {
                   weekday: 'long',
                 })}
               </p>
-              <p className="daily-forecast__temp">
-                {Math.round(item.temp.day)}°C
-              </p>
-              <img
-                className="daily-forecast__icon"
-                src={getIconSrc({
-                  iconId: item.weather[0].id,
-                  iconCode: item.weather[0].icon,
-                })}
-                alt={item.weather[0].description}
-              />
+              <div className="daily-forecast__description-wrapper">
+                <img
+                  src={getIconSrc({ tempDiff: tempDiff })}
+                  alt={tempDiff + ' temp'}
+                />
+                <p className="daily-forecast__temp">
+                  {Math.round(item.temp.day)}°C
+                </p>
+                <img
+                  className="daily-forecast__icon"
+                  src={getIconSrc({
+                    iconId: item.weather[0].id,
+                    iconCode: item.weather[0].icon,
+                  })}
+                  alt={item.weather[0].description}
+                />
+              </div>
             </li>
           );
         }),

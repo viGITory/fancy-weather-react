@@ -1,4 +1,4 @@
-const getIconSrc = ({ iconId, iconCode, uvIndex }) => {
+const getIconSrc = ({ iconId, iconCode, uvIndex, tempDiff }) => {
   let src = './assets/weather-icons/';
 
   if (iconId && iconCode) {
@@ -61,6 +61,14 @@ const getIconSrc = ({ iconId, iconCode, uvIndex }) => {
 
   if (uvIndex || uvIndex === 0) {
     src = src + `uv-index-${Math.round(uvIndex)}.svg`;
+  }
+
+  if (tempDiff) {
+    tempDiff === 'warmer'
+      ? (src = src + 'thermometer-warmer.svg')
+      : tempDiff === 'colder'
+      ? (src = src + 'thermometer-colder.svg')
+      : (src = src + 'thermometer-celsius.svg');
   }
 
   return src;
