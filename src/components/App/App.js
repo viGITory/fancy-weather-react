@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import Weather from '../Weather/Weather';
 import Preloader from '../Preloader/Preloader';
 
-const App = () => {
-  const WEATHER_API_KEY = 'a8122fbe52b443584fbcba6f23095ca1';
+import { WEATHER_API_KEY } from '../../api/apiKeys';
+import getApiData from '../../api/getApiData';
 
+const App = () => {
   const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
@@ -20,15 +21,11 @@ const App = () => {
       };
 
       const [lat, long] = await getCoords();
-
-      await fetch(
+      const weatherData = await getApiData(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          setWeatherData(data);
-          console.log(data);
-        });
+      );
+
+      setWeatherData(weatherData);
     };
 
     getData();
