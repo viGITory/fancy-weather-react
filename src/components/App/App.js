@@ -31,13 +31,10 @@ const App = () => {
     getData();
   }, []);
 
-  return weatherData.current ? (
+  return (
     <div className="app">
-      <Weather weatherData={weatherData} />
-    </div>
-  ) : (
-    <div>
       <Preloader />
+      <Weather weatherData={weatherData} />
     </div>
   );
 };

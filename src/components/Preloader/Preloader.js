@@ -1,7 +1,19 @@
 import './Preloader.css';
 
+import { useEffect, useState } from 'react';
+
 const Preloader = () => {
-  return (
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        setVisible(false);
+      }, 3000);
+    });
+  }, []);
+
+  return visible ? (
     <div className="preloader">
       <img
         className="preloader__icon"
@@ -10,6 +22,8 @@ const Preloader = () => {
       />
       <p className="preloader__text">Loading</p>
     </div>
+  ) : (
+    ''
   );
 };
 
