@@ -1,3 +1,4 @@
 const WEATHER_API_KEY = 'a8122fbe52b443584fbcba6f23095ca1';
+const IMAGES_API_KEY = '506075b1bbaccec5f272862ca19f2da3';
 
-export { WEATHER_API_KEY };
+export { WEATHER_API_KEY, IMAGES_API_KEY };

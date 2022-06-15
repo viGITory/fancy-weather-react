@@ -6,6 +6,7 @@ import Preloader from '../Preloader/Preloader';
 
 import { WEATHER_API_KEY } from '../../api/apiKeys';
 import getApiData from '../../api/getApiData';
+import setBackground from '../../utils/setBackground';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -29,6 +30,7 @@ const App = () => {
     };
 
     getData();
+    setBackground();
   }, []);
 
   return (
