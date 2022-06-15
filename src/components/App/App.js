@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import Weather from '../Weather/Weather';
 import Preloader from '../Preloader/Preloader';
 
-import { WEATHER_API_KEY } from '../../api/apiKeys';
+import { WEATHER_API_KEY, IP_API_TOKEN } from '../../api/apiKeys';
 import getApiData from '../../api/getApiData';
 import setBackground from '../../utils/setBackground';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
+  const [userLocation, setUserLocation] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -25,8 +26,12 @@ const App = () => {
       const weatherData = await getApiData(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`
       );
+      const userLocationData = await getApiData(
+        `https://ipinfo.io/json?token=${IP_API_TOKEN}`
+      );
 
       setWeatherData(weatherData);
+      setUserLocation(userLocationData);
     };
 
     getData();
@@ -36,7 +41,7 @@ const App = () => {
   return (
     <div className="app">
       <Preloader />
-      <Weather weatherData={weatherData} />
+      <Weather weatherData={weatherData} userLocation={userLocation} />
     </div>
   );
 };
