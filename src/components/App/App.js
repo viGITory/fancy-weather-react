@@ -5,19 +5,24 @@ import Weather from '../Weather/Weather';
 import Preloader from '../Preloader/Preloader';
 
 const App = () => {
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
+  const WEATHER_API_KEY = 'a8122fbe52b443584fbcba6f23095ca1';
+
   const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        setLat(pos.coords.latitude);
-        setLong(pos.coords.longitude);
-      });
+      const getCoords = async () => {
+        const pos = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+
+        return [pos.coords.latitude, pos.coords.longitude];
+      };
+
+      const [lat, long] = await getCoords();
 
       await fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=a8122fbe52b443584fbcba6f23095ca1`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -27,7 +32,7 @@ const App = () => {
     };
 
     getData();
-  }, [lat, long]);
+  }, []);
 
   return weatherData.current ? (
     <div className="app">
