@@ -1,6 +1,8 @@
 import './App.css';
 
 import { useEffect, useState } from 'react';
+
+import Header from '../Header/Header';
 import Location from '../Location/Location';
 import DateTime from '../DateTime/DateTime';
 import Weather from '../Weather/Weather';
@@ -43,6 +45,7 @@ const App = () => {
   return (
     <div className="app">
       <Preloader />
+      <Header />
       <main>
         <Location userLocation={userLocation} />
         <DateTime weatherData={weatherData} />
