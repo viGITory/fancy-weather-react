@@ -25,9 +25,10 @@
   justify-content: center;
 }
 
-.daily-forecast__thermometer {
-  width: 50px;
-  height: 50px;
+.daily-forecast__thermometer,
+.daily-forecast__icon {
+  width: 60px;
+  height: 60px;
 }
 
 .daily-forecast__temp {
@@ -37,8 +38,6 @@
 
 .daily-forecast__icon {
   align-self: flex-start;
-  width: 60px;
-  height: 60px;
   margin-top: -20px;
   margin-left: -5px;
 }
