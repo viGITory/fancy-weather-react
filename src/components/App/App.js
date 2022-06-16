@@ -2,7 +2,7 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 import Location from '../Location/Location';
-import Clock from '../Clock/Clock';
+import DateTime from '../DateTime/DateTime';
 import Weather from '../Weather/Weather';
 import Preloader from '../Preloader/Preloader';
 
@@ -45,7 +45,7 @@ const App = () => {
       <Preloader />
       <main>
         <Location userLocation={userLocation} />
-        <Clock weatherData={weatherData} />
+        <DateTime weatherData={weatherData} />
         <Weather weatherData={weatherData} userLocation={userLocation} />
       </main>
     </div>
