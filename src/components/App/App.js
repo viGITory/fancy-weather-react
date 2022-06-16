@@ -1,6 +1,8 @@
 import './App.css';
 
 import { useEffect, useState } from 'react';
+import Location from '../Location/Location';
+import Clock from '../Clock/Clock';
 import Weather from '../Weather/Weather';
 import Preloader from '../Preloader/Preloader';
 
@@ -41,7 +43,11 @@ const App = () => {
   return (
     <div className="app">
       <Preloader />
-      <Weather weatherData={weatherData} userLocation={userLocation} />
+      <main>
+        <Location userLocation={userLocation} />
+        <Clock weatherData={weatherData} />
+        <Weather weatherData={weatherData} userLocation={userLocation} />
+      </main>
     </div>
   );
 };
