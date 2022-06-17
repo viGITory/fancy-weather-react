@@ -1,0 +1,10 @@
+.map__container {
+  width: 400px;
+  height: 400px;
+
+  -webkit-mask-image: url('../../../public/assets/mask-map-clouds.png');
+}
+
+.map__coords {
+  text-align: right;
+}
