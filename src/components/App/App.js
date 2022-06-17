@@ -52,7 +52,7 @@ const App = () => {
       <main className="main">
         <div className="main__left">
           <Location userLocation={userLocation} />
-          <DateTime weatherData={weatherData} />
+          <DateTime />
           <Weather weatherData={weatherData} userLocation={userLocation} />
         </div>
         <Map coords={coords} />
