@@ -2,6 +2,7 @@ import './CurrentWeather.css';
 
 import getIconSrc from '../../utils/getIconSrc';
 import getWindDirection from '../../utils/getWindDirection';
+import getBeaufortWindIndex from '../../utils/getBeaufortWindIndex';
 
 const CurrentWeather = ({ weatherData }) => {
   return (
@@ -38,13 +39,15 @@ const CurrentWeather = ({ weatherData }) => {
             Humidity: {weatherData.current.humidity}%
           </p>
           <p className="current-weather__wind">
-            Wind: {Math.round(weatherData.current.wind_speed)}m/s
+            Wind: {weatherData.current.wind_speed.toFixed(1)}m/s
             <img
               className="current-weather__wind-icon"
               src={getIconSrc({
                 windSpeed: weatherData.current.wind_speed,
               })}
-              alt="Beaufort wind index"
+              alt={`Beaufort wind index ${getBeaufortWindIndex(
+                weatherData.current.wind_speed
+              )}`}
             />
             {getWindDirection(weatherData.current.wind_deg)}
           </p>
