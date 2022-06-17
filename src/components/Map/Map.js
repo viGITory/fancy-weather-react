@@ -12,37 +12,37 @@ const Map = ({ coords }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
 
+  const isCoords = Object.keys(coords).length;
+
   useEffect(() => {
     const createMap = ({ coords }) => {
-      if (coords.lat && coords.long) {
-        map.current = new mapboxgl.Map({
-          container: mapContainer.current,
-          style: 'mapbox://styles/pantory/cl4hjs272001m15pjaivmplab',
-          center: [coords.long, coords.lat],
-          zoom: 9,
-          attributionControl: false,
-        });
+      if (!isCoords) return;
 
-        new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
-          .setLngLat([coords.long, coords.lat])
-          .addTo(map.current);
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/pantory/cl4hjs272001m15pjaivmplab',
+        center: [coords.long, coords.lat],
+        zoom: 9,
+        attributionControl: false,
+      });
 
-        map.current.once('idle', () => {
-          map.current.resize();
-        });
-      }
+      new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
+        .setLngLat([coords.long, coords.lat])
+        .addTo(map.current);
+
+      map.current.once('idle', () => {
+        map.current.resize();
+      });
     };
     createMap({ coords });
   });
 
   const formatCoord = (coord) => {
-    if (!coord) return;
-
     const splitedCoord = coord.toFixed(4).toString().split('.');
     return `${splitedCoord[0]}°${splitedCoord[1]}'`;
   };
 
-  return (
+  return isCoords ? (
     <div className="map">
       <div ref={mapContainer} className="map__container"></div>
       <div className="map__coords">
@@ -50,6 +50,8 @@ const Map = ({ coords }) => {
         <p>Longitude: {formatCoord(coords.long)}</p>
       </div>
     </div>
+  ) : (
+    <div></div>
   );
 };
 
