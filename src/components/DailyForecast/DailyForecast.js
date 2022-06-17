@@ -5,13 +5,19 @@ const DailyForecast = ({ weatherData }) => {
   return (
     <ul className="daily-forecast">
       {[
-        ...weatherData.daily.map((item, index) => {
-          const tempDiff =
-            Math.round(item.temp.day) > weatherData.current.temp
-              ? 'warmer'
-              : Math.round(item.temp.day) < weatherData.current.temp
-              ? 'colder'
-              : 'equal';
+        ...weatherData.daily.slice(0, 5).map((item, index, arr) => {
+          let tempDiff;
+
+          if (index > 0 && index < arr.length) {
+            tempDiff =
+              Math.round(arr[index - 1].temp.day) >
+              Math.round(arr[index].temp.day)
+                ? 'colder'
+                : Math.round(arr[index - 1].temp.day) <
+                  Math.round(arr[index].temp.day)
+                ? 'warmer'
+                : 'equal';
+          }
 
           return (
             <li
@@ -44,7 +50,7 @@ const DailyForecast = ({ weatherData }) => {
             </li>
           );
         }),
-      ].slice(1, 5)}
+      ].slice(1)}
     </ul>
   );
 };
