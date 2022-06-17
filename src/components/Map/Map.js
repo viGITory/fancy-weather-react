@@ -13,8 +13,6 @@ const Map = ({ coords }) => {
   const map = useRef(null);
 
   useEffect(() => {
-    if (map.current) return;
-
     const createMap = ({ coords }) => {
       if (coords.lat && coords.long) {
         map.current = new mapboxgl.Map({
