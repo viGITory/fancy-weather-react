@@ -7,7 +7,7 @@ import DateTime from '../DateTime/DateTime';
 import Weather from '../Weather/Weather';
 import Map from '../Map/Map';
 
-import { WEATHER_API_KEY, IP_API_TOKEN } from '../../api/apiKeys';
+import { WEATHER_API_KEY } from '../../api/apiKeys';
 import getApiData from '../../api/getApiData';
 import setBackground from '../../utils/setBackground';
 
@@ -30,12 +30,15 @@ const App = () => {
       const weatherData = await getApiData(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`
       );
-      const userLocationData = await getApiData(
-        `https://ipinfo.io/json?token=${IP_API_TOKEN}`
+      const weatherDataWithCityName = await getApiData(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${WEATHER_API_KEY}`
       );
 
       setWeatherData(weatherData);
-      setUserLocation(userLocationData);
+      setUserLocation({
+        city: weatherDataWithCityName.name,
+        country: weatherDataWithCityName.sys.country,
+      });
       setCoords({ lat, long });
     };
 
