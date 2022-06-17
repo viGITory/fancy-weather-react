@@ -38,8 +38,10 @@
 
 body {
   min-width: 320px;
+  max-width: 1440px;
   min-height: 100vh;
   padding: 20px;
+  margin: 0 auto;
 
   font-family: Montserrat, sans-serif;
   font-size: 22px;
@@ -54,4 +56,11 @@ body {
   background-attachment: fixed;
 
   transition: background-image 0.5s;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
 }
