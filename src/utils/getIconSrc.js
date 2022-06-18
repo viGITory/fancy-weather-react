@@ -70,7 +70,7 @@ const getIconSrc = ({ iconId, iconCode, uvIndex, tempDiff, windSpeed }) => {
       ? (src = src + 'thermometer-warmer.svg')
       : tempDiff === 'colder'
       ? (src = src + 'thermometer-colder.svg')
-      : (src = src + 'thermometer-celsius.svg');
+      : (src = src + 'thermometer.svg');
   }
 
   if (windSpeed || windSpeed === 0) {
