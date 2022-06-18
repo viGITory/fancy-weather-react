@@ -9,7 +9,9 @@ import Map from '../Map/Map';
 
 import { WEATHER_API_KEY } from '../../api/apiKeys';
 import getApiData from '../../api/getApiData';
+import getWeatherData from '../../api/getWeatherData';
 import setBackground from '../../utils/setBackground';
+import getCurrentPos from '../../utils/getCurrentPos';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -18,18 +20,8 @@ const App = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const getCoords = async () => {
-        const pos = await new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
-
-        return [pos.coords.latitude, pos.coords.longitude];
-      };
-
-      const [lat, long] = await getCoords();
-      const weatherData = await getApiData(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${WEATHER_API_KEY}`
-      );
+      const [lat, long] = await getCurrentPos();
+      const weatherData = await getWeatherData(lat, long);
       const weatherDataWithCityName = await getApiData(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${WEATHER_API_KEY}`
       );
