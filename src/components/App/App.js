@@ -48,6 +48,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <h1 className="visually-hidden">Fancy weather</h1>
       <Preloader />
       <Header />
       <main className="main">
