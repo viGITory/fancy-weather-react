@@ -9,7 +9,9 @@ const Header = () => {
         className="header__bg-button"
         type="button"
         onClick={setBackground}
-      ></button>
+      >
+        <span className="visually-hidden">Change background</span>
+      </button>
     </header>
   );
 };
