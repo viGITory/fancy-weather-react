@@ -2,9 +2,9 @@ import './HourlyForecast.css';
 
 import getIconSrc from '../../utils/getIconSrc';
 
-const HourlyForecast = ({ weatherData }) => {
+const HourlyForecast = ({ weatherData, className }) => {
   return (
-    <ul className="hourly-forecast">
+    <ul className={`${className ? `${className} ` : ''}hourly-forecast`}>
       {[
         ...weatherData.hourly.map((item, index) => {
           return (

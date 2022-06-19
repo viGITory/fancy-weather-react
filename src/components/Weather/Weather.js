@@ -8,7 +8,10 @@ const Weather = ({ weatherData }) => {
   return weatherData.current ? (
     <div className="weather">
       <CurrentWeather weatherData={weatherData} />
-      <HourlyForecast weatherData={weatherData} />
+      <HourlyForecast
+        weatherData={weatherData}
+        className={'weather__hourly-forecast'}
+      />
       <DailyForecast weatherData={weatherData} />
     </div>
   ) : (
