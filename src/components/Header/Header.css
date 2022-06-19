@@ -1,32 +1,80 @@
 .header {
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 50px;
+}
+
+.header,
+.header__search {
+  display: flex;
+}
+
+.header__bg-button,
+.header__input,
+.header__search-button {
+  height: 50px;
+}
+
+.header__bg-button,
+.header__search-button {
+  cursor: pointer;
+  border: 0;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .header__bg-button {
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 50px;
 
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-
-  cursor: pointer;
   background-color: transparent;
   background-image: url('../../../public/assets/reload-icon.svg');
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-  border: 0;
-  border-radius: 7px;
-
-  transition: background-color 0.2s, transform 0.2s;
+  border-radius: 5px;
 }
 
-.header__bg-button:hover {
+.header__bg-button:hover,
+.header__search-button:hover {
   background-color: rgba(134, 195, 219, 1);
 }
 
-.header__bg-button:active {
-  transform: scale(0.98);
+.header__bg-button:active,
+.header__search-button:active {
+  transform: scale(0.95);
+}
+
+.header__search {
+  align-items: center;
+}
+
+.header__input,
+.header__search-button {
+  padding: 0 20px;
+
+  font-family: inherit;
+  font-size: 16px;
+  color: inherit;
+}
+
+.header__input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: rgba(76, 82, 85, 0.4);
+  border: 1px solid rgba(228, 227, 227, 0.2);
+  border-right: 0;
+  outline: none;
+}
+
+.header__input::placeholder {
+  color: inherit;
+}
+
+.header__search-button {
+  font-weight: 500;
+  text-transform: uppercase;
+
+  background-color: rgba(174, 181, 185, 0.5);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

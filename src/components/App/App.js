@@ -18,6 +18,36 @@ const App = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [userLocation, setUserLocation] = useState([]);
   const [coords, setCoords] = useState([]);
+  const [cityInputValue, setCityInputValue] = useState([]);
+
+  const setCityInputState = (e) => {
+    const value = e.target.value;
+
+    if (value) setCityInputValue(value);
+  };
+
+  const getWeatherByCityName = async () => {
+    // ### only to get coords & location name by city input
+    const weatherDataByCityName = await getApiData(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityInputValue}&lang=en&appid=${WEATHER_API_KEY}&units=metric`
+    );
+    // ###
+
+    const [lat, long] = [
+      weatherDataByCityName.coord.lat,
+      weatherDataByCityName.coord.lon,
+    ];
+    const weatherData = await getWeatherData(lat, long);
+
+    setWeatherData(weatherData);
+    setUserLocation({
+      city: weatherDataByCityName.name,
+      country: weatherDataByCityName.sys.country,
+    });
+    setCoords({ lat, long });
+
+    setBackground();
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -38,7 +68,7 @@ const App = () => {
     <div className="app">
       <h1 className="visually-hidden">Fancy weather</h1>
       <Preloader />
-      <Header />
+      <Header onBlur={setCityInputState} onClick={getWeatherByCityName} />
       <main className="main">
         <div className="main__left">
           <Location userLocation={userLocation} />
