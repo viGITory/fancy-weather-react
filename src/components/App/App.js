@@ -78,7 +78,7 @@ const App = () => {
           />
           <Weather weatherData={weatherData} userLocation={userLocation} />
         </div>
-        <Map coords={coords} />
+        <Map coords={coords} timeZone={weatherData.timezone} />
       </main>
     </div>
   );

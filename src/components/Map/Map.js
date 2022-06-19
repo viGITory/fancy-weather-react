@@ -6,7 +6,7 @@ import { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { MAPBOX_API_TOKEN } from '../../api/apiKeys';
 
-const Map = ({ coords }) => {
+const Map = ({ coords, timeZone }) => {
   mapboxgl.accessToken = MAPBOX_API_TOKEN;
 
   const mapContainer = useRef(null);
@@ -18,9 +18,19 @@ const Map = ({ coords }) => {
     const createMap = ({ coords }) => {
       if (!isCoords) return;
 
+      const hours = new Date().toLocaleString('ru-RU', {
+        hour: 'numeric',
+        timeZone: timeZone,
+      });
+
+      const isPMTime = !(hours >= 6 && hours < 18);
+      const mapStyle = isPMTime
+        ? 'mapbox://styles/pantory/cl4liy3u5000k15qgoq884fni'
+        : 'mapbox://styles/pantory/cl4liz48h000l15qg5nusr9rs';
+
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/pantory/cl4hjs272001m15pjaivmplab',
+        style: mapStyle,
         center: [coords.long, coords.lat],
         zoom: 9,
         attributionControl: false,
