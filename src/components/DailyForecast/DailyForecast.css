@@ -5,6 +5,8 @@
 
 .daily-forecast {
   justify-content: space-between;
+  flex-wrap: wrap;
+
   list-style: none;
 }
 
@@ -13,7 +15,7 @@
 }
 
 .daily-forecast__day {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 
   font-weight: 500;
   text-transform: uppercase;
@@ -27,8 +29,8 @@
 
 .daily-forecast__thermometer,
 .daily-forecast__icon {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 }
 
 .daily-forecast__temp {
@@ -38,6 +40,6 @@
 
 .daily-forecast__icon {
   align-self: flex-start;
-  margin-top: -20px;
+  margin-top: -15px;
   margin-left: -5px;
 }

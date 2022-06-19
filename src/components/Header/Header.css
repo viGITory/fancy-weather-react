@@ -58,6 +58,8 @@
 }
 
 .header__input {
+  width: 250px;
+
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: rgba(76, 82, 85, 0.4);

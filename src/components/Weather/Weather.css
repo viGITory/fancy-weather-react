@@ -1,4 +1,10 @@
 .weather {
   display: flex;
   flex-direction: column;
+
+  animation: fade-in 1s;
+}
+
+.weather__hourly-forecast {
+  margin-bottom: 20px;
 }
