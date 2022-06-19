@@ -13,7 +13,11 @@ const HourlyForecast = ({ weatherData, className }) => {
               className="hourly-forecast__item"
             >
               <p>
-                {new Date(item.dt * 1000).toLocaleTimeString().slice(0, -3)}
+                {new Date(item.dt * 1000).toLocaleString('ru-RU', {
+                  hour: 'numeric',
+                  minute: 'numeric',
+                  timeZone: weatherData.timezone,
+                })}
               </p>
               <img
                 className="hourly-forecast__icon"
