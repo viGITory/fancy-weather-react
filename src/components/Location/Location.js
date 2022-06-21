@@ -8,7 +8,7 @@ const Location = ({ userLocation }) => {
       {userLocation.city}, {countryNames[userLocation.country]}
     </p>
   ) : (
-    <p className="location">City, country</p>
+    <p></p>
   );
 };
 

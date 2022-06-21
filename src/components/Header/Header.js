@@ -25,7 +25,7 @@ const Header = ({ onBlur, onClick }) => {
           setBgBtnOpacity(1);
           setBgBtnCoords(getCursorPos(e));
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={() => {
           setBgBtnOpacity(0);
         }}
       >
@@ -57,7 +57,7 @@ const Header = ({ onBlur, onClick }) => {
             setSearchBtnOpacity(1);
             setSearchBtnCoords(getCursorPos(e));
           }}
-          onMouseLeave={(e) => {
+          onMouseLeave={() => {
             setSearchBtnOpacity(0);
           }}
         >
