@@ -4,7 +4,9 @@ import getIconSrc from '../../utils/getIconSrc';
 import getWindDirection from '../../utils/getWindDirection';
 import getBeaufortWindIndex from '../../utils/getBeaufortWindIndex';
 
-const CurrentWeather = ({ weatherData }) => {
+import translate from '../../data/translate';
+
+const CurrentWeather = ({ weatherData, lang }) => {
   return (
     <div className="current-weather">
       <div className="current-weather__temp-wrapper">
@@ -15,7 +17,9 @@ const CurrentWeather = ({ weatherData }) => {
           <img
             className="current-weather__uv-icon"
             src={getIconSrc({ uvIndex: weatherData.current.uvi })}
-            alt={`UV-index ${Math.round(weatherData.current.uvi)}`}
+            alt={`${translate[lang].weather.uv} ${Math.round(
+              weatherData.current.uvi
+            )}`}
           />
         </div>
       </div>
@@ -33,21 +37,24 @@ const CurrentWeather = ({ weatherData }) => {
             {weatherData.current.weather[0].description}
           </p>
           <p className="current-weather__feels">
-            Feels like: {Math.round(weatherData.current.feels_like)}°
+            {translate[lang].weather.feels_like}:{' '}
+            {Math.round(weatherData.current.feels_like)}°
           </p>
           <p className="current-weather__humidity">
-            Humidity: {weatherData.current.humidity}%
+            {translate[lang].weather.humidity}: {weatherData.current.humidity}%
           </p>
           <p className="current-weather__wind">
-            Wind: {weatherData.current.wind_speed.toFixed(1)}m/s
+            {translate[lang].weather.wind.name}:{' '}
+            {weatherData.current.wind_speed.toFixed(1)}
+            {translate[lang].weather.wind.m_s}
             <img
               className="current-weather__wind-icon"
               src={getIconSrc({
                 windSpeed: weatherData.current.wind_speed,
               })}
-              alt={`Beaufort wind index ${getBeaufortWindIndex(
-                weatherData.current.wind_speed
-              )}`}
+              alt={`${
+                translate[lang].weather.wind.index
+              } ${getBeaufortWindIndex(weatherData.current.wind_speed)}`}
             />
             {getWindDirection(weatherData.current.wind_deg)}
           </p>

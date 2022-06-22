@@ -1,7 +1,9 @@
 import './DailyForecast.css';
-import getIconSrc from '../../utils/getIconSrc';
 
-const DailyForecast = ({ weatherData }) => {
+import getIconSrc from '../../utils/getIconSrc';
+import translate from '../../data/translate';
+
+const DailyForecast = ({ weatherData, locale, lang }) => {
   return (
     <ul className="daily-forecast">
       {[
@@ -25,7 +27,7 @@ const DailyForecast = ({ weatherData }) => {
               className="daily-forecast__item"
             >
               <p className="daily-forecast__day">
-                {new Date(item.dt * 1000).toLocaleDateString('en-EN', {
+                {new Date(item.dt * 1000).toLocaleDateString(locale, {
                   weekday: 'long',
                 })}
               </p>
@@ -33,7 +35,7 @@ const DailyForecast = ({ weatherData }) => {
                 <img
                   className="daily-forecast__thermometer"
                   src={getIconSrc({ tempDiff: tempDiff })}
-                  alt={tempDiff + ' temp'}
+                  alt={translate[lang].weather.thermometer[tempDiff]}
                 />
                 <p className="daily-forecast__temp">
                   {Math.round(item.temp.day)}°

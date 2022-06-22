@@ -1,8 +1,9 @@
 import './Preloader.css';
 
 import { useEffect, useState } from 'react';
+import translateMap from '../../data/translate';
 
-const Preloader = () => {
+const Preloader = ({ lang }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const Preloader = () => {
         src="./assets/weather-icons/hail.svg"
         alt="preloader"
       />
-      <p className="preloader__text">Loading</p>
+      <p className="preloader__text">{translateMap[lang].loading}</p>
     </div>
   ) : (
     ''

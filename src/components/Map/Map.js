@@ -6,7 +6,9 @@ import { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { MAPBOX_API_TOKEN } from '../../api/apiKeys';
 
-const Map = ({ coords, timeZone }) => {
+import translate from '../../data/translate';
+
+const Map = ({ coords, timeZone, lang }) => {
   mapboxgl.accessToken = MAPBOX_API_TOKEN;
 
   const mapContainer = useRef(null);
@@ -56,8 +58,12 @@ const Map = ({ coords, timeZone }) => {
     <div className="map">
       <div ref={mapContainer} className="map__container"></div>
       <div className="map__coords">
-        <p>Latitude: {formatCoord(coords.lat)}</p>
-        <p>Longitude: {formatCoord(coords.long)}</p>
+        <p>
+          {translate[lang].coords.latitude}: {formatCoord(coords.lat)}
+        </p>
+        <p>
+          {translate[lang].coords.longitude}: {formatCoord(coords.long)}
+        </p>
       </div>
     </div>
   ) : (

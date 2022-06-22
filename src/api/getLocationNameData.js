@@ -1,12 +1,15 @@
-import { WEATHER_API_KEY } from './apiKeys';
+import { LOCATION_API_KEY } from './apiKeys';
 import getApiData from './getApiData';
 
-const getLocationNameData = async (lat, long) => {
+const getLocationNameData = async (lat, long, lang) => {
   const data = await getApiData(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${WEATHER_API_KEY}`
+    `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&language=${lang}&key=${LOCATION_API_KEY}`
   );
 
-  return [data.name, data.sys.country];
+  const city =
+    data.results[0].components.city || data.results[0].components.hamlet;
+
+  return [city, data.results[0].components.country];
 };
 
 export default getLocationNameData;
