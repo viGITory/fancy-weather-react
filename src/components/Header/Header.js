@@ -12,6 +12,8 @@ const Header = ({ onBlur, onClick, onChange, lang }) => {
   const [bgBtnCoords, setBgBtnCoords] = useState(0, 0);
   const [searchBtnOpacity, setSearchBtnOpacity] = useState();
   const [searchBtnCoords, setSearchBtnCoords] = useState(0, 0);
+  const [langBtnOpacity, setLangBtnOpacity] = useState();
+  const [langBtnCoords, setLangBtnCoords] = useState(0, 0);
 
   return (
     <header className="header">
@@ -41,7 +43,16 @@ const Header = ({ onBlur, onClick, onChange, lang }) => {
           }}
         ></span>
       </button>
-      <div className="header__lang">
+      <div
+        className="header__lang"
+        onMouseMove={(e) => {
+          setLangBtnOpacity(1);
+          setLangBtnCoords(getCursorPos(e, 'offsetParent'));
+        }}
+        onMouseLeave={() => {
+          setLangBtnOpacity(0);
+        }}
+      >
         <select
           className="header__select"
           value={lang}
@@ -55,6 +66,13 @@ const Header = ({ onBlur, onClick, onChange, lang }) => {
           <option value={'fr'}>Fr</option>
           <option value={'de'}>De</option>
         </select>
+        <span
+          className="hover-glow"
+          style={{
+            transform: `translate(${langBtnCoords.x}px, ${langBtnCoords.y}px)`,
+            opacity: langBtnOpacity,
+          }}
+        ></span>
       </div>
       <div className="header__search">
         <input
