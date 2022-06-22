@@ -1,6 +1,12 @@
 const translate = {
   en: {
     loading: 'Loading',
+    preloader: {
+      morning: 'Good morning',
+      afternoon: 'Good afternoon',
+      evening: 'Good evening',
+      night: 'Good night',
+    },
     background: {
       button: 'Change background',
     },
@@ -30,6 +36,12 @@ const translate = {
   },
   ru: {
     loading: 'Загрузка',
+    preloader: {
+      morning: 'Доброе утро',
+      afternoon: 'Добрый день',
+      evening: 'Добрый вечер',
+      night: 'Доброй ночи',
+    },
     background: {
       button: 'Обновить фон',
     },
@@ -59,6 +71,12 @@ const translate = {
   },
   es: {
     loading: 'Carga',
+    preloader: {
+      morning: 'Buenos dias',
+      afternoon: 'Buenas tardes',
+      evening: 'Buenas noches',
+      night: 'Buenas noches',
+    },
     background: {
       button: 'Actualizar fondo',
     },
@@ -88,6 +106,12 @@ const translate = {
   },
   fr: {
     loading: 'Chargement',
+    preloader: {
+      morning: 'Bonjour',
+      afternoon: 'Bon après-midi',
+      evening: 'Bonsoir',
+      night: 'Bonne nuit',
+    },
     background: {
       button: `Mettre à jour l'arrière-plan`,
     },
@@ -117,6 +141,12 @@ const translate = {
   },
   de: {
     loading: 'Laden',
+    preloader: {
+      morning: 'Guten Morgen',
+      afternoon: 'Guten Tag',
+      evening: 'Guten Abend',
+      night: 'Gute Nacht',
+    },
     background: {
       button: 'Hintergrund aktualisieren',
     },

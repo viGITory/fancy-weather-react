@@ -1,10 +1,17 @@
 import './Preloader.css';
 
 import { useEffect, useState } from 'react';
-import translateMap from '../../data/translate';
+
+import getTimeOfDay from '../../utils/getTimeOfDay';
+import translate from '../../data/translate';
 
 const Preloader = ({ lang }) => {
   const [visible, setVisible] = useState(true);
+
+  const checkDarkTime = () => {
+    const hours = new Date().getHours();
+    return hours >= 18 || hours < 6;
+  };
 
   useEffect(() => {
     window.addEventListener('load', () => {
@@ -15,13 +22,17 @@ const Preloader = ({ lang }) => {
   }, []);
 
   return visible ? (
-    <div className="preloader">
+    <div className={checkDarkTime() ? 'dark preloader' : 'preloader'}>
       <img
         className="preloader__icon"
-        src="./assets/weather-icons/hail.svg"
+        src={`./assets/weather-icons/${
+          checkDarkTime() ? 'night-hail' : 'hail'
+        }.svg`}
         alt="preloader"
       />
-      <p className="preloader__text">{translateMap[lang].loading}</p>
+      <p className="preloader__text">
+        {translate[lang].preloader[getTimeOfDay()]}
+      </p>
     </div>
   ) : (
     ''

@@ -24,3 +24,7 @@
   letter-spacing: 0.1rem;
   color: #86c3db;
 }
+
+.dark.preloader {
+  background-color: #000;
+}
