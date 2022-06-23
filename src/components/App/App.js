@@ -23,6 +23,7 @@ const App = () => {
   const [cityInputValue, setCityInputValue] = useState([]);
   const [locale, setLocale] = useState(localStorage.getItem('locale') || 'en');
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'en');
+  const [units, setUnits] = useState(localStorage.getItem('units') || 'metric');
 
   const setCityInputState = (e) => {
     const value = e.target.value;
@@ -33,7 +34,7 @@ const App = () => {
   const getWeatherByCityName = async () => {
     // ### only to get coords & location name by city input
     const weatherDataByCityName = await getApiData(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityInputValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityInputValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`
     );
     // ###
 
@@ -41,7 +42,7 @@ const App = () => {
       weatherDataByCityName.coord.lat,
       weatherDataByCityName.coord.lon,
     ];
-    const weatherData = await getWeatherData(lat, long, lang);
+    const weatherData = await getWeatherData(lat, long, lang, units);
     const [city, country] = await getLocationNameData(lat, long, lang);
 
     setWeatherData(weatherData);
@@ -59,10 +60,14 @@ const App = () => {
     setLang(lang);
   };
 
+  const changeUnits = (units) => {
+    setUnits(units);
+  };
+
   useEffect(() => {
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
-      const weatherData = await getWeatherData(lat, long, lang);
+      const weatherData = await getWeatherData(lat, long, lang, units);
       const [city, country] = await getLocationNameData(lat, long, lang);
 
       setCoords({ lat, long });
@@ -73,9 +78,12 @@ const App = () => {
     getData();
     setBackground();
 
-    localStorage.setItem('locale', locale);
-    localStorage.setItem('lang', lang);
-  }, [lang, locale]);
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('locale', locale);
+      localStorage.setItem('lang', lang);
+      localStorage.setItem('units', units);
+    });
+  }, [lang, locale, units]);
 
   return (
     <div className="app">
@@ -85,6 +93,8 @@ const App = () => {
         onBlur={setCityInputState}
         onClick={getWeatherByCityName}
         onChange={changeLang}
+        changeUnits={changeUnits}
+        units={units}
         lang={lang}
       />
       <main className="main">

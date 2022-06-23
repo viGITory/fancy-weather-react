@@ -11,12 +11,14 @@
 
 .header__bg-button,
 .header__lang,
+.header__unit-button,
 .header__search {
   height: 50px;
 }
 
 .header__bg-button,
 .header__select,
+.header__unit-button,
 .header__search-button {
   cursor: pointer;
   border: 0;
@@ -24,6 +26,7 @@
 
 .header__bg-button,
 .header__lang,
+.header__unit-button,
 .header__search-button {
   position: relative;
   overflow: hidden;
@@ -35,14 +38,22 @@
 }
 
 .header__bg-button,
-.header__select {
+.header__select,
+.header__unit-button {
   background-color: transparent;
+}
+
+.header__bg-button,
+.header__select {
   background-repeat: no-repeat;
 }
 
-.header__bg-button {
+.header__bg-button,
+.header__unit-button {
   width: 50px;
+}
 
+.header__bg-button {
   background-image: url('../../../public/assets/reload-icon.svg');
   background-size: cover;
   background-position: center;
@@ -53,11 +64,8 @@
   background-color: rgba(174, 181, 185, 0.5);
 }
 
-.header__lang {
-  margin-right: auto;
-}
-
 .header__select,
+.header__unit-button,
 .header__search-button {
   font-weight: 500;
 }
@@ -79,6 +87,7 @@
 }
 
 .header__select,
+.header__unit-button,
 .header__input,
 .header__search-button,
 .header__input::placeholder {
@@ -86,6 +95,7 @@
 }
 
 .header__select,
+.header__unit-button,
 .header__input,
 .header__search-button {
   font-family: inherit;
@@ -106,6 +116,22 @@
   background-color: #86c3db;
 }
 
+.header__units,
+.header__input {
+  background-color: rgba(76, 82, 85, 0.4);
+}
+
+.header__units {
+  overflow: hidden;
+  margin-right: auto;
+
+  border-radius: 5px;
+}
+
+.header__unit-button {
+  transition: background-color 0.5s;
+}
+
 .header__input {
   width: 250px;
 
@@ -113,7 +139,6 @@
 
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  background-color: rgba(76, 82, 85, 0.4);
   border: 1px solid rgba(228, 227, 227, 0.2);
   border-right: 0;
 }
@@ -121,4 +146,8 @@
 .header__search-button {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.active.header__unit-button {
+  background-color: rgba(174, 181, 185, 0.5);
 }
