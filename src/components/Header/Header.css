@@ -26,6 +26,7 @@
 
 .header__bg-button,
 .header__lang,
+.header__units,
 .header__unit-button,
 .header__search-button {
   position: relative;
@@ -122,9 +123,7 @@
 }
 
 .header__units {
-  overflow: hidden;
   margin-right: auto;
-
   border-radius: 5px;
 }
 

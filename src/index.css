@@ -97,26 +97,6 @@ body {
   animation: ripple 1s;
 }
 
-.hover-glow {
-  position: absolute;
-  z-index: -1;
-  height: 150px;
-  width: 150px;
-  top: -75px;
-  left: -75px;
-
-  opacity: 0;
-  background: radial-gradient(
-    circle closest-side,
-    rgba(255, 255, 255, 0.5),
-    transparent
-  );
-  border-radius: 50%;
-  pointer-events: none;
-
-  transition: opacity 0.2s;
-}
-
 /* ### ANIMATION ### */
 @keyframes fade-in {
   from {

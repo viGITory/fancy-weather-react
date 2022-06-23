@@ -1,0 +1,19 @@
+.hover-glow {
+  position: absolute;
+  z-index: -1;
+  height: 100px;
+  width: 100px;
+  top: -50px;
+  left: -50px;
+
+  opacity: 0;
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  border-radius: 50%;
+  pointer-events: none;
+
+  transition: opacity 0.2s;
+}

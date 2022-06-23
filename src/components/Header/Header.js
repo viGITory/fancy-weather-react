@@ -4,20 +4,15 @@ import { useState } from 'react';
 
 import setBackground from '../../utils/setBackground';
 import addRippleEffect from '../../utils/addRippleEffect';
+import HoverGlow from '../HoverGlow/HoverGlow';
 import getCursorPos from '../../utils/getCursorPos';
 import translate from '../../data/translate';
 
 const Header = ({ onBlur, onClick, onChange, lang, changeUnits, units }) => {
-  const [bgBtnOpacity, setBgBtnOpacity] = useState();
-  const [bgBtnCoords, setBgBtnCoords] = useState(0, 0);
-  const [searchBtnOpacity, setSearchBtnOpacity] = useState();
-  const [searchBtnCoords, setSearchBtnCoords] = useState(0, 0);
-  const [langBtnOpacity, setLangBtnOpacity] = useState();
-  const [langBtnCoords, setLangBtnCoords] = useState(0, 0);
-  const [celsiusBtnOpacity, setCelsiusBtnOpacity] = useState();
-  const [celsiusBtnCoords, sesCelsiusBtnCoords] = useState(0, 0);
-  const [fahrenheitBtnOpacity, setFahrenheitBtnOpacity] = useState();
-  const [fahrenheitBtnCoords, setFahrenheitBtnCoords] = useState(0, 0);
+  const [bgBtnGlow, setBgBtnGlow] = useState({});
+  const [langBtnGlow, setLangBtnGlow] = useState({});
+  const [unitsBtnGlow, setUnitsBtnGlow] = useState({});
+  const [searchBtnGlow, setSearchBtnGlow] = useState({});
 
   const [celsius, setCelsius] = useState(units === 'metric' ? 'active' : '');
   const [fahrenheit, setFahrenheit] = useState(
@@ -34,32 +29,30 @@ const Header = ({ onBlur, onClick, onChange, lang, changeUnits, units }) => {
           addRippleEffect(e);
         }}
         onMouseMove={(e) => {
-          setBgBtnOpacity(1);
-          setBgBtnCoords(getCursorPos(e));
+          const pos = getCursorPos(e);
+          setBgBtnGlow({ coordX: pos.x, coordY: pos.y, opacity: 1 });
         }}
         onMouseLeave={() => {
-          setBgBtnOpacity(0);
+          setBgBtnGlow({ opacity: 0 });
         }}
       >
         <span className="visually-hidden">
           {translate[lang].background.button}
         </span>
-        <span
-          className="hover-glow"
-          style={{
-            transform: `translate(${bgBtnCoords.x}px, ${bgBtnCoords.y}px)`,
-            opacity: bgBtnOpacity,
-          }}
-        ></span>
+        <HoverGlow
+          coordX={bgBtnGlow.coordX}
+          coordY={bgBtnGlow.coordY}
+          opacity={bgBtnGlow.opacity}
+        />
       </button>
       <div
         className="header__lang"
         onMouseMove={(e) => {
-          setLangBtnOpacity(1);
-          setLangBtnCoords(getCursorPos(e, 'offsetParent'));
+          const pos = getCursorPos(e, 'offsetParent');
+          setLangBtnGlow({ coordX: pos.x, coordY: pos.y, opacity: 1 });
         }}
         onMouseLeave={() => {
-          setLangBtnOpacity(0);
+          setLangBtnGlow({ opacity: 0 });
         }}
       >
         <select
@@ -75,15 +68,26 @@ const Header = ({ onBlur, onClick, onChange, lang, changeUnits, units }) => {
           <option value={'fr'}>Fr</option>
           <option value={'de'}>De</option>
         </select>
-        <span
-          className="hover-glow"
-          style={{
-            transform: `translate(${langBtnCoords.x}px, ${langBtnCoords.y}px)`,
-            opacity: langBtnOpacity,
-          }}
-        ></span>
+        <HoverGlow
+          coordX={langBtnGlow.coordX}
+          coordY={langBtnGlow.coordY}
+          opacity={langBtnGlow.opacity}
+        />
       </div>
-      <div className="header__units">
+      <div
+        className="header__units"
+        onMouseMove={(e) => {
+          const pos = getCursorPos(e, 'offsetParent');
+          setUnitsBtnGlow({
+            coordX: pos.x,
+            coordY: pos.y,
+            opacity: 1,
+          });
+        }}
+        onMouseLeave={() => {
+          setUnitsBtnGlow({ opacity: 0 });
+        }}
+      >
         <button
           className={
             celsius ? `header__unit-button ${celsius}` : 'header__unit-button'
@@ -95,22 +99,8 @@ const Header = ({ onBlur, onClick, onChange, lang, changeUnits, units }) => {
             setCelsius('active');
             setFahrenheit('');
           }}
-          onMouseMove={(e) => {
-            setCelsiusBtnOpacity(1);
-            sesCelsiusBtnCoords(getCursorPos(e));
-          }}
-          onMouseLeave={() => {
-            setCelsiusBtnOpacity(0);
-          }}
         >
           °C
-          <span
-            className="hover-glow"
-            style={{
-              transform: `translate(${celsiusBtnCoords.x}px, ${celsiusBtnCoords.y}px)`,
-              opacity: celsiusBtnOpacity,
-            }}
-          ></span>
         </button>
         <button
           className={
@@ -125,23 +115,14 @@ const Header = ({ onBlur, onClick, onChange, lang, changeUnits, units }) => {
             setCelsius('');
             setFahrenheit('active');
           }}
-          onMouseMove={(e) => {
-            setFahrenheitBtnOpacity(1);
-            setFahrenheitBtnCoords(getCursorPos(e));
-          }}
-          onMouseLeave={() => {
-            setFahrenheitBtnOpacity(0);
-          }}
         >
           °F
-          <span
-            className="hover-glow"
-            style={{
-              transform: `translate(${fahrenheitBtnCoords.x}px, ${fahrenheitBtnCoords.y}px)`,
-              opacity: fahrenheitBtnOpacity,
-            }}
-          ></span>
         </button>
+        <HoverGlow
+          coordX={unitsBtnGlow.coordX}
+          coordY={unitsBtnGlow.coordY}
+          opacity={unitsBtnGlow.opacity}
+        />
       </div>
       <div className="header__search">
         <input
@@ -159,21 +140,19 @@ const Header = ({ onBlur, onClick, onChange, lang, changeUnits, units }) => {
             onClick();
           }}
           onMouseMove={(e) => {
-            setSearchBtnOpacity(1);
-            setSearchBtnCoords(getCursorPos(e));
+            const pos = getCursorPos(e);
+            setSearchBtnGlow({ coordX: pos.x, coordY: pos.y, opacity: 1 });
           }}
           onMouseLeave={() => {
-            setSearchBtnOpacity(0);
+            setSearchBtnGlow({ opacity: 0 });
           }}
         >
           {translate[lang].search.button}
-          <span
-            className="hover-glow"
-            style={{
-              transform: `translate(${searchBtnCoords.x}px, ${searchBtnCoords.y}px)`,
-              opacity: searchBtnOpacity,
-            }}
-          ></span>
+          <HoverGlow
+            coordX={searchBtnGlow.coordX}
+            coordY={searchBtnGlow.coordY}
+            opacity={searchBtnGlow.opacity}
+          />
         </button>
       </div>
     </header>
