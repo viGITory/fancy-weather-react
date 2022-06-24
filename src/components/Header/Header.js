@@ -6,6 +6,7 @@ import TempButtons from '../TempButtons/TempButtons';
 import Search from '../Search/Search';
 
 const Header = ({
+  className,
   setCityInputState,
   getWeather,
   changeLang,
@@ -14,7 +15,7 @@ const Header = ({
   units,
 }) => {
   return (
-    <header className="header">
+    <header className={`${className ? `${className} ` : ''}header`}>
       <BackgroundButton lang={lang} />
       <LanguageButton changeLang={changeLang} lang={lang} />
       <TempButtons changeUnits={changeUnits} units={units} />

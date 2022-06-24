@@ -1,3 +1,4 @@
+import './App.css';
 import { useEffect, useState } from 'react';
 
 import Preloader from '../Preloader/Preloader';
@@ -90,6 +91,7 @@ const App = () => {
       <h1 className="visually-hidden">Fancy weather</h1>
       <Preloader lang={lang} />
       <Header
+        className={'app__header'}
         setCityInputState={setCityInputState}
         getWeather={getWeatherByCityName}
         changeLang={changeLang}
