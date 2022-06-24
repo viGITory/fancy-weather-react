@@ -100,16 +100,16 @@ const App = () => {
         lang={lang}
       />
       <main className="main">
-        <div className="main__left">
-          <Location userLocation={userLocation} />
-          <DateTime
-            className={'main__date-time'}
-            timeZone={weatherData.timezone}
-            locale={locale}
-          />
+        <Location userLocation={userLocation} />
+        <DateTime
+          className={'main__date-time'}
+          timeZone={weatherData.timezone}
+          locale={locale}
+        />
+        <div className="main__wrapper">
           <Weather weatherData={weatherData} locale={locale} lang={lang} />
+          <Map coords={coords} timeZone={weatherData.timezone} lang={lang} />
         </div>
-        <Map coords={coords} timeZone={weatherData.timezone} lang={lang} />
       </main>
     </div>
   );

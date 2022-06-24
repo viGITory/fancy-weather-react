@@ -10,6 +10,8 @@
   align-items: center;
   justify-content: center;
 
+  color: #86c3db;
+
   background-color: #fff;
 }
 
@@ -21,10 +23,10 @@
 .preloader__text {
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  color: #86c3db;
+  letter-spacing: 0.05rem;
 }
 
 .dark.preloader {
+  color: #fff;
   background-color: #000;
 }
