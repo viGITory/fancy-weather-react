@@ -90,9 +90,9 @@ const App = () => {
       <h1 className="visually-hidden">Fancy weather</h1>
       <Preloader lang={lang} />
       <Header
-        onBlur={setCityInputState}
-        onClick={getWeatherByCityName}
-        onChange={changeLang}
+        setCityInputState={setCityInputState}
+        getWeather={getWeatherByCityName}
+        changeLang={changeLang}
         changeUnits={changeUnits}
         units={units}
         lang={lang}

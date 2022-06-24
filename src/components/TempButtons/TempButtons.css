@@ -1,0 +1,33 @@
+.temp-buttons,
+.temp-buttons__button {
+  position: relative;
+  overflow: hidden;
+}
+
+.temp-buttons {
+  margin-right: auto;
+
+  background-color: rgba(76, 82, 85, 0.4);
+  border-radius: 5px;
+}
+
+.temp-buttons__button {
+  width: 50px;
+  height: 50px;
+
+  font-weight: 500;
+  font-family: inherit;
+  font-size: 16px;
+  color: inherit;
+  letter-spacing: 0.05rem;
+
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+
+  transition: background-color 0.5s;
+}
+
+.active.temp-buttons__button {
+  background-color: rgba(174, 181, 185, 0.5);
+}

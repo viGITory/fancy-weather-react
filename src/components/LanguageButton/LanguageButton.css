@@ -1,0 +1,35 @@
+.language-button {
+  position: relative;
+  overflow: hidden;
+  height: 50px;
+
+  background-color: rgba(174, 181, 185, 0.5);
+  border-radius: 5px;
+}
+
+.language-button__select {
+  height: 100%;
+  padding: 0 15px;
+  padding-right: 35px;
+
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: inherit;
+
+  cursor: pointer;
+  background-image: url('../../../public/assets/arrow-down.svg');
+  background-position: center right 15px;
+  background-size: 15px auto;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0;
+  outline: none;
+  appearance: none;
+}
+
+.language-button__select option {
+  background-color: #86c3db;
+}
