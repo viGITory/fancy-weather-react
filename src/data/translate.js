@@ -13,7 +13,14 @@ const translate = {
       button: 'Search',
       input: 'Search city',
     },
+    day_time: {
+      morning: 'Morning',
+      day: 'Day',
+      evening: 'Evening',
+      night: 'Night',
+    },
     weather: {
+      temp: 'Temperature',
       feels_like: 'Feels like',
       humidity: 'Humidity',
       wind: {
@@ -21,7 +28,27 @@ const translate = {
         m_s: 'm/s',
         index: 'Beaufort scale',
       },
-      uv: 'UV Index',
+      sun: {
+        name: 'Sun',
+        uv: 'UV Index',
+        sunrise: 'Sunrise',
+        sunset: 'Sunset',
+      },
+      moon: {
+        name: 'Moon',
+        moonrise: 'Moonrise',
+        moonset: 'Moonset',
+        phases: {
+          moon_new: 'New Moon',
+          moon_waxing_crescent: 'Waxing crescent',
+          moon_first_quarter: 'First quarter',
+          moon_waxing_gibbous: 'Waxing gibbous',
+          moon_full: 'Full Moon',
+          moon_waning_gibbous: 'Waning gibbous',
+          moon_last_quarter: 'Last quarter',
+          moon_waning_crescent: 'Waning crescent',
+        },
+      },
       thermometer: {
         warmer: 'Warmer than yesterday',
         colder: 'Colder than yesterday',
@@ -43,11 +70,18 @@ const translate = {
     background: {
       button: 'Обновить фон',
     },
+    day_time: {
+      morning: 'Утро',
+      day: 'День',
+      evening: 'Вечер',
+      night: 'Ночь',
+    },
     search: {
       button: 'Поиск',
       input: 'Поиск по городу',
     },
     weather: {
+      temp: 'Температура',
       feels_like: 'Ощущается как',
       humidity: 'Влажность',
       wind: {
@@ -55,7 +89,27 @@ const translate = {
         m_s: 'м/с',
         index: 'Шкала Бофорта',
       },
-      uv: 'УФ-индекс',
+      sun: {
+        name: 'Солнце',
+        uv: 'УФ-индекс',
+        sunrise: 'Рассвет',
+        sunset: 'Закат',
+      },
+      moon: {
+        name: 'Луна',
+        moonrise: 'Восход',
+        moonset: 'Заход',
+        phases: {
+          moon_new: 'Новолуние',
+          moon_waxing_crescent: 'Молодая луна',
+          moon_first_quarter: 'Первая четверть',
+          moon_waxing_gibbous: 'Прибывающая луна',
+          moon_full: 'Полнолуние',
+          moon_waning_gibbous: 'Убывающая луна',
+          moon_last_quarter: 'Последняя четверть',
+          moon_waning_crescent: 'Старая луна',
+        },
+      },
       thermometer: {
         warmer: 'Теплее чем вчера',
         colder: 'Холоднее чем вчера',
@@ -81,15 +135,42 @@ const translate = {
       button: 'Buscar',
       input: 'Buscar de ciudad',
     },
+    day_time: {
+      morning: 'Madrugada',
+      day: 'Mañana',
+      evening: 'Tarde',
+      night: 'Noche',
+    },
     weather: {
-      feels_like: 'Sensación de',
+      temp: 'Temperatura',
+      feels_like: 'Sensación',
       humidity: 'Humedad',
       wind: {
         name: 'Viento',
         m_s: 'm/s',
         index: 'Escala de Beaufort',
       },
-      uv: 'Índice UV',
+      sun: {
+        name: 'Sol',
+        uv: 'Índice UV',
+        sunrise: 'Salida Sol',
+        sunset: 'Puesta Sol',
+      },
+      moon: {
+        name: 'Luna',
+        moonrise: 'Salida Luna',
+        moonset: 'Puesta Luna',
+        phases: {
+          moon_new: 'Luna nueva',
+          moon_waxing_crescent: 'Luna creciente',
+          moon_first_quarter: 'Cuarto creciente',
+          moon_waxing_gibbous: 'Luna gibosa creciente',
+          moon_full: 'Luna llena',
+          moon_waning_gibbous: 'Luna gibosa menguante',
+          moon_last_quarter: 'Cuarto menguante',
+          moon_waning_crescent: 'Luna menguante',
+        },
+      },
       thermometer: {
         warmer: 'Más cálido que ayer',
         colder: 'Más frío que ayer',
@@ -115,15 +196,42 @@ const translate = {
       button: 'Rechercher',
       input: 'Recherche de ville',
     },
+    day_time: {
+      morning: 'Matin',
+      day: 'Jour',
+      evening: 'Soirée',
+      night: 'Nuit',
+    },
     weather: {
-      feels_like: 'Ressenti',
+      temp: 'Température',
+      feels_like: 'Ressentie',
       humidity: 'Humidité',
       wind: {
         name: 'Vent',
         m_s: 'm/s',
         index: 'Échelle de Beaufort',
       },
-      uv: 'Indice UV',
+      sun: {
+        name: 'Soleil',
+        uv: 'Indice UV',
+        sunrise: 'Lever',
+        sunset: 'Coucher',
+      },
+      moon: {
+        name: 'Lune',
+        moonrise: 'Lever',
+        moonset: 'Coucher',
+        phases: {
+          moon_new: 'Nouvelle lune',
+          moon_waxing_crescent: 'Premier croissant',
+          moon_first_quarter: 'Premier quartier',
+          moon_waxing_gibbous: 'Gibbeuse croissante',
+          moon_full: 'Pleine lune',
+          moon_waning_gibbous: 'Gibbeuse décroissante',
+          moon_last_quarter: 'Dernier quartier',
+          moon_waning_crescent: 'Dernier croissant',
+        },
+      },
       thermometer: {
         warmer: `Plus chaud qu'hier`,
         colder: `Plus froid qu'hier`,
@@ -149,7 +257,14 @@ const translate = {
       button: 'Suchen',
       input: 'Stadt suchen',
     },
+    day_time: {
+      morning: 'Morgen',
+      day: 'Tag',
+      evening: 'Abend',
+      night: 'Nacht',
+    },
     weather: {
+      temp: 'Temperatur',
       feels_like: 'Gefühlt',
       humidity: 'Luftfeuchtigkeit',
       wind: {
@@ -157,7 +272,27 @@ const translate = {
         m_s: 'm/s',
         index: 'Beaufortskala',
       },
-      uv: 'UV-Indexwert',
+      sun: {
+        name: 'Sonne',
+        uv: 'UV-Indexwert',
+        sunrise: 'Sonnenaufgang',
+        sunset: 'Sonnenuntergang',
+      },
+      moon: {
+        name: 'Mond',
+        moonrise: 'Mondaufgang',
+        moonset: 'Monduntergang',
+        phases: {
+          moon_new: 'Neumond',
+          moon_waxing_crescent: 'Erstes Viertel',
+          moon_first_quarter: 'Zunehmender Halbmond',
+          moon_waxing_gibbous: 'Zweites Viertel',
+          moon_full: 'Vollmond',
+          moon_waning_gibbous: 'Drittes Viertel',
+          moon_last_quarter: 'Abnehmender Halbmond',
+          moon_waning_crescent: 'Letztes Viertel',
+        },
+      },
       thermometer: {
         warmer: `Wärmer als gestern`,
         colder: `Kälter als gestern`,

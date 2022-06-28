@@ -1,0 +1,74 @@
+.extended-forecast {
+  padding: 10px 0;
+
+  font-size: 16px;
+
+  opacity: 0;
+  pointer-events: none;
+  border-top: 1px solid rgba(76, 82, 85, 0.4);
+
+  transition: margin 0.5s, opacity 0.5s;
+}
+
+.extended-forecast__top {
+  align-items: flex-end;
+}
+
+.extended-forecast__top,
+.extended-forecast__wrapper,
+.extended-forecast__moon,
+.extended-forecast__time-wrapper,
+.extended-forecast__phases {
+  display: flex;
+}
+
+.extended-forecast__top,
+.extended-forecast__moon,
+.extended-forecast__time-wrapper {
+  justify-content: space-between;
+}
+
+.extended-forecast__wrapper,
+.extended-forecast__time-wrapper {
+  gap: 10px;
+}
+
+.extended-forecast__icon,
+.extended-forecast__phase-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.extended-forecast__temp {
+  margin-bottom: 5px;
+  border-collapse: collapse;
+}
+
+.extended-forecast__temp th {
+  padding: 5px;
+
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.extended-forecast__temp td:first-child {
+  padding-right: 5px;
+}
+
+.extended-forecast__temp td:not(:first-child) {
+  text-align: center;
+}
+
+.extended-forecast__wrapper,
+.extended-forecast__moon {
+  align-items: center;
+}
+
+.extended-forecast__phases {
+  list-style: none;
+}
+
+.extended-forecast__phase-icon {
+  transition: opacity 0.2s;
+}
