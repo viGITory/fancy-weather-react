@@ -31,7 +31,7 @@ const Preloader = ({ lang }) => {
         alt="preloader"
       />
       <p className="preloader__text">
-        {translate[lang].preloader[getTimeOfDay()]}
+        {translate[lang].greeting[getTimeOfDay()]}
       </p>
     </div>
   ) : (

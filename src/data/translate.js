@@ -1,7 +1,6 @@
 const translate = {
   en: {
-    loading: 'Loading',
-    preloader: {
+    greeting: {
       morning: 'Good morning',
       afternoon: 'Good afternoon',
       evening: 'Good evening',
@@ -35,8 +34,7 @@ const translate = {
     },
   },
   ru: {
-    loading: 'Загрузка',
-    preloader: {
+    greeting: {
       morning: 'Доброе утро',
       afternoon: 'Добрый день',
       evening: 'Добрый вечер',
@@ -70,8 +68,7 @@ const translate = {
     },
   },
   es: {
-    loading: 'Carga',
-    preloader: {
+    greeting: {
       morning: 'Buenos dias',
       afternoon: 'Buenas tardes',
       evening: 'Buenas noches',
@@ -105,8 +102,7 @@ const translate = {
     },
   },
   fr: {
-    loading: 'Chargement',
-    preloader: {
+    greeting: {
       morning: 'Bonjour',
       afternoon: 'Bon après-midi',
       evening: 'Bonsoir',
@@ -140,8 +136,7 @@ const translate = {
     },
   },
   de: {
-    loading: 'Laden',
-    preloader: {
+    greeting: {
       morning: 'Guten Morgen',
       afternoon: 'Guten Tag',
       evening: 'Guten Abend',
