@@ -1,16 +1,21 @@
 import './LanguageButton.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
 
 import getCursorPos from '../../utils/getCursorPos';
 
 const LanguageButton = ({ changeLang, lang }) => {
+  const [rotateDeg, setRotateDeg] = useState(0);
   const [glow, setGlow] = useState({});
+
+  useEffect(() => setRotateDeg(rotateDeg), [rotateDeg]);
 
   return (
     <div
       className="language-button"
+      onClick={() => (rotateDeg ? setRotateDeg(0) : setRotateDeg(180))}
+      onBlur={() => setRotateDeg(0)}
       onMouseMove={(e) => {
         const pos = getCursorPos(e, 'offsetParent');
         setGlow({ coordX: pos.x, coordY: pos.y, opacity: 1 });
@@ -32,6 +37,10 @@ const LanguageButton = ({ changeLang, lang }) => {
         <option value={'fr'}>Fr</option>
         <option value={'de'}>De</option>
       </select>
+      <span
+        className="language-button__arrow"
+        style={{ transform: `translateY(-50%) rotate(${rotateDeg}deg)` }}
+      ></span>
       <HoverGlow
         coordX={glow.coordX}
         coordY={glow.coordY}

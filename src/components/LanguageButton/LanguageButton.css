@@ -20,14 +20,27 @@
   color: inherit;
 
   cursor: pointer;
-  background-image: url('../../../public/assets/arrow-down.svg');
-  background-position: center right 15px;
-  background-size: 15px auto;
   background-color: transparent;
-  background-repeat: no-repeat;
   border: 0;
   outline: none;
   appearance: none;
+}
+
+.language-button__arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+
+  pointer-events: none;
+  background-image: url('../../../public/assets/arrow-down.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transform: translateY(-50%);
+  transition: transform 0.2s;
 }
 
 .language-button__select option {
