@@ -29,16 +29,8 @@ const CurrentWeather = ({ weatherData, lang }) => {
         <div className="current-weather__temp-wrapper">
           <p className="current-weather__temp">
             {Math.round(weatherData.current.temp)}
+            <span className="current-weather__deg">°</span>
           </p>
-          <div className="current-weather__uv">
-            <img
-              className="current-weather__uv-icon"
-              src={getIconSrc({ uvIndex: weatherData.current.uvi })}
-              alt={`${translate[lang].weather.sun.uv} ${Math.round(
-                weatherData.current.uvi
-              )}`}
-            />
-          </div>
         </div>
         <div>
           <img

@@ -6,6 +6,7 @@
 
 .current-weather__top,
 .current-weather__temp-wrapper,
+.current-weather__temp,
 .current-weather__description,
 .current-weather__wind {
   display: flex;
@@ -27,6 +28,11 @@
   font-size: 240px;
   font-weight: 700;
   line-height: 200px;
+}
+
+.current-weather__deg {
+  font-size: 100px;
+  line-height: 100px;
 }
 
 .current-weather__uv,

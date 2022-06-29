@@ -1,6 +1,7 @@
 import './ExtendedForecast.css';
 
 import getMoonPhaseNum from '../../utils/getMoonPhaseNum';
+import getIconSrc from '../../utils/getIconSrc';
 import translate from '../../data/translate';
 
 const ExtendedForecast = ({ weatherData, lang, visibilityStyles }) => {
@@ -18,8 +19,10 @@ const ExtendedForecast = ({ weatherData, lang, visibilityStyles }) => {
         <div className="extended-forecast__wrapper">
           <img
             className="extended-forecast__icon"
-            src={'./assets/weather-icons/clear-day.svg'}
-            alt={translate[lang].weather.sun.name}
+            src={getIconSrc({ uvIndex: weatherData.current.uvi })}
+            alt={`${translate[lang].weather.sun.uv} ${Math.round(
+              weatherData.current.uvi
+            )}`}
           />
           <div>
             <p className="extended-forecast__time-wrapper">
