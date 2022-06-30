@@ -9,6 +9,9 @@ const translate = {
     background: {
       button: 'Change background',
     },
+    voice_notice: {
+      button: 'Voice notice',
+    },
     search: {
       button: 'Search',
       input: 'Search city',
@@ -20,6 +23,7 @@ const translate = {
       night: 'Night',
     },
     weather: {
+      weather_today: 'Weather today',
       temp: 'Temperature',
       feels_like: 'Feels like',
       humidity: 'Humidity',
@@ -70,6 +74,9 @@ const translate = {
     background: {
       button: 'Обновить фон',
     },
+    voice_notice: {
+      button: 'Голосовое уведомление',
+    },
     day_time: {
       morning: 'Утро',
       day: 'День',
@@ -81,6 +88,7 @@ const translate = {
       input: 'Поиск по городу',
     },
     weather: {
+      weather_today: 'Погода сегодня',
       temp: 'Температура',
       feels_like: 'Ощущается как',
       humidity: 'Влажность',
@@ -131,6 +139,9 @@ const translate = {
     background: {
       button: 'Actualizar fondo',
     },
+    voice_notice: {
+      button: 'Notificación de voz',
+    },
     search: {
       button: 'Buscar',
       input: 'Buscar de ciudad',
@@ -142,6 +153,7 @@ const translate = {
       night: 'Noche',
     },
     weather: {
+      weather_today: 'El tiempo hoy',
       temp: 'Temperatura',
       feels_like: 'Sensación',
       humidity: 'Humedad',
@@ -192,6 +204,9 @@ const translate = {
     background: {
       button: `Mettre à jour l'arrière-plan`,
     },
+    voice_notice: {
+      button: 'Notification vocale',
+    },
     search: {
       button: 'Rechercher',
       input: 'Recherche de ville',
@@ -203,6 +218,7 @@ const translate = {
       night: 'Nuit',
     },
     weather: {
+      weather_today: `La météo aujourd'hui`,
       temp: 'Température',
       feels_like: 'Ressentie',
       humidity: 'Humidité',
@@ -253,6 +269,9 @@ const translate = {
     background: {
       button: 'Hintergrund aktualisieren',
     },
+    voice_notice: {
+      button: 'Sprachbenachrichtigung',
+    },
     search: {
       button: 'Suchen',
       input: 'Stadt suchen',
@@ -264,6 +283,7 @@ const translate = {
       night: 'Nacht',
     },
     weather: {
+      weather_today: 'Wetter heute',
       temp: 'Temperatur',
       feels_like: 'Gefühlt',
       humidity: 'Luftfeuchtigkeit',

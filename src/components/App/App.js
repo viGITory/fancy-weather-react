@@ -25,6 +25,7 @@ const App = () => {
   const [locale, setLocale] = useState(localStorage.getItem('locale') || 'en');
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'en');
   const [units, setUnits] = useState(localStorage.getItem('units') || 'metric');
+  const [voiceWeatherText, setVoiceWeatherText] = useState('');
 
   const setCityInputState = (e) => {
     const value = e.target.value;
@@ -98,6 +99,8 @@ const App = () => {
         changeUnits={changeUnits}
         units={units}
         lang={lang}
+        locale={locale}
+        voiceWeatherText={voiceWeatherText}
       />
       <main className="main">
         <Location userLocation={userLocation} />
@@ -107,7 +110,12 @@ const App = () => {
           locale={locale}
         />
         <div className="main__wrapper">
-          <Weather weatherData={weatherData} locale={locale} lang={lang} />
+          <Weather
+            weatherData={weatherData}
+            locale={locale}
+            lang={lang}
+            setVoiceWeatherText={setVoiceWeatherText}
+          />
           <Map coords={coords} timeZone={weatherData.timezone} lang={lang} />
         </div>
       </main>

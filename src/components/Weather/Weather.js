@@ -4,10 +4,14 @@ import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import DailyForecast from '../DailyForecast/DailyForecast';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 
-const Weather = ({ weatherData, locale, lang }) => {
+const Weather = ({ weatherData, locale, lang, setVoiceWeatherText }) => {
   return weatherData.current ? (
     <div className="weather">
-      <CurrentWeather weatherData={weatherData} lang={lang} />
+      <CurrentWeather
+        weatherData={weatherData}
+        lang={lang}
+        setVoiceWeatherText={setVoiceWeatherText}
+      />
       <HourlyForecast
         weatherData={weatherData}
         className={'weather__hourly-forecast'}

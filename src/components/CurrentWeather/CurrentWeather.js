@@ -10,14 +10,31 @@ import getBeaufortWindIndex from '../../utils/getBeaufortWindIndex';
 import translate from '../../data/translate';
 import { useState } from 'react';
 
-const CurrentWeather = ({ weatherData, lang }) => {
+const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
   const [forecastVisibility, setForecastVisibility] = useState({});
   const [forecastHeight, setForecastHeight] = useState();
   const [rotateDeg, setRotateDeg] = useState();
-  const ref = useRef(null);
+  const containerTopRef = useRef(null);
+  const extendedForecastRef = useRef(null);
 
   useEffect(() => {
-    const clientHeight = ref.current.clientHeight;
+    // space after dot is needed for correct ending of words on selected locale
+    const weatherText = [...containerTopRef.current.children]
+      .map((child, index) =>
+        !index
+          ? child.textContent
+          : child.innerText.split('\n').filter((text) => text)
+      )
+      .flat()
+      .join('. ');
+
+    setVoiceWeatherText(
+      `${translate[lang].weather.weather_today}. ` + weatherText
+    );
+  });
+
+  useEffect(() => {
+    const clientHeight = extendedForecastRef.current.clientHeight;
 
     setForecastHeight(clientHeight);
     setForecastVisibility({ marginTop: -clientHeight });
@@ -25,7 +42,7 @@ const CurrentWeather = ({ weatherData, lang }) => {
 
   return (
     <div className="current-weather">
-      <div className="current-weather__top">
+      <div ref={containerTopRef} className="current-weather__top">
         <div className="current-weather__temp-wrapper">
           <p className="current-weather__temp">
             {Math.round(weatherData.current.temp)}
@@ -90,7 +107,7 @@ const CurrentWeather = ({ weatherData, lang }) => {
           </div>
         </div>
       </div>
-      <div ref={ref}>
+      <div ref={extendedForecastRef}>
         <ExtendedForecast
           visibilityStyles={{
             marginTop: forecastVisibility.marginTop,
