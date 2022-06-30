@@ -31,6 +31,72 @@ const translate = {
         name: 'Wind',
         m_s: 'm/s',
         index: 'Beaufort scale',
+        directions: {
+          n: {
+            shortname: 'N',
+            fullname: 'North',
+          },
+          nne: {
+            shortname: 'NNE',
+            fullname: 'North-northeast',
+          },
+          ne: {
+            shortname: 'NE',
+            fullname: 'Northeast',
+          },
+          ene: {
+            shortname: 'ENE',
+            fullname: 'East-northeast',
+          },
+          e: {
+            shortname: 'E',
+            fullname: 'East',
+          },
+          ese: {
+            shortname: 'ESE',
+            fullname: 'East-southeast',
+          },
+          se: {
+            shortname: 'SE',
+            fullname: 'Southeast',
+          },
+          sse: {
+            shortname: 'SSE',
+            fullname: 'South-southeast',
+          },
+          s: {
+            shortname: 'S',
+            fullname: 'South',
+          },
+          ssw: {
+            shortname: 'SSW',
+            fullname: 'South-southwest',
+          },
+          sw: {
+            shortname: 'SW',
+            fullname: 'Southwest',
+          },
+          wsw: {
+            shortname: 'WSW',
+            fullname: 'West-southwest',
+          },
+          w: {
+            shortname: 'W',
+            fullname: 'West',
+          },
+          wnw: {
+            shortname: 'WNW',
+            fullname: 'West-northwest',
+          },
+          nw: {
+            shortname: 'NW',
+            fullname: 'Northwest',
+          },
+          nnw: {
+            shortname: 'NNW',
+            fullname: 'North-northwest',
+          },
+        },
       },
       sun: {
         name: 'Sun',
@@ -96,6 +162,72 @@ const translate = {
         name: 'Ветер',
         m_s: 'м/с',
         index: 'Шкала Бофорта',
+        directions: {
+          n: {
+            shortname: 'С',
+            fullname: 'Северный',
+          },
+          nne: {
+            shortname: 'ССВ',
+            fullname: 'Северный северо-восточный',
+          },
+          ne: {
+            shortname: 'СВ',
+            fullname: 'Северо-восточный',
+          },
+          ene: {
+            shortname: 'ВСВ',
+            fullname: 'Восточный северо-восточный',
+          },
+          e: {
+            shortname: 'В',
+            fullname: 'Восточный',
+          },
+          ese: {
+            shortname: 'ВЮВ',
+            fullname: 'Восточный юго-восточный',
+          },
+          se: {
+            shortname: 'ЮВ',
+            fullname: 'Юго-восточный',
+          },
+          sse: {
+            shortname: 'ЮЮВ',
+            fullname: 'Южный юго-восточный',
+          },
+          s: {
+            shortname: 'Ю',
+            fullname: 'Южный',
+          },
+          ssw: {
+            shortname: 'ЮЮЗ',
+            fullname: 'Южный юго-западный',
+          },
+          sw: {
+            shortname: 'ЮЗ',
+            fullname: 'Юго-западный',
+          },
+          wsw: {
+            shortname: 'ЗЮЗ',
+            fullname: 'Западный юго-западный',
+          },
+          w: {
+            shortname: 'З',
+            fullname: 'Западный',
+          },
+          wnw: {
+            shortname: 'ЗСЗ',
+            fullname: 'Западный северо-западный',
+          },
+          nw: {
+            shortname: 'СЗ',
+            fullname: 'Северо-западный',
+          },
+          nnw: {
+            shortname: 'ССЗ',
+            fullname: 'Северный северо-западный',
+          },
+        },
       },
       sun: {
         name: 'Солнце',
@@ -161,6 +293,72 @@ const translate = {
         name: 'Viento',
         m_s: 'm/s',
         index: 'Escala de Beaufort',
+        directions: {
+          n: {
+            shortname: 'N',
+            fullname: 'Norte',
+          },
+          nne: {
+            shortname: 'NNE',
+            fullname: 'Norte-noreste',
+          },
+          ne: {
+            shortname: 'NE',
+            fullname: 'Noreste',
+          },
+          ene: {
+            shortname: 'ENE',
+            fullname: 'Este-noreste',
+          },
+          e: {
+            shortname: 'E',
+            fullname: 'Este',
+          },
+          ese: {
+            shortname: 'ESE',
+            fullname: 'Este-sureste',
+          },
+          se: {
+            shortname: 'SE',
+            fullname: 'Sureste',
+          },
+          sse: {
+            shortname: 'SSE',
+            fullname: 'Sur-sureste',
+          },
+          s: {
+            shortname: 'S',
+            fullname: 'Sur',
+          },
+          ssw: {
+            shortname: 'SSO',
+            fullname: 'Sur-suroeste',
+          },
+          sw: {
+            shortname: 'SO',
+            fullname: 'Suroeste',
+          },
+          wsw: {
+            shortname: 'OSO',
+            fullname: 'Oeste-suroeste',
+          },
+          w: {
+            shortname: 'O',
+            fullname: 'Oeste',
+          },
+          wnw: {
+            shortname: 'ONO',
+            fullname: 'Oeste-noroeste',
+          },
+          nw: {
+            shortname: 'NO',
+            fullname: 'Noroeste',
+          },
+          nnw: {
+            shortname: 'NNO',
+            fullname: 'Norte-noroeste',
+          },
+        },
       },
       sun: {
         name: 'Sol',
@@ -226,6 +424,72 @@ const translate = {
         name: 'Vent',
         m_s: 'm/s',
         index: 'Échelle de Beaufort',
+        directions: {
+          n: {
+            shortname: 'N',
+            fullname: 'Nord',
+          },
+          nne: {
+            shortname: 'NNE',
+            fullname: 'Nord-nordest',
+          },
+          ne: {
+            shortname: 'NE',
+            fullname: 'Nord-est',
+          },
+          ene: {
+            shortname: 'ENE',
+            fullname: 'Est-nordest',
+          },
+          e: {
+            shortname: 'E',
+            fullname: 'Est',
+          },
+          ese: {
+            shortname: 'ESE',
+            fullname: 'Est-sudest',
+          },
+          se: {
+            shortname: 'SE',
+            fullname: 'Sud-est',
+          },
+          sse: {
+            shortname: 'SSE',
+            fullname: 'Sud-sudest',
+          },
+          s: {
+            shortname: 'S',
+            fullname: 'Sud',
+          },
+          ssw: {
+            shortname: 'SSO',
+            fullname: 'Sud-sudouest',
+          },
+          sw: {
+            shortname: 'SO',
+            fullname: 'Sud-ouest',
+          },
+          wsw: {
+            shortname: 'OSO',
+            fullname: 'Ouest-sudouest',
+          },
+          w: {
+            shortname: 'O',
+            fullname: 'Ouest',
+          },
+          wnw: {
+            shortname: 'ONO',
+            fullname: 'Ouest-nordouest',
+          },
+          nw: {
+            shortname: 'NO',
+            fullname: 'Nord-ouest',
+          },
+          nnw: {
+            shortname: 'NNO',
+            fullname: 'Nord-nordouest',
+          },
+        },
       },
       sun: {
         name: 'Soleil',
@@ -291,6 +555,72 @@ const translate = {
         name: 'Wind',
         m_s: 'm/s',
         index: 'Beaufortskala',
+        directions: {
+          n: {
+            shortname: 'N',
+            fullname: 'Norden',
+          },
+          nne: {
+            shortname: 'NNO',
+            fullname: 'Nord-nordost',
+          },
+          ne: {
+            shortname: 'NO',
+            fullname: 'Nord-ost',
+          },
+          ene: {
+            shortname: 'ONO',
+            fullname: 'Ost-nordost',
+          },
+          e: {
+            shortname: 'O',
+            fullname: 'Ost',
+          },
+          ese: {
+            shortname: 'OSO',
+            fullname: 'Ost-südost',
+          },
+          se: {
+            shortname: 'SO',
+            fullname: 'Süd-ost',
+          },
+          sse: {
+            shortname: 'SSO',
+            fullname: 'Süd-südost',
+          },
+          s: {
+            shortname: 'S',
+            fullname: 'Süden',
+          },
+          ssw: {
+            shortname: 'SSW',
+            fullname: 'Süd-südwest',
+          },
+          sw: {
+            shortname: 'SW',
+            fullname: 'Süd-westen',
+          },
+          wsw: {
+            shortname: 'WSW',
+            fullname: 'West-südwest',
+          },
+          w: {
+            shortname: 'W',
+            fullname: 'Westen',
+          },
+          wnw: {
+            shortname: 'WNW',
+            fullname: 'West-nordwest',
+          },
+          nw: {
+            shortname: 'NW',
+            fullname: 'Nord-west',
+          },
+          nnw: {
+            shortname: 'NNW',
+            fullname: 'Nord-nordwest',
+          },
+        },
       },
       sun: {
         name: 'Sonne',

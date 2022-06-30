@@ -17,6 +17,8 @@ const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
   const containerTopRef = useRef(null);
   const extendedForecastRef = useRef(null);
 
+  const windDirection = getWindDirection(weatherData.current.wind_deg, lang);
+
   useEffect(() => {
     // space after dot is needed for correct ending of words on selected locale
     const weatherText = [...containerTopRef.current.children]
@@ -83,7 +85,20 @@ const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
                   translate[lang].weather.wind.index
                 } ${getBeaufortWindIndex(weatherData.current.wind_speed)}`}
               />
-              {getWindDirection(weatherData.current.wind_deg)}
+              <span>
+                {
+                  translate[lang].weather.wind.directions[windDirection]
+                    .shortname
+                }
+              </span>
+              <span className="visually-hidden">
+                (
+                {
+                  translate[lang].weather.wind.directions[windDirection]
+                    .fullname
+                }
+                )
+              </span>
             </p>
             <button
               className="current-weather__button"
