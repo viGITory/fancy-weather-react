@@ -48,7 +48,7 @@ const VoiceNotice = ({ lang, locale, voiceWeatherText }) => {
       }}
     >
       <span className="visually-hidden">
-        {translate[lang].voice_notice.button}
+        {translate[lang].buttons.voice_notice}
       </span>
       <HoverGlow
         coordX={glow.coordX}

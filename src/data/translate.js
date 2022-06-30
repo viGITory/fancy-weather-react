@@ -1,23 +1,21 @@
 const translate = {
   en: {
     project_name: 'Fancy weather',
+    buttons: {
+      background: 'Change background',
+      voice_notice: 'Voice notice',
+      search: 'Search',
+      show_more: 'Show more',
+    },
     greeting: {
       morning: 'Good morning',
       afternoon: 'Good afternoon',
       evening: 'Good evening',
       night: 'Good night',
     },
-    background: {
-      button: 'Change background',
-    },
-    voice_notice: {
-      button: 'Voice notice',
-    },
     search: {
-      button: 'Search',
       input: 'Search city',
     },
-    show_more: 'Show more',
     day_time: {
       morning: 'Morning',
       day: 'Day',
@@ -134,19 +132,18 @@ const translate = {
   },
   ru: {
     project_name: 'Модная погода',
+    buttons: {
+      background: 'Обновить фон',
+      voice_notice: 'Голосовое уведомление',
+      search: 'Поиск',
+      show_more: 'Показать больше',
+    },
     greeting: {
       morning: 'Доброе утро',
       afternoon: 'Добрый день',
       evening: 'Добрый вечер',
       night: 'Доброй ночи',
     },
-    background: {
-      button: 'Обновить фон',
-    },
-    voice_notice: {
-      button: 'Голосовое уведомление',
-    },
-    show_more: 'Показать больше',
     day_time: {
       morning: 'Утро',
       day: 'День',
@@ -154,7 +151,6 @@ const translate = {
       night: 'Ночь',
     },
     search: {
-      button: 'Поиск',
       input: 'Поиск по городу',
     },
     weather: {
@@ -267,23 +263,21 @@ const translate = {
   },
   es: {
     project_name: 'Clima de moda',
+    buttons: {
+      background: 'Actualizar fondo',
+      voice_notice: 'Notificación de voz',
+      search: 'Buscar',
+      show_more: 'Mostrar más',
+    },
     greeting: {
       morning: 'Buenos dias',
       afternoon: 'Buenas tardes',
       evening: 'Buenas noches',
       night: 'Buenas noches',
     },
-    background: {
-      button: 'Actualizar fondo',
-    },
-    voice_notice: {
-      button: 'Notificación de voz',
-    },
     search: {
-      button: 'Buscar',
       input: 'Buscar de ciudad',
     },
-    show_more: 'Mostrar más',
     day_time: {
       morning: 'Madrugada',
       day: 'Mañana',
@@ -400,23 +394,21 @@ const translate = {
   },
   fr: {
     project_name: 'Météo à la mode',
+    buttons: {
+      background: `Mettre à jour l'arrière-plan`,
+      voice_notice: 'Notification vocale',
+      search: 'Rechercher',
+      show_more: 'Montre plus',
+    },
     greeting: {
       morning: 'Bonjour',
       afternoon: 'Bon après-midi',
       evening: 'Bonsoir',
       night: 'Bonne nuit',
     },
-    background: {
-      button: `Mettre à jour l'arrière-plan`,
-    },
-    voice_notice: {
-      button: 'Notification vocale',
-    },
     search: {
-      button: 'Rechercher',
       input: 'Recherche de ville',
     },
-    show_more: 'Montre plus',
     day_time: {
       morning: 'Matin',
       day: 'Jour',
@@ -533,23 +525,21 @@ const translate = {
   },
   de: {
     project_name: 'Trendiges Wetter',
+    buttons: {
+      background: 'Hintergrund aktualisieren',
+      voice_notice: 'Sprachbenachrichtigung',
+      search: 'Suchen',
+      show_more: 'Zeig mehr',
+    },
     greeting: {
       morning: 'Guten Morgen',
       afternoon: 'Guten Tag',
       evening: 'Guten Abend',
       night: 'Gute Nacht',
     },
-    background: {
-      button: 'Hintergrund aktualisieren',
-    },
-    voice_notice: {
-      button: 'Sprachbenachrichtigung',
-    },
     search: {
-      button: 'Suchen',
       input: 'Stadt suchen',
     },
-    show_more: 'Zeig mehr',
     day_time: {
       morning: 'Morgen',
       day: 'Tag',

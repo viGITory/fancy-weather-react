@@ -28,7 +28,7 @@ const BackgroundButton = ({ lang }) => {
       }}
     >
       <span className="visually-hidden">
-        {translate[lang].background.button}
+        {translate[lang].buttons.background}
       </span>
       <HoverGlow
         coordX={glow.coordX}

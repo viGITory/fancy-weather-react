@@ -120,7 +120,7 @@ const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
               type="button"
             >
               <span className="visually-hidden">
-                {translate[lang].show_more}
+                {translate[lang].buttons.show_more}
               </span>
             </button>
           </div>

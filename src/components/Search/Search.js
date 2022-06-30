@@ -34,7 +34,7 @@ const Search = ({ setCityInputState, getWeather, lang }) => {
           setGlow({ opacity: 0 });
         }}
       >
-        {translate[lang].search.button}
+        {translate[lang].buttons.search}
         <HoverGlow
           coordX={glow.coordX}
           coordY={glow.coordY}
