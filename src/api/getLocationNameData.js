@@ -7,7 +7,9 @@ const getLocationNameData = async (lat, long, lang) => {
   );
 
   const city =
-    data.results[0].components.city || data.results[0].components.hamlet;
+    data.results[0].components.city ||
+    data.results[0].components.hamlet ||
+    data.results[0].components.county;
 
   return [city, data.results[0].components.country];
 };
