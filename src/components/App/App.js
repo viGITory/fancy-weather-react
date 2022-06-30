@@ -16,6 +16,7 @@ import getLocationNameData from '../../api/getLocationNameData';
 import setBackground from '../../utils/setBackground';
 
 import locales from '../../data/locales';
+import translate from '../../data/translate';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -89,7 +90,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1 className="visually-hidden">Fancy weather</h1>
+      <h1 className="visually-hidden">{translate[lang].project_name}</h1>
       <Preloader lang={lang} />
       <Header
         className={'app__header'}

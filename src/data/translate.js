@@ -1,5 +1,6 @@
 const translate = {
   en: {
+    project_name: 'Fancy weather',
     greeting: {
       morning: 'Good morning',
       afternoon: 'Good afternoon',
@@ -16,6 +17,7 @@ const translate = {
       button: 'Search',
       input: 'Search city',
     },
+    show_more: 'Show more',
     day_time: {
       morning: 'Morning',
       day: 'Day',
@@ -131,6 +133,7 @@ const translate = {
     },
   },
   ru: {
+    project_name: 'Модная погода',
     greeting: {
       morning: 'Доброе утро',
       afternoon: 'Добрый день',
@@ -143,6 +146,7 @@ const translate = {
     voice_notice: {
       button: 'Голосовое уведомление',
     },
+    show_more: 'Показать больше',
     day_time: {
       morning: 'Утро',
       day: 'День',
@@ -262,6 +266,7 @@ const translate = {
     },
   },
   es: {
+    project_name: 'Clima de moda',
     greeting: {
       morning: 'Buenos dias',
       afternoon: 'Buenas tardes',
@@ -278,6 +283,7 @@ const translate = {
       button: 'Buscar',
       input: 'Buscar de ciudad',
     },
+    show_more: 'Mostrar más',
     day_time: {
       morning: 'Madrugada',
       day: 'Mañana',
@@ -393,6 +399,7 @@ const translate = {
     },
   },
   fr: {
+    project_name: 'Météo à la mode',
     greeting: {
       morning: 'Bonjour',
       afternoon: 'Bon après-midi',
@@ -409,6 +416,7 @@ const translate = {
       button: 'Rechercher',
       input: 'Recherche de ville',
     },
+    show_more: 'Montre plus',
     day_time: {
       morning: 'Matin',
       day: 'Jour',
@@ -524,6 +532,7 @@ const translate = {
     },
   },
   de: {
+    project_name: 'Trendiges Wetter',
     greeting: {
       morning: 'Guten Morgen',
       afternoon: 'Guten Tag',
@@ -540,6 +549,7 @@ const translate = {
       button: 'Suchen',
       input: 'Stadt suchen',
     },
+    show_more: 'Zeig mehr',
     day_time: {
       morning: 'Morgen',
       day: 'Tag',
