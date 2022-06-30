@@ -1,6 +1,6 @@
 .search {
   display: flex;
-  height: 50px;
+  height: 45px;
 }
 
 .search__input,
@@ -18,7 +18,7 @@
 }
 
 .search__input {
-  width: 250px;
+  width: 200px;
 
   font-weight: inherit;
 

@@ -104,11 +104,7 @@ const App = () => {
       />
       <main className="main">
         <Location userLocation={userLocation} />
-        <DateTime
-          className={'main__date-time'}
-          timeZone={weatherData.timezone}
-          locale={locale}
-        />
+        <DateTime timeZone={weatherData.timezone} locale={locale} />
         <div className="main__wrapper">
           <Weather
             weatherData={weatherData}

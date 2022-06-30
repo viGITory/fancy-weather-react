@@ -2,7 +2,7 @@ import './DateTime.css';
 
 import { useEffect, useState } from 'react';
 
-const DateTime = ({ className, timeZone, locale }) => {
+const DateTime = ({ timeZone, locale }) => {
   const [day, setDay] = useState([]);
   const [time, setTime] = useState([]);
 
@@ -31,7 +31,7 @@ const DateTime = ({ className, timeZone, locale }) => {
   }, [day, time, timeZone, locale]);
 
   return (
-    <div className={`${className ? `${className} ` : ''}date-time`}>
+    <div className="date-time">
       <p>{day}</p>
       <p>{time}</p>
     </div>

@@ -1,8 +1,8 @@
 .background-button {
   position: relative;
   overflow: hidden;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 
   cursor: pointer;
   background-color: transparent;

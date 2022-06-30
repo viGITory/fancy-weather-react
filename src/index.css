@@ -89,10 +89,6 @@ body {
   flex-wrap: wrap;
 }
 
-.main__date-time {
-  margin-bottom: 50px;
-}
-
 /* ### JS ONLY ### */
 .ripple-circle {
   position: absolute;
