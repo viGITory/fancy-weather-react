@@ -22,6 +22,7 @@ const App = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [userLocation, setUserLocation] = useState([]);
   const [coords, setCoords] = useState([]);
+  const [currentUserLocation, setCurrentUserLocation] = useState({});
   const [cityInputValue, setCityInputValue] = useState([]);
   const [locale, setLocale] = useState(localStorage.getItem('locale') || 'en');
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'en');
@@ -74,6 +75,11 @@ const App = () => {
       const [city, country] = await getLocationNameData(lat, long, lang);
 
       setCoords({ lat, long });
+      setCurrentUserLocation({
+        coords: { lat, long },
+        place: { city, country },
+      });
+
       setWeatherData(weatherData);
       setUserLocation({ city, country });
     };
@@ -94,7 +100,11 @@ const App = () => {
       <Preloader lang={lang} />
       <Header
         className={'app__header'}
+        currentUserLocation={currentUserLocation}
+        setCoords={setCoords}
+        setUserLocation={setUserLocation}
         setCityInputState={setCityInputState}
+        setWeatherData={setWeatherData}
         getWeather={getWeatherByCityName}
         changeLang={changeLang}
         changeUnits={changeUnits}

@@ -4,6 +4,7 @@ const translate = {
     buttons: {
       background: 'Change background',
       voice_notice: 'Voice notice',
+      position: 'Current location',
       search: 'Search',
       show_more: 'Show more',
     },
@@ -135,6 +136,7 @@ const translate = {
     buttons: {
       background: 'Обновить фон',
       voice_notice: 'Голосовое уведомление',
+      position: 'Текущее местоположение',
       search: 'Поиск',
       show_more: 'Показать больше',
     },
@@ -266,6 +268,7 @@ const translate = {
     buttons: {
       background: 'Actualizar fondo',
       voice_notice: 'Notificación de voz',
+      position: 'Ubicación actual',
       search: 'Buscar',
       show_more: 'Mostrar más',
     },
@@ -397,6 +400,7 @@ const translate = {
     buttons: {
       background: `Mettre à jour l'arrière-plan`,
       voice_notice: 'Notification vocale',
+      position: 'Localisation actuelle',
       search: 'Rechercher',
       show_more: 'Montre plus',
     },
@@ -528,6 +532,7 @@ const translate = {
     buttons: {
       background: 'Hintergrund aktualisieren',
       voice_notice: 'Sprachbenachrichtigung',
+      position: 'Aktueller Standort',
       search: 'Suchen',
       show_more: 'Zeig mehr',
     },

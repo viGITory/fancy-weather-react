@@ -5,11 +5,16 @@ import LanguageButton from '../LanguageButton/LanguageButton';
 import TempButtons from '../TempButtons/TempButtons';
 import Search from '../Search/Search';
 import VoiceNotice from '../VoiceNotice/VoiceNotice';
+import PositionButton from '../PositionButton/PositionButton';
 
 const Header = ({
   className,
+  currentUserLocation,
+  setCoords,
+  setUserLocation,
   setCityInputState,
   getWeather,
+  setWeatherData,
   changeLang,
   lang,
   changeUnits,
@@ -26,6 +31,14 @@ const Header = ({
         lang={lang}
         locale={locale}
         voiceWeatherText={voiceWeatherText}
+      />
+      <PositionButton
+        currentUserLocation={currentUserLocation}
+        setCoords={setCoords}
+        setUserLocation={setUserLocation}
+        setWeatherData={setWeatherData}
+        lang={lang}
+        units={units}
       />
       <Search
         setCityInputState={setCityInputState}
