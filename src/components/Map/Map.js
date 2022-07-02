@@ -47,7 +47,7 @@ const Map = ({ coords, timeZone, lang }) => {
       });
     };
     createMap({ coords });
-  });
+  }, [coords, isCoords, timeZone]);
 
   const formatCoord = (coord) => {
     const splitedCoord = coord.toFixed(4).toString().split('.');
