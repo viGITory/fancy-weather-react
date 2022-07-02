@@ -1,4 +1,5 @@
 import './Header.css';
+import { useState } from 'react';
 
 import BackgroundButton from '../BackgroundButton/BackgroundButton';
 import LanguageButton from '../LanguageButton/LanguageButton';
@@ -12,8 +13,6 @@ const Header = ({
   currentUserLocation,
   setCoords,
   setUserLocation,
-  setCityInputState,
-  getWeather,
   setWeatherData,
   changeLang,
   lang,
@@ -22,6 +21,8 @@ const Header = ({
   locale,
   voiceWeatherText,
 }) => {
+  const [searchValue, setSearchValue] = useState('');
+
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
       <BackgroundButton lang={lang} />
@@ -41,9 +42,13 @@ const Header = ({
         units={units}
       />
       <Search
-        setCityInputState={setCityInputState}
-        getWeather={getWeather}
+        setWeatherData={setWeatherData}
+        setUserLocation={setUserLocation}
+        setCoords={setCoords}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
         lang={lang}
+        units={units}
       />
     </header>
   );

@@ -8,8 +8,6 @@ import DateTime from '../DateTime/DateTime';
 import Weather from '../Weather/Weather';
 import Map from '../Map/Map';
 
-import { WEATHER_API_KEY } from '../../api/apiKeys';
-import getApiData from '../../api/getApiData';
 import getWeatherData from '../../api/getWeatherData';
 import getCurrentPos from '../../utils/getCurrentPos';
 import getLocationNameData from '../../api/getLocationNameData';
@@ -23,41 +21,10 @@ const App = () => {
   const [userLocation, setUserLocation] = useState([]);
   const [coords, setCoords] = useState([]);
   const [currentUserLocation, setCurrentUserLocation] = useState({});
-  const [cityInputValue, setCityInputValue] = useState([]);
   const [locale, setLocale] = useState(localStorage.getItem('locale') || 'en');
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'en');
   const [units, setUnits] = useState(localStorage.getItem('units') || 'metric');
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
-
-  const setCityInputState = (e) => {
-    const value = e.target.value;
-
-    if (value) setCityInputValue(value);
-  };
-
-  const getWeatherByCityName = async () => {
-    // ### only to get coords & location name by city input
-    const weatherDataByCityName = await getApiData(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityInputValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`
-    );
-    // ###
-
-    const [lat, long] = [
-      weatherDataByCityName.coord.lat,
-      weatherDataByCityName.coord.lon,
-    ];
-    const weatherData = await getWeatherData(lat, long, lang, units);
-    const [city, country] = await getLocationNameData(lat, long, lang);
-
-    setWeatherData(weatherData);
-    setUserLocation({
-      city,
-      country,
-    });
-    setCoords({ lat, long });
-
-    setBackground();
-  };
 
   const changeLang = (lang) => {
     setLocale(locales[lang]);
@@ -103,9 +70,7 @@ const App = () => {
         currentUserLocation={currentUserLocation}
         setCoords={setCoords}
         setUserLocation={setUserLocation}
-        setCityInputState={setCityInputState}
         setWeatherData={setWeatherData}
-        getWeather={getWeatherByCityName}
         changeLang={changeLang}
         changeUnits={changeUnits}
         units={units}
