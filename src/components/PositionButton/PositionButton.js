@@ -13,6 +13,7 @@ const PositionButton = ({
   setCoords,
   setUserLocation,
   setWeatherData,
+  setSearchValue,
   lang,
   units,
 }) => {
@@ -35,6 +36,7 @@ const PositionButton = ({
       city: currentUserLocation.place.city,
       country: currentUserLocation.place.country,
     });
+    setSearchValue('');
   };
 
   return (

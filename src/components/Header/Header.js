@@ -38,6 +38,7 @@ const Header = ({
         setCoords={setCoords}
         setUserLocation={setUserLocation}
         setWeatherData={setWeatherData}
+        setSearchValue={setSearchValue}
         lang={lang}
         units={units}
       />

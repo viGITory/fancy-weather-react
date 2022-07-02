@@ -55,6 +55,7 @@ const Search = ({
       <input
         className="search__input"
         type="text"
+        value={searchValue}
         onInput={(e) => setSearchValue(e.target.value)}
         onKeyUp={(e) => {
           if (e.code === 'Enter') getWeather();
