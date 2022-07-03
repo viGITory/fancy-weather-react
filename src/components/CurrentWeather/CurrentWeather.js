@@ -25,7 +25,10 @@ const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
       .map((child, index) =>
         !index
           ? child.textContent
-          : child.innerText.split('\n').filter((text) => text)
+          : child.innerText
+              .split('\n')
+              .filter((text) => text)
+              .slice(0, -2)
       )
       .flat()
       .join('. ');
@@ -85,17 +88,17 @@ const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
                   translate[lang].weather.wind.index
                 } ${getBeaufortWindIndex(weatherData.current.wind_speed)}`}
               />
-              <span>
-                {
-                  translate[lang].weather.wind.directions[windDirection]
-                    .shortname
-                }
-              </span>
               <span className="visually-hidden">
-                (
                 {
                   translate[lang].weather.wind.directions[windDirection]
                     .fullname
+                }{' '}
+              </span>
+              <span>
+                (
+                {
+                  translate[lang].weather.wind.directions[windDirection]
+                    .shortname
                 }
                 )
               </span>
