@@ -14,9 +14,10 @@ const Header = ({
   setCoords,
   setUserLocation,
   setWeatherData,
-  changeLang,
+  setLocale,
+  setLang,
+  setUnits,
   lang,
-  changeUnits,
   units,
   locale,
   voiceWeatherText,
@@ -26,8 +27,8 @@ const Header = ({
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
       <BackgroundButton lang={lang} />
-      <LanguageButton changeLang={changeLang} lang={lang} />
-      <TempButtons changeUnits={changeUnits} units={units} />
+      <LanguageButton setLocale={setLocale} setLang={setLang} lang={lang} />
+      <TempButtons setUnits={setUnits} units={units} />
       <VoiceNotice
         lang={lang}
         locale={locale}

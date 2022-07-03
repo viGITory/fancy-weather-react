@@ -13,7 +13,6 @@ import getCurrentPos from '../../utils/getCurrentPos';
 import getLocationNameData from '../../api/getLocationNameData';
 import setBackground from '../../utils/setBackground';
 
-import locales from '../../data/locales';
 import translate from '../../data/translate';
 
 const App = () => {
@@ -25,15 +24,6 @@ const App = () => {
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'en');
   const [units, setUnits] = useState(localStorage.getItem('units') || 'metric');
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
-
-  const changeLang = (lang) => {
-    setLocale(locales[lang]);
-    setLang(lang);
-  };
-
-  const changeUnits = (units) => {
-    setUnits(units);
-  };
 
   useEffect(() => {
     const getData = async () => {
@@ -71,8 +61,9 @@ const App = () => {
         setCoords={setCoords}
         setUserLocation={setUserLocation}
         setWeatherData={setWeatherData}
-        changeLang={changeLang}
-        changeUnits={changeUnits}
+        setLocale={setLocale}
+        setLang={setLang}
+        setUnits={setUnits}
         units={units}
         lang={lang}
         locale={locale}

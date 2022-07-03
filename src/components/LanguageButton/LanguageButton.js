@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import HoverGlow from '../HoverGlow/HoverGlow';
 
 import getCursorPos from '../../utils/getCursorPos';
+import locales from '../../data/locales';
 
-const LanguageButton = ({ changeLang, lang }) => {
+const LanguageButton = ({ setLocale, setLang, lang }) => {
   const [rotateDeg, setRotateDeg] = useState(0);
   const [glow, setGlow] = useState({});
 
@@ -28,7 +29,8 @@ const LanguageButton = ({ changeLang, lang }) => {
         className="language-button__select"
         value={lang}
         onChange={(e) => {
-          changeLang(e.target.value);
+          setLocale(locales[e.target.value]);
+          setLang(e.target.value);
         }}
       >
         <option value={'en'}>En</option>
