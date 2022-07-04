@@ -11,7 +11,7 @@ import getCursorPos from '../../utils/getCursorPos';
 import getApiData from '../../api/getApiData';
 import setBackground from '../../utils/setBackground';
 import getWeatherData from '../../api/getWeatherData';
-import getLocationNameData from '../../api/getLocationNameData';
+import getLocationName from '../../utils/getLocationName';
 
 const Search = ({
   setCoords,
@@ -38,7 +38,7 @@ const Search = ({
     ];
 
     const weatherData = await getWeatherData(lat, long, lang, units);
-    const [city, country] = await getLocationNameData(lat, long, lang);
+    const [city, country] = await getLocationName(lat, long, lang);
 
     setWeatherData(weatherData);
     setUserLocation({

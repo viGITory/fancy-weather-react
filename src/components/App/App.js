@@ -10,7 +10,7 @@ import Map from '../Map/Map';
 
 import getWeatherData from '../../api/getWeatherData';
 import getCurrentPos from '../../utils/getCurrentPos';
-import getLocationNameData from '../../api/getLocationNameData';
+import getLocationName from '../../utils/getLocationName';
 import setBackground from '../../utils/setBackground';
 
 import translate from '../../data/translate';
@@ -29,7 +29,7 @@ const App = () => {
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const [city, country] = await getLocationNameData(lat, long, lang);
+      const [city, country] = await getLocationName(lat, long, lang);
 
       setCoords({ lat, long });
       setCurrentUserLocation({
