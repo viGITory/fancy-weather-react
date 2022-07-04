@@ -8,7 +8,7 @@ const Weather = ({
   weatherData,
   locale,
   lang,
-  userLocation,
+  location,
   setVoiceWeatherText,
 }) => {
   return weatherData.current ? (
@@ -16,7 +16,7 @@ const Weather = ({
       <CurrentWeather
         weatherData={weatherData}
         lang={lang}
-        userLocation={userLocation}
+        location={location}
         setVoiceWeatherText={setVoiceWeatherText}
       />
       <HourlyForecast

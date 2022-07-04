@@ -11,7 +11,7 @@ import translate from '../../data/translate';
 const PositionButton = ({
   currentUserLocation,
   setCoords,
-  setUserLocation,
+  setLocation,
   setWeatherData,
   setSearchValue,
   lang,
@@ -32,7 +32,7 @@ const PositionButton = ({
       lat: currentUserLocation.coords.lat,
       long: currentUserLocation.coords.long,
     });
-    setUserLocation({
+    setLocation({
       city: currentUserLocation.place.city,
       country: currentUserLocation.place.country,
     });

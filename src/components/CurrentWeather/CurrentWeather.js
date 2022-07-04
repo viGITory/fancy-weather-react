@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 const CurrentWeather = ({
   weatherData,
-  userLocation,
+  location,
   lang,
   setVoiceWeatherText,
 }) => {
@@ -39,7 +39,7 @@ const CurrentWeather = ({
       .join('. ');
 
     setVoiceWeatherText(
-      `${translate[lang].weather.weather_now} ${userLocation.city}, ${userLocation.country}. ` +
+      `${translate[lang].weather.weather_now} ${location.city}, ${location.country}. ` +
         weatherText
     );
   });

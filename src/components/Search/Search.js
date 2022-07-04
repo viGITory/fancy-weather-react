@@ -16,7 +16,7 @@ import getLocationName from '../../utils/getLocationName';
 const Search = ({
   setCoords,
   setWeatherData,
-  setUserLocation,
+  setLocation,
   searchValue,
   setSearchValue,
   lang,
@@ -41,7 +41,7 @@ const Search = ({
     const [city, country] = await getLocationName(lat, long, lang);
 
     setWeatherData(weatherData);
-    setUserLocation({
+    setLocation({
       city,
       country,
     });

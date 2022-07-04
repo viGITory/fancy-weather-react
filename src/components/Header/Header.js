@@ -12,7 +12,7 @@ const Header = ({
   className,
   currentUserLocation,
   setCoords,
-  setUserLocation,
+  setLocation,
   setWeatherData,
   setLocale,
   setLang,
@@ -37,7 +37,7 @@ const Header = ({
       <PositionButton
         currentUserLocation={currentUserLocation}
         setCoords={setCoords}
-        setUserLocation={setUserLocation}
+        setLocation={setLocation}
         setWeatherData={setWeatherData}
         setSearchValue={setSearchValue}
         lang={lang}
@@ -45,7 +45,7 @@ const Header = ({
       />
       <Search
         setWeatherData={setWeatherData}
-        setUserLocation={setUserLocation}
+        setLocation={setLocation}
         setCoords={setCoords}
         searchValue={searchValue}
         setSearchValue={setSearchValue}

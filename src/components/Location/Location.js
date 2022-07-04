@@ -1,9 +1,9 @@
 import './Location.css';
 
-const Location = ({ userLocation }) => {
-  return userLocation.city ? (
+const Location = ({ location }) => {
+  return location.city ? (
     <p className="location">
-      {userLocation.city}, {userLocation.country}
+      {location.city}, {location.country}
     </p>
   ) : (
     <p></p>

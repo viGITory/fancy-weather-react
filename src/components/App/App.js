@@ -17,7 +17,7 @@ import translate from '../../data/translate';
 
 const App = () => {
   const [weatherData, setWeatherData] = useState([]);
-  const [userLocation, setUserLocation] = useState([]);
+  const [location, setLocation] = useState([]);
   const [coords, setCoords] = useState([]);
   const [currentUserLocation, setCurrentUserLocation] = useState({});
   const [locale, setLocale] = useState(localStorage.getItem('locale') || 'en');
@@ -38,7 +38,7 @@ const App = () => {
       });
 
       setWeatherData(weatherData);
-      setUserLocation({ city, country });
+      setLocation({ city, country });
     };
 
     getData();
@@ -59,7 +59,7 @@ const App = () => {
         className={'app__header'}
         currentUserLocation={currentUserLocation}
         setCoords={setCoords}
-        setUserLocation={setUserLocation}
+        setLocation={setLocation}
         setWeatherData={setWeatherData}
         setLocale={setLocale}
         setLang={setLang}
@@ -70,14 +70,14 @@ const App = () => {
         voiceWeatherText={voiceWeatherText}
       />
       <main className="main">
-        <Location userLocation={userLocation} />
+        <Location location={location} />
         <DateTime timeZone={weatherData.timezone} locale={locale} />
         <div className="main__wrapper">
           <Weather
             weatherData={weatherData}
             locale={locale}
             lang={lang}
-            userLocation={userLocation}
+            location={location}
             setVoiceWeatherText={setVoiceWeatherText}
           />
           <Map coords={coords} timeZone={weatherData.timezone} lang={lang} />
