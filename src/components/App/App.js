@@ -77,6 +77,7 @@ const App = () => {
             weatherData={weatherData}
             locale={locale}
             lang={lang}
+            userLocation={userLocation}
             setVoiceWeatherText={setVoiceWeatherText}
           />
           <Map coords={coords} timeZone={weatherData.timezone} lang={lang} />

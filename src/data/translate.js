@@ -24,7 +24,7 @@ const translate = {
       night: 'Night',
     },
     weather: {
-      weather_today: 'Weather today',
+      weather_now: 'Weather now in',
       temp: 'Temperature',
       feels_like: 'Feels like',
       humidity: 'Humidity',
@@ -156,7 +156,7 @@ const translate = {
       input: 'Поиск по городу',
     },
     weather: {
-      weather_today: 'Погода сегодня',
+      weather_now: 'Погода сейчас в',
       temp: 'Температура',
       feels_like: 'Ощущается как',
       humidity: 'Влажность',
@@ -288,7 +288,7 @@ const translate = {
       night: 'Noche',
     },
     weather: {
-      weather_today: 'El tiempo hoy',
+      weather_now: 'Tiempo ahora en',
       temp: 'Temperatura',
       feels_like: 'Sensación',
       humidity: 'Humedad',
@@ -420,7 +420,7 @@ const translate = {
       night: 'Nuit',
     },
     weather: {
-      weather_today: `La météo aujourd'hui`,
+      weather_now: `Météo actuelle à`,
       temp: 'Température',
       feels_like: 'Ressentie',
       humidity: 'Humidité',
@@ -552,7 +552,7 @@ const translate = {
       night: 'Nacht',
     },
     weather: {
-      weather_today: 'Wetter heute',
+      weather_now: 'Wetter jetzt in',
       temp: 'Temperatur',
       feels_like: 'Gefühlt',
       humidity: 'Luftfeuchtigkeit',

@@ -10,7 +10,12 @@ import getBeaufortWindIndex from '../../utils/getBeaufortWindIndex';
 import translate from '../../data/translate';
 import { useState } from 'react';
 
-const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
+const CurrentWeather = ({
+  weatherData,
+  userLocation,
+  lang,
+  setVoiceWeatherText,
+}) => {
   const [forecastVisibility, setForecastVisibility] = useState({});
   const [forecastHeight, setForecastHeight] = useState();
   const [rotateDeg, setRotateDeg] = useState();
@@ -34,7 +39,8 @@ const CurrentWeather = ({ weatherData, lang, setVoiceWeatherText }) => {
       .join('. ');
 
     setVoiceWeatherText(
-      `${translate[lang].weather.weather_today}. ` + weatherText
+      `${translate[lang].weather.weather_now} ${userLocation.city}, ${userLocation.country}. ` +
+        weatherText
     );
   });
 
