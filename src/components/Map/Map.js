@@ -15,39 +15,39 @@ const Map = ({ coords, timeZone, lang }) => {
   const map = useRef(null);
 
   const isCoords = Object.keys(coords).length;
+  const hours = new Date().toLocaleString('ru-RU', {
+    hour: 'numeric',
+    timeZone: timeZone,
+  });
+  const isPMTime = !(hours >= 6 && hours < 18);
+  const mapStyle = isPMTime
+    ? 'mapbox://styles/pantory/cl4liy3u5000k15qgoq884fni'
+    : 'mapbox://styles/pantory/cl4liz48h000l15qg5nusr9rs';
 
   useEffect(() => {
-    const createMap = ({ coords }) => {
-      if (!isCoords) return;
-
-      const hours = new Date().toLocaleString('ru-RU', {
-        hour: 'numeric',
-        timeZone: timeZone,
-      });
-
-      const isPMTime = !(hours >= 6 && hours < 18);
-      const mapStyle = isPMTime
-        ? 'mapbox://styles/pantory/cl4liy3u5000k15qgoq884fni'
-        : 'mapbox://styles/pantory/cl4liz48h000l15qg5nusr9rs';
-
-      map.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: mapStyle,
+    if (map.current) {
+      map.current.setStyle(mapStyle);
+      map.current.flyTo({
         center: [coords.long, coords.lat],
-        zoom: 9,
-        attributionControl: false,
       });
+    }
+  });
 
-      new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
-        .setLngLat([coords.long, coords.lat])
-        .addTo(map.current);
+  useEffect(() => {
+    if (!isCoords || map.current) return;
 
-      map.current.once('idle', () => {
-        map.current.resize();
-      });
-    };
-    createMap({ coords });
-  }, [coords, isCoords, timeZone]);
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: mapStyle,
+      center: [coords.long, coords.lat],
+      zoom: 9,
+      attributionControl: false,
+    });
+
+    new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
+      .setLngLat([coords.long, coords.lat])
+      .addTo(map.current);
+  }, [coords, timeZone]);
 
   const formatCoord = (coord) => {
     const splitedCoord = coord.toFixed(4).toString().split('.');
