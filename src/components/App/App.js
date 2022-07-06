@@ -39,10 +39,11 @@ const App = () => {
 
       setWeatherData(weatherData);
       setLocation({ city, country });
+
+      setBackground(weatherData.timezone, weatherData.lat);
     };
 
     getData();
-    setBackground();
 
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('locale', locale);
@@ -67,6 +68,8 @@ const App = () => {
         units={units}
         lang={lang}
         locale={locale}
+        timeZone={weatherData.timezone}
+        latitude={weatherData.lat}
         voiceWeatherText={voiceWeatherText}
       />
       <main className="main">

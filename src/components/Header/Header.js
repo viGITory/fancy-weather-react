@@ -20,13 +20,15 @@ const Header = ({
   lang,
   units,
   locale,
+  timeZone,
+  latitude,
   voiceWeatherText,
 }) => {
   const [searchValue, setSearchValue] = useState('');
 
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
-      <BackgroundButton lang={lang} />
+      <BackgroundButton lang={lang} timeZone={timeZone} latitude={latitude} />
       <LanguageButton setLocale={setLocale} setLang={setLang} lang={lang} />
       <TempButtons setUnits={setUnits} units={units} />
       <VoiceNotice

@@ -47,7 +47,7 @@ const Search = ({
     });
     setCoords({ lat, long });
 
-    setBackground();
+    setBackground(weatherData.timezone, weatherData.lat);
   };
 
   return (

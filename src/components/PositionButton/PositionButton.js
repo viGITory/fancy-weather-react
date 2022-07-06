@@ -6,6 +6,7 @@ import HoverGlow from '../HoverGlow/HoverGlow';
 import getWeatherData from '../../api/getWeatherData';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
+import setBackground from '../../utils/setBackground';
 import translate from '../../data/translate';
 
 const PositionButton = ({
@@ -37,6 +38,8 @@ const PositionButton = ({
       country: currentUserLocation.place.country,
     });
     setSearchValue('');
+
+    setBackground(weatherData.timezone, currentUserLocation.coords.lat);
   };
 
   return (

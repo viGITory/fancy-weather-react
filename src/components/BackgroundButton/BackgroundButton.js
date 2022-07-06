@@ -8,7 +8,7 @@ import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
 import translate from '../../data/translate';
 
-const BackgroundButton = ({ lang }) => {
+const BackgroundButton = ({ lang, timeZone, latitude }) => {
   const [glow, setGlow] = useState({});
 
   return (
@@ -16,7 +16,7 @@ const BackgroundButton = ({ lang }) => {
       className="background-button"
       type="button"
       onClick={(e) => {
-        setBackground();
+        setBackground(timeZone, latitude);
         addRippleEffect(e);
       }}
       onMouseMove={(e) => {
