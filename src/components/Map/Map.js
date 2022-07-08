@@ -1,52 +1,67 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './Map.css';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import mapboxgl from 'mapbox-gl';
+import MapboxLanguage from '@mapbox/mapbox-gl-language';
 import { MAPBOX_API_TOKEN } from '../../api/apiKeys';
 
 import translate from '../../data/translate';
 
 const Map = ({ coords, timeZone, lang }) => {
   mapboxgl.accessToken = MAPBOX_API_TOKEN;
+  const mapboxLanguage = new MapboxLanguage();
 
+  const [marker, setMarker] = useState();
   const mapContainer = useRef(null);
   const map = useRef(null);
 
   const isCoords = Object.keys(coords).length;
-  const hours = new Date().toLocaleString('ru-RU', {
-    hour: 'numeric',
-    timeZone: timeZone,
-  });
-  const isPMTime = !(hours >= 6 && hours < 18);
-  const mapStyle = isPMTime
-    ? 'mapbox://styles/pantory/cl4liy3u5000k15qgoq884fni'
-    : 'mapbox://styles/pantory/cl4liz48h000l15qg5nusr9rs';
 
   useEffect(() => {
+    if (marker) marker.remove();
     if (map.current) {
-      map.current.setStyle(mapStyle);
       map.current.flyTo({
         center: [coords.long, coords.lat],
+        zoom: 1.3,
       });
+
+      map.current.setStyle(
+        mapboxLanguage.setLanguage(map.current.getStyle(), lang)
+      );
+
+      const newMarker = new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
+        .setLngLat([coords.long, coords.lat])
+        .addTo(map.current);
+
+      setMarker(newMarker);
     }
-  });
+  }, [coords.lat, coords.long, lang]);
 
   useEffect(() => {
     if (!isCoords || map.current) return;
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: mapStyle,
+      style: 'mapbox://styles/pantory/cl5d0fl0x00i714llkqa0xp3u',
       center: [coords.long, coords.lat],
-      zoom: 9,
+      zoom: 1.3,
+      minZoom: 1.3,
       attributionControl: false,
     });
 
-    new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
+    map.current.on('load', () => {
+      map.current.setStyle(
+        mapboxLanguage.setLanguage(map.current.getStyle(), lang)
+      );
+    });
+
+    const marker = new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
       .setLngLat([coords.long, coords.lat])
       .addTo(map.current);
+
+    setMarker(marker);
   }, [coords, timeZone]);
 
   const formatCoord = (coord) => {

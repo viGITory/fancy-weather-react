@@ -2,11 +2,31 @@
   animation: fade-in 1s;
 }
 
+.map__container,
+.map__container::after {
+  border-radius: 50%;
+}
+
 .map__container {
+  position: relative;
   width: 400px;
   height: 400px;
+  margin-bottom: 30px;
 
-  -webkit-mask-image: url('../../../public/assets/mask-map-clouds.png');
+  background-color: #59c5eb;
+}
+
+.map__container::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  content: '';
+  box-shadow: inset 100px 0 50px 0px rgba(0, 0, 0, 0.6);
+  transform: scale(-1, 1);
 }
 
 .map__coords {
