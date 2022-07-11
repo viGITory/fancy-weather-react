@@ -2,7 +2,7 @@ import { LOCATION_API_KEY } from '../api/apiKeys';
 import getApiData from '../api/getApiData';
 
 const getLocationName = async (lat, long, lang) => {
-  const data = await getApiData(
+  const { data } = await getApiData(
     `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&language=${lang}&key=${LOCATION_API_KEY}`
   );
 

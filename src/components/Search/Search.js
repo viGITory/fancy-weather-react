@@ -27,15 +27,12 @@ const Search = ({
   const getWeather = async () => {
     if (!searchValue) return;
     // ### only to get coords & location name by city input
-    const weatherDataByCityName = await getApiData(
+    const { data } = await getApiData(
       `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`
     );
     // ###
 
-    const [lat, long] = [
-      weatherDataByCityName.coord.lat,
-      weatherDataByCityName.coord.lon,
-    ];
+    const [lat, long] = [data.coord.lat, data.coord.lon];
 
     const weatherData = await getWeatherData(lat, long, lang, units);
     const [city, country] = await getLocationName(lat, long, lang);

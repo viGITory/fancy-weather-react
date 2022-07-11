@@ -23,13 +23,13 @@ const getImageData = async (timezone, latitude) => {
   ];
   const tags = [season, timeOfDay, 'landscape', 'nature'];
 
-  const imageData = await getApiData(
+  const { data } = await getApiData(
     `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${IMAGES_API_KEY}&tags=${[
       ...tags,
     ]}&tag_mode=all&sort=relevance&per_page=500&extras=url_h&format=json&nojsoncallback=1`
   );
 
-  return imageData;
+  return data;
 };
 
 export default getImageData;
