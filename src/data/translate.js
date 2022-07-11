@@ -16,6 +16,10 @@ const translate = {
     },
     search: {
       input: 'Search city',
+      errors: {
+        404: 'City not found',
+        other: 'Something went wrong :(',
+      },
     },
     day_time: {
       morning: 'Morning',
@@ -154,6 +158,10 @@ const translate = {
     },
     search: {
       input: 'Поиск по городу',
+      errors: {
+        404: 'Город не найден',
+        other: 'Что-то пошло не так :(',
+      },
     },
     weather: {
       weather_now: 'Погода сейчас в',
@@ -280,6 +288,10 @@ const translate = {
     },
     search: {
       input: 'Buscar de ciudad',
+      errors: {
+        404: 'Ciudad no encontrada',
+        other: 'Algo salió mal :(',
+      },
     },
     day_time: {
       morning: 'Madrugada',
@@ -412,6 +424,10 @@ const translate = {
     },
     search: {
       input: 'Recherche de ville',
+      errors: {
+        404: 'Ville introuvable',
+        other: `Quelque chose s'est mal passé :(`,
+      },
     },
     day_time: {
       morning: 'Matin',
@@ -544,6 +560,10 @@ const translate = {
     },
     search: {
       input: 'Stadt suchen',
+      errors: {
+        404: 'Stadt nicht gefunden',
+        other: 'Etwas ist schief gelaufen :(',
+      },
     },
     day_time: {
       morning: 'Morgen',

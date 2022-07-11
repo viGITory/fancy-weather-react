@@ -25,6 +25,7 @@ const Header = ({
   voiceWeatherText,
 }) => {
   const [searchValue, setSearchValue] = useState('');
+  const [searchError, setSearchError] = useState('');
 
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
@@ -42,6 +43,7 @@ const Header = ({
         setLocation={setLocation}
         setWeatherData={setWeatherData}
         setSearchValue={setSearchValue}
+        setSearchError={setSearchError}
         lang={lang}
         units={units}
       />
@@ -51,8 +53,10 @@ const Header = ({
         setCoords={setCoords}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        setSearchError={setSearchError}
         lang={lang}
         units={units}
+        searchError={searchError}
       />
     </header>
   );

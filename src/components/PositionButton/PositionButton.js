@@ -15,6 +15,7 @@ const PositionButton = ({
   setLocation,
   setWeatherData,
   setSearchValue,
+  setSearchError,
   lang,
   units,
 }) => {
@@ -38,6 +39,7 @@ const PositionButton = ({
       country: currentUserLocation.place.country,
     });
     setSearchValue('');
+    setSearchError('');
 
     setBackground(weatherData.timezone, currentUserLocation.coords.lat);
   };

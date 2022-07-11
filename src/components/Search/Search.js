@@ -19,52 +19,80 @@ const Search = ({
   setLocation,
   searchValue,
   setSearchValue,
+  setSearchError,
   lang,
-  units
+  units,
+  searchError,
 }) => {
   const [glow, setGlow] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getWeather = async () => {
+  const getWeather = async (searchValue) => {
     if (!searchValue) return;
+
+    setIsLoading(!isLoading);
     // ### only to get coords & location name by city input
-    const { data } = await getApiData(
+    const { response, data } = await getApiData(
       `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`
     );
     // ###
 
-    const [lat, long] = [data.coord.lat, data.coord.lon];
+    try {
+      const [lat, long] = [data.coord.lat, data.coord.lon];
 
-    const weatherData = await getWeatherData(lat, long, lang, units);
-    const [city, country] = await getLocationName(lat, long, lang);
+      const weatherData = await getWeatherData(lat, long, lang, units);
+      const [city, country] = await getLocationName(lat, long, lang);
 
-    setWeatherData(weatherData);
-    setLocation({
-      city,
-      country,
-    });
-    setCoords({ lat, long });
+      if (weatherData) setTimeout(() => setIsLoading(false), 1000);
 
-    setBackground(weatherData.timezone, weatherData.lat);
+      setWeatherData(weatherData);
+      setLocation({
+        city,
+        country,
+      });
+      setCoords({ lat, long });
+      setSearchError('');
+
+      setBackground(weatherData.timezone, weatherData.lat);
+    } catch (err) {
+      setTimeout(() => setIsLoading(false), 1000);
+
+      response.status === 404
+        ? setSearchError(translate[lang].search.errors[404])
+        : setSearchError(translate[lang].search.errors.other);
+    }
   };
 
   return (
     <div className="search">
-      <input
-        className="search__input"
-        type="text"
-        value={searchValue}
-        onInput={(e) => setSearchValue(e.target.value)}
-        onKeyUp={(e) => {
-          if (e.code === 'Enter') getWeather();
-        }}
-        placeholder={translate[lang].search.input}
-        aria-label="Search city"
-      />
+      <div className="search__wrapper">
+        <input
+          className="search__input"
+          type="text"
+          value={searchValue}
+          onInput={(e) => setSearchValue(e.target.value)}
+          onKeyUp={(e) => {
+            if (e.code === 'Enter') getWeather(searchValue);
+          }}
+          placeholder={translate[lang].search.input}
+          aria-label={translate[lang].search.input}
+        />
+        {isLoading ? (
+          <img
+            className="search__loading-icon"
+            src="./assets/weather-icons/hurricane.svg"
+            alt="hurricane"
+          />
+        ) : null}
+        {searchError && !isLoading ? (
+          <p className="search__error">{searchError}</p>
+        ) : null}
+      </div>
       <button
         className="search__button"
         type="button"
         onClick={(e) => {
-          getWeather();
+          getWeather(searchValue);
           addRippleEffect(e);
         }}
         onMouseMove={(e) => {
