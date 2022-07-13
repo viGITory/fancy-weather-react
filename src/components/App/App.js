@@ -29,16 +29,20 @@ const App = () => {
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const [city, country] = await getLocationName(lat, long, lang);
+      const [city, country, iso_alpha_3] = await getLocationName(
+        lat,
+        long,
+        lang
+      );
 
       setCoords({ lat, long });
       setCurrentUserLocation({
         coords: { lat, long },
-        place: { city, country },
+        place: { city, country, iso_alpha_3 },
       });
 
       setWeatherData(weatherData);
-      setLocation({ city, country });
+      setLocation({ city, country, iso_alpha_3 });
 
       setBackground(weatherData.timezone, weatherData.lat);
     };
@@ -83,7 +87,12 @@ const App = () => {
             location={location}
             setVoiceWeatherText={setVoiceWeatherText}
           />
-          <Map coords={coords} timeZone={weatherData.timezone} lang={lang} />
+          <Map
+            coords={coords}
+            timeZone={weatherData.timezone}
+            lang={lang}
+            location={location}
+          />
         </div>
       </main>
     </div>

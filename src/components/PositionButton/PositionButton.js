@@ -37,6 +37,7 @@ const PositionButton = ({
     setLocation({
       city: currentUserLocation.place.city,
       country: currentUserLocation.place.country,
+      iso_alpha_3: currentUserLocation.place.iso_alpha_3,
     });
     setSearchValue('');
     setSearchError('');

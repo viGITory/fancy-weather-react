@@ -12,7 +12,11 @@ const getLocationName = async (lat, long, lang) => {
     data.results[0].components.county ||
     data.results[0].components.state;
 
-  return [city, data.results[0].components.country];
+  return [
+    city,
+    data.results[0].components.country,
+    data.results[0].components['ISO_3166-1_alpha-3'],
+  ];
 };
 
 export default getLocationName;

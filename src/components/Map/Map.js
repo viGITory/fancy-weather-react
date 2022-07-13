@@ -9,7 +9,7 @@ import { MAPBOX_API_TOKEN } from '../../api/apiKeys';
 
 import translate from '../../data/translate';
 
-const Map = ({ coords, timeZone, lang }) => {
+const Map = ({ coords, timeZone, lang, location }) => {
   mapboxgl.accessToken = MAPBOX_API_TOKEN;
   const mapboxLanguage = new MapboxLanguage();
 
@@ -31,7 +31,13 @@ const Map = ({ coords, timeZone, lang }) => {
         mapboxLanguage.setLanguage(map.current.getStyle(), lang)
       );
 
-      const newMarker = new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
+      map.current.setFilter('country-boundaries', [
+        'in',
+        'iso_3166_1_alpha_3',
+        location.iso_alpha_3,
+      ]);
+
+      const newMarker = new mapboxgl.Marker({ color: '#ef4444', scale: 0.8 })
         .setLngLat([coords.long, coords.lat])
         .addTo(map.current);
 
@@ -55,9 +61,32 @@ const Map = ({ coords, timeZone, lang }) => {
       map.current.setStyle(
         mapboxLanguage.setLanguage(map.current.getStyle(), lang)
       );
+
+      map.current.addLayer(
+        {
+          id: 'country-boundaries',
+          source: {
+            type: 'vector',
+            url: 'mapbox://mapbox.country-boundaries-v1',
+          },
+          'source-layer': 'country_boundaries',
+          type: 'fill',
+          paint: {
+            'fill-color': '#ef4444',
+            'fill-opacity': 0.3,
+          },
+        },
+        'country-label'
+      );
+
+      map.current.setFilter('country-boundaries', [
+        'in',
+        'iso_3166_1_alpha_3',
+        location.iso_alpha_3,
+      ]);
     });
 
-    const marker = new mapboxgl.Marker({ color: '#86c3db', scale: 0.8 })
+    const marker = new mapboxgl.Marker({ color: '#ef4444', scale: 0.8 })
       .setLngLat([coords.long, coords.lat])
       .addTo(map.current);
 
