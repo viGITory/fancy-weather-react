@@ -15,6 +15,7 @@ const getLocationName = async (lat, long, lang) => {
   return [
     city,
     data.results[0].components.country,
+    data.results[0].components.country_code,
     data.results[0].components['ISO_3166-1_alpha-3'],
   ];
 };

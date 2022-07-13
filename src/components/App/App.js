@@ -11,6 +11,7 @@ import Map from '../Map/Map';
 import getWeatherData from '../../api/getWeatherData';
 import getCurrentPos from '../../utils/getCurrentPos';
 import getLocationName from '../../utils/getLocationName';
+import getCountryFlag from '../../utils/getCountryFlag';
 import setBackground from '../../utils/setBackground';
 
 import translate from '../../data/translate';
@@ -29,20 +30,21 @@ const App = () => {
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const [city, country, iso_alpha_3] = await getLocationName(
+      const [city, country, country_code, iso_alpha_3] = await getLocationName(
         lat,
         long,
         lang
       );
+      const flagUrl = await getCountryFlag(country_code);
 
       setCoords({ lat, long });
       setCurrentUserLocation({
         coords: { lat, long },
-        place: { city, country, iso_alpha_3 },
+        place: { city, country, flagUrl, country_code, iso_alpha_3 },
       });
 
       setWeatherData(weatherData);
-      setLocation({ city, country, iso_alpha_3 });
+      setLocation({ city, country, flagUrl, country_code, iso_alpha_3 });
 
       setBackground(weatherData.timezone, weatherData.lat);
     };

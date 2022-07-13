@@ -1,8 +1,18 @@
 .location {
   font-size: 44px;
   font-weight: 700;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
 
   animation: fade-in 1s;
+}
+
+.location__flag {
+  color: rgba(255, 255, 255, 0.4);
+
+  background-clip: text;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
