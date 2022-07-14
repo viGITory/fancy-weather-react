@@ -2,6 +2,7 @@ import './Search.css';
 import { useState } from 'react';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
+import VoiceSearch from '../VoiceSearch/VoiceSearch';
 
 import { WEATHER_API_KEY } from '../../api/apiKeys';
 import translate from '../../data/translate';
@@ -24,6 +25,8 @@ const Search = ({
   lang,
   units,
   searchError,
+  locale,
+  voiceWeatherText,
 }) => {
   const [glow, setGlow] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -96,6 +99,13 @@ const Search = ({
           <p className="search__error">{searchError}</p>
         ) : null}
       </div>
+      <VoiceSearch
+        getWeather={getWeather}
+        setSearchValue={setSearchValue}
+        lang={lang}
+        locale={locale}
+        voiceWeatherText={voiceWeatherText}
+      />
       <button
         className="search__button"
         type="button"

@@ -1,0 +1,40 @@
+.pulse,
+.pulse__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.pulse {
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.pulse__item {
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%) scale(0);
+  animation: pulse 2s infinite;
+}
+
+.pulse__item--1 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.pulse__item--2 {
+  background-color: rgba(255, 255, 255, 0.3);
+  animation-delay: 0.2s;
+}
+
+.pulse__item--3 {
+  background-color: rgba(255, 255, 255, 0.5);
+  animation-delay: 0.4s;
+}
+
+.pulse__item--4 {
+  background-color: rgba(255, 255, 255, 0.7);
+  animation-delay: 0.6s;
+}

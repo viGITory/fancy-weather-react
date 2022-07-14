@@ -57,6 +57,8 @@ const Header = ({
         lang={lang}
         units={units}
         searchError={searchError}
+        locale={locale}
+        voiceWeatherText={voiceWeatherText}
       />
     </header>
   );

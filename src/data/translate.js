@@ -134,6 +134,10 @@ const translate = {
       latitude: 'Latitude',
       longitude: 'Longitude',
     },
+    voice_commands: {
+      weather_now: 'Weather now',
+      exit: 'Exit',
+    },
   },
   ru: {
     project_name: 'Модная погода',
@@ -269,6 +273,10 @@ const translate = {
     coords: {
       latitude: 'Широта',
       longitude: 'Долгота',
+    },
+    voice_commands: {
+      weather_now: 'Погода сейчас',
+      exit: 'Выйти',
     },
   },
   es: {
@@ -406,6 +414,10 @@ const translate = {
       latitude: 'Latitud',
       longitude: 'Longitud',
     },
+    voice_commands: {
+      weather_now: 'Tiempo ahora',
+      exit: 'Salida',
+    },
   },
   fr: {
     project_name: 'Météo à la mode',
@@ -542,6 +554,10 @@ const translate = {
       latitude: 'Latitude',
       longitude: 'Longitude',
     },
+    voice_commands: {
+      weather_now: 'Temps maintenant',
+      exit: 'Sortir',
+    },
   },
   de: {
     project_name: 'Trendiges Wetter',
@@ -677,6 +693,10 @@ const translate = {
     coords: {
       latitude: 'Breitengrad',
       longitude: 'Längengrad',
+    },
+    voice_commands: {
+      weather_now: 'Wetter jetzt',
+      exit: 'Ausfahrt',
     },
   },
 };

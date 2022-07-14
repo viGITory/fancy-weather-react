@@ -121,3 +121,10 @@ body {
     transform: translate(-50%, -50%) scale(3);
   }
 }
+
+@keyframes pulse {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.8);
+  }
+}
