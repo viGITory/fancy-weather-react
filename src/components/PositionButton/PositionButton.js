@@ -39,7 +39,6 @@ const PositionButton = ({
       country: currentUserLocation.place.country,
       flagUrl: currentUserLocation.place.flagUrl,
       country_code: currentUserLocation.place.country_code,
-      iso_alpha_3: currentUserLocation.place.iso_alpha_3,
     });
     setSearchValue('');
     setSearchError('');

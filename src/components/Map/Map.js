@@ -33,8 +33,8 @@ const Map = ({ coords, timeZone, lang, location }) => {
 
       map.current.setFilter('country-boundaries', [
         'in',
-        'iso_3166_1_alpha_3',
-        location.iso_alpha_3,
+        'iso_3166_1',
+        location.country_code.toUpperCase(),
       ]);
 
       const newMarker = new mapboxgl.Marker({ color: '#ef4444', scale: 0.8 })
@@ -81,8 +81,8 @@ const Map = ({ coords, timeZone, lang, location }) => {
 
       map.current.setFilter('country-boundaries', [
         'in',
-        'iso_3166_1_alpha_3',
-        location.iso_alpha_3,
+        'iso_3166_1',
+        location.country_code.toUpperCase(),
       ]);
     });
 

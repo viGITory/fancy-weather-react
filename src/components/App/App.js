@@ -30,7 +30,7 @@ const App = () => {
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const [city, country, country_code, iso_alpha_3] = await getLocationName(
+      const [city, country, country_code] = await getLocationName(
         lat,
         long,
         lang
@@ -40,11 +40,11 @@ const App = () => {
       setCoords({ lat, long });
       setCurrentUserLocation({
         coords: { lat, long },
-        place: { city, country, flagUrl, country_code, iso_alpha_3 },
+        place: { city, country, flagUrl, country_code },
       });
 
       setWeatherData(weatherData);
-      setLocation({ city, country, flagUrl, country_code, iso_alpha_3 });
+      setLocation({ city, country, flagUrl, country_code });
 
       setBackground(weatherData.timezone, weatherData.lat);
     };

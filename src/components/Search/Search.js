@@ -42,7 +42,7 @@ const Search = ({
       const [lat, long] = [data.coord.lat, data.coord.lon];
 
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const [city, country, country_code, iso_alpha_3] = await getLocationName(
+      const [city, country, country_code] = await getLocationName(
         lat,
         long,
         lang
@@ -57,7 +57,6 @@ const Search = ({
         country,
         flagUrl,
         country_code,
-        iso_alpha_3,
       });
       setCoords({ lat, long });
       setSearchError('');
