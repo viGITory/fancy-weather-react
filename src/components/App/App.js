@@ -10,7 +10,7 @@ import Map from '../Map/Map';
 
 import getWeatherData from '../../api/getWeatherData';
 import getCurrentPos from '../../utils/getCurrentPos';
-import getLocationName from '../../utils/getLocationName';
+import getLocationData from '../../api/getLocationData';
 import getCountryFlag from '../../utils/getCountryFlag';
 import setBackground from '../../utils/setBackground';
 
@@ -30,7 +30,7 @@ const App = () => {
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const [city, country, country_code] = await getLocationName(
+      const { city, country, country_code } = await getLocationData(
         lat,
         long,
         lang

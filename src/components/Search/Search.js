@@ -12,7 +12,7 @@ import getCursorPos from '../../utils/getCursorPos';
 import getApiData from '../../api/getApiData';
 import setBackground from '../../utils/setBackground';
 import getWeatherData from '../../api/getWeatherData';
-import getLocationName from '../../utils/getLocationName';
+import getLocationData from '../../api/getLocationData';
 import getCountryFlag from '../../utils/getCountryFlag';
 
 const Search = ({
@@ -45,7 +45,7 @@ const Search = ({
       const [lat, long] = [data.coord.lat, data.coord.lon];
 
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const [city, country, country_code] = await getLocationName(
+      const { city, country, country_code } = await getLocationData(
         lat,
         long,
         lang
