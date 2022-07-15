@@ -12,6 +12,7 @@ import getWeatherData from '../../api/getWeatherData';
 import getCurrentPos from '../../utils/getCurrentPos';
 import getLocationData from '../../api/getLocationData';
 import getCountryFlag from '../../utils/getCountryFlag';
+import getImageData from '../../api/getImageData';
 import setBackground from '../../utils/setBackground';
 
 import translate from '../../data/translate';
@@ -30,12 +31,13 @@ const App = () => {
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const { city, country, country_code } = await getLocationData(
+      const { city, country, country_code, timezone } = await getLocationData(
         lat,
         long,
         lang
       );
       const flagUrl = await getCountryFlag(country_code);
+      const imageData = await getImageData(timezone, lat);
 
       setCoords({ lat, long });
       setCurrentUserLocation({
@@ -46,7 +48,7 @@ const App = () => {
       setWeatherData(weatherData);
       setLocation({ city, country, flagUrl, country_code });
 
-      setBackground(weatherData.timezone, weatherData.lat);
+      setBackground(imageData);
     };
 
     getData();

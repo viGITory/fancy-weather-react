@@ -13,6 +13,7 @@ import getApiData from '../../api/getApiData';
 import setBackground from '../../utils/setBackground';
 import getWeatherData from '../../api/getWeatherData';
 import getLocationData from '../../api/getLocationData';
+import getImageData from '../../api/getImageData';
 import getCountryFlag from '../../utils/getCountryFlag';
 
 const Search = ({
@@ -45,11 +46,12 @@ const Search = ({
       const [lat, long] = [data.coord.lat, data.coord.lon];
 
       const weatherData = await getWeatherData(lat, long, lang, units);
-      const { city, country, country_code } = await getLocationData(
+      const { city, country, country_code, timezone } = await getLocationData(
         lat,
         long,
         lang
       );
+      const imageData = await getImageData(timezone, lat);
       const flagUrl = await getCountryFlag(country_code);
 
       if (weatherData) setTimeout(() => setIsLoading(false), 1000);
@@ -64,7 +66,7 @@ const Search = ({
       setCoords({ lat, long });
       setSearchError('');
 
-      setBackground(weatherData.timezone, weatherData.lat);
+      setBackground(imageData);
     } catch (err) {
       setTimeout(() => setIsLoading(false), 1000);
 

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import HoverGlow from '../HoverGlow/HoverGlow';
 
 import getWeatherData from '../../api/getWeatherData';
+import getImageData from '../../api/getImageData';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
 import setBackground from '../../utils/setBackground';
@@ -28,6 +29,10 @@ const PositionButton = ({
       lang,
       units
     );
+    const imageData = await getImageData(
+      weatherData.timezone,
+      currentUserLocation.coords.lat
+    );
 
     setWeatherData(weatherData);
     setCoords({
@@ -43,7 +48,7 @@ const PositionButton = ({
     setSearchValue('');
     setSearchError('');
 
-    setBackground(weatherData.timezone, currentUserLocation.coords.lat);
+    setBackground(imageData);
   };
 
   return (

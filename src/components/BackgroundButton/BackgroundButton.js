@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
 
+import getImageData from '../../api/getImageData';
 import setBackground from '../../utils/setBackground';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
@@ -11,12 +12,17 @@ import translate from '../../data/translate';
 const BackgroundButton = ({ lang, timeZone, latitude }) => {
   const [glow, setGlow] = useState({});
 
+  const updateBackground = async () => {
+    const imageData = await getImageData(timeZone, latitude);
+    setBackground(imageData);
+  };
+
   return (
     <button
       className="background-button"
       type="button"
-      onClick={(e) => {
-        setBackground(timeZone, latitude);
+      onClick={async (e) => {
+        updateBackground();
         addRippleEffect(e);
       }}
       onMouseMove={(e) => {
