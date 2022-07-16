@@ -1,5 +1,6 @@
 import './Search.css';
 import { useState } from 'react';
+import axios from 'axios';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
 import VoiceSearch from '../VoiceSearch/VoiceSearch';
@@ -9,7 +10,6 @@ import translate from '../../data/translate';
 
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
-import getApiData from '../../api/getApiData';
 import setBackground from '../../utils/setBackground';
 import getWeatherData from '../../api/getWeatherData';
 import getLocationData from '../../api/getLocationData';
@@ -36,13 +36,13 @@ const Search = ({
     if (!searchValue) return;
 
     setIsLoading(!isLoading);
-    // ### only to get coords & location name by city input
-    const { response, data } = await getApiData(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`
-    );
-    // ###
 
     try {
+      // ### only to get coords & location name by city input
+      const { data } = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`
+      );
+      // ###
       const [lat, long] = [data.coord.lat, data.coord.lon];
 
       const weatherData = await getWeatherData(lat, long, lang, units);
@@ -70,7 +70,7 @@ const Search = ({
     } catch (err) {
       setTimeout(() => setIsLoading(false), 1000);
 
-      response.status === 404
+      err.response.status === 404
         ? setSearchError(translate[lang].search.errors[404])
         : setSearchError(translate[lang].search.errors.other);
     }

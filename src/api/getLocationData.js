@@ -1,8 +1,9 @@
+import axios from 'axios';
+
 import { LOCATION_API_KEY } from './apiKeys';
-import getApiData from './getApiData';
 
 const getLocationData = async (lat, long, lang) => {
-  const { data } = await getApiData(
+  const { data } = await axios.get(
     `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&language=${lang}&key=${LOCATION_API_KEY}`
   );
 

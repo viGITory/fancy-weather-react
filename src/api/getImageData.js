@@ -1,5 +1,6 @@
+import axios from 'axios';
+
 import { IMAGES_API_KEY } from '../api/apiKeys';
-import getApiData from '../api/getApiData';
 
 const getImageData = async (timezone, latitude) => {
   const date = new Date();
@@ -23,7 +24,7 @@ const getImageData = async (timezone, latitude) => {
   ];
   const tags = [season, timeOfDay, 'landscape', 'nature'];
 
-  const { data } = await getApiData(
+  const { data } = await axios.get(
     `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${IMAGES_API_KEY}&tags=${[
       ...tags,
     ]}&tag_mode=all&sort=relevance&per_page=500&extras=url_h&format=json&nojsoncallback=1`
