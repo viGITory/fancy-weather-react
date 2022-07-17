@@ -88,16 +88,12 @@ const VoiceSearch = ({
       <button
         className="voice-search__button"
         onClick={() => {
-          if (listening) {
-            exit();
-          } else {
-            listen();
-          }
+          listening ? exit() : listen();
         }}
       >
         <span className="visually-hidden">Mic</span>
       </button>
-      {listening ? <Pulse /> : null}
+      {listening && <Pulse />}
     </div>
   );
 };

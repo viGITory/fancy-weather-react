@@ -91,16 +91,16 @@ const Search = ({
           placeholder={translate[lang].search.input}
           aria-label={translate[lang].search.input}
         />
-        {isLoading ? (
+        {isLoading && (
           <img
             className="search__loading-icon"
             src="./assets/weather-icons/hurricane.svg"
             alt="hurricane"
           />
-        ) : null}
-        {searchError && !isLoading ? (
+        )}
+        {searchError && !isLoading && (
           <p className="search__error">{searchError}</p>
-        ) : null}
+        )}
       </div>
       <VoiceSearch
         appState={appState}
