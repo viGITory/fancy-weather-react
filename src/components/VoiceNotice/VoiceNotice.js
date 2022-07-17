@@ -7,10 +7,11 @@ import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
 import translate from '../../data/translate';
 
-const VoiceNotice = ({ lang, locale, voiceWeatherText }) => {
+const VoiceNotice = ({ appState, voiceWeatherText }) => {
   const [isActive, setIsActive] = useState(false);
   const [glow, setGlow] = useState({});
 
+  const { locale, lang } = appState;
   const recognition = window.speechSynthesis;
 
   const speak = (text) => {

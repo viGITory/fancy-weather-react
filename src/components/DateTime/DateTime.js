@@ -2,9 +2,11 @@ import './DateTime.css';
 
 import { useEffect, useState } from 'react';
 
-const DateTime = ({ timeZone, locale }) => {
+const DateTime = ({ appState, timeZone }) => {
   const [day, setDay] = useState([]);
   const [time, setTime] = useState([]);
+
+  const { locale } = appState;
 
   useEffect(() => {
     const getTime = () => {

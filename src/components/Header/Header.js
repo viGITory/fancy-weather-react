@@ -10,16 +10,12 @@ import PositionButton from '../PositionButton/PositionButton';
 
 const Header = ({
   className,
+  appState,
   currentUserLocation,
   setCoords,
   setLocation,
   setWeatherData,
-  setLocale,
-  setLang,
-  setUnits,
-  lang,
-  units,
-  locale,
+  setAppState,
   timeZone,
   latitude,
   voiceWeatherText,
@@ -29,35 +25,32 @@ const Header = ({
 
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
-      <BackgroundButton lang={lang} timeZone={timeZone} latitude={latitude} />
-      <LanguageButton setLocale={setLocale} setLang={setLang} lang={lang} />
-      <TempButtons setUnits={setUnits} units={units} />
-      <VoiceNotice
-        lang={lang}
-        locale={locale}
-        voiceWeatherText={voiceWeatherText}
+      <BackgroundButton
+        appState={appState}
+        timeZone={timeZone}
+        latitude={latitude}
       />
+      <LanguageButton appState={appState} setAppState={setAppState} />
+      <TempButtons appState={appState} setAppState={setAppState} />
+      <VoiceNotice appState={appState} voiceWeatherText={voiceWeatherText} />
       <PositionButton
+        appState={appState}
         currentUserLocation={currentUserLocation}
         setCoords={setCoords}
         setLocation={setLocation}
         setWeatherData={setWeatherData}
         setSearchValue={setSearchValue}
         setSearchError={setSearchError}
-        lang={lang}
-        units={units}
       />
       <Search
+        appState={appState}
         setWeatherData={setWeatherData}
         setLocation={setLocation}
         setCoords={setCoords}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         setSearchError={setSearchError}
-        lang={lang}
-        units={units}
         searchError={searchError}
-        locale={locale}
         voiceWeatherText={voiceWeatherText}
       />
     </header>

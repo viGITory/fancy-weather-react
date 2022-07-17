@@ -17,20 +17,20 @@ import getImageData from '../../api/getImageData';
 import getCountryFlag from '../../utils/getCountryFlag';
 
 const Search = ({
+  appState,
   setCoords,
   setWeatherData,
   setLocation,
   searchValue,
   setSearchValue,
   setSearchError,
-  lang,
-  units,
   searchError,
-  locale,
   voiceWeatherText,
 }) => {
   const [glow, setGlow] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  const { lang, units } = appState;
 
   const getWeather = async (searchValue) => {
     if (!searchValue) return;
@@ -104,8 +104,7 @@ const Search = ({
       <VoiceSearch
         getWeather={getWeather}
         setSearchValue={setSearchValue}
-        lang={lang}
-        locale={locale}
+        appState={appState}
         voiceWeatherText={voiceWeatherText}
       />
       <button

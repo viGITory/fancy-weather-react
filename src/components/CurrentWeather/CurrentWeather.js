@@ -11,9 +11,9 @@ import translate from '../../data/translate';
 import { useState } from 'react';
 
 const CurrentWeather = ({
+  appState,
   weatherData,
   location,
-  lang,
   setVoiceWeatherText,
 }) => {
   const [forecastVisibility, setForecastVisibility] = useState({});
@@ -22,6 +22,7 @@ const CurrentWeather = ({
   const containerTopRef = useRef(null);
   const extendedForecastRef = useRef(null);
 
+  const { lang } = appState;
   const windDirection = getWindDirection(weatherData.current.wind_deg, lang);
 
   useEffect(() => {
@@ -142,7 +143,7 @@ const CurrentWeather = ({
             opacity: forecastVisibility.opacity,
           }}
           weatherData={weatherData}
-          lang={lang}
+          appState={appState}
         />
       </div>
     </div>

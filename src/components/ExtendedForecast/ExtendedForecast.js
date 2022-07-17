@@ -4,7 +4,8 @@ import getMoonPhaseNum from '../../utils/getMoonPhaseNum';
 import getIconSrc from '../../utils/getIconSrc';
 import translate from '../../data/translate';
 
-const ExtendedForecast = ({ weatherData, lang, visibilityStyles }) => {
+const ExtendedForecast = ({ weatherData, appState, visibilityStyles }) => {
+  const { lang } = appState;
   const moonPhases = Object.keys(translate[lang].weather.moon.phases);
 
   return (

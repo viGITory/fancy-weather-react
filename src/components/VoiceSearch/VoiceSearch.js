@@ -12,11 +12,11 @@ import translate from '../../data/translate';
 const VoiceSearch = ({
   getWeather,
   setSearchValue,
-  lang,
-  locale,
+  appState,
   voiceWeatherText,
 }) => {
   const recognition = window.speechSynthesis;
+  const { lang, locale } = appState;
 
   const commands = [
     {

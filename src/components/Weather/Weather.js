@@ -4,18 +4,12 @@ import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import DailyForecast from '../DailyForecast/DailyForecast';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 
-const Weather = ({
-  weatherData,
-  locale,
-  lang,
-  location,
-  setVoiceWeatherText,
-}) => {
+const Weather = ({ appState, weatherData, location, setVoiceWeatherText }) => {
   return weatherData.current ? (
     <div className="weather">
       <CurrentWeather
+        appState={appState}
         weatherData={weatherData}
-        lang={lang}
         location={location}
         setVoiceWeatherText={setVoiceWeatherText}
       />
@@ -23,7 +17,7 @@ const Weather = ({
         weatherData={weatherData}
         className={'weather__hourly-forecast'}
       />
-      <DailyForecast weatherData={weatherData} locale={locale} lang={lang} />
+      <DailyForecast appState={appState} weatherData={weatherData} />
     </div>
   ) : (
     <div></div>

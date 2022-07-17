@@ -18,14 +18,18 @@ import setBackground from '../../utils/setBackground';
 import translate from '../../data/translate';
 
 const App = () => {
+  const [appState, setAppState] = useState({
+    locale: localStorage.getItem('locale') || 'en',
+    lang: localStorage.getItem('lang') || 'en',
+    units: localStorage.getItem('units') || 'metric',
+  });
   const [weatherData, setWeatherData] = useState([]);
   const [location, setLocation] = useState([]);
   const [coords, setCoords] = useState([]);
   const [currentUserLocation, setCurrentUserLocation] = useState({});
-  const [locale, setLocale] = useState(localStorage.getItem('locale') || 'en');
-  const [lang, setLang] = useState(localStorage.getItem('lang') || 'en');
-  const [units, setUnits] = useState(localStorage.getItem('units') || 'metric');
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
+
+  const { locale, lang, units } = appState;
 
   useEffect(() => {
     const getData = async () => {
@@ -63,38 +67,33 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="visually-hidden">{translate[lang].project_name}</h1>
-      <Preloader lang={lang} />
+      <Preloader {...appState} />
       <Header
         className={'app__header'}
+        appState={appState}
         currentUserLocation={currentUserLocation}
         setCoords={setCoords}
         setLocation={setLocation}
         setWeatherData={setWeatherData}
-        setLocale={setLocale}
-        setLang={setLang}
-        setUnits={setUnits}
-        units={units}
-        lang={lang}
-        locale={locale}
+        setAppState={setAppState}
         timeZone={weatherData.timezone}
         latitude={weatherData.lat}
         voiceWeatherText={voiceWeatherText}
       />
       <main className="main">
         <Location location={location} />
-        <DateTime timeZone={weatherData.timezone} locale={locale} />
+        <DateTime appState={appState} timeZone={weatherData.timezone} />
         <div className="main__wrapper">
           <Weather
+            appState={appState}
             weatherData={weatherData}
-            locale={locale}
-            lang={lang}
             location={location}
             setVoiceWeatherText={setVoiceWeatherText}
           />
           <Map
+            appState={appState}
             coords={coords}
             timeZone={weatherData.timezone}
-            lang={lang}
             location={location}
           />
         </div>

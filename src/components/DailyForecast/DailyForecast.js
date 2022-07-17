@@ -3,7 +3,9 @@ import './DailyForecast.css';
 import getIconSrc from '../../utils/getIconSrc';
 import translate from '../../data/translate';
 
-const DailyForecast = ({ weatherData, locale, lang }) => {
+const DailyForecast = ({ appState, weatherData }) => {
+  const { locale, lang } = appState;
+
   return (
     <ul className="daily-forecast">
       {[

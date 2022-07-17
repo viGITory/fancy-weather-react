@@ -6,8 +6,9 @@ import HoverGlow from '../HoverGlow/HoverGlow';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
 
-const TempUnits = ({ setUnits, units }) => {
+const TempUnits = ({ appState, setAppState }) => {
   const [glow, setGlow] = useState({});
+  const { units } = appState;
 
   return (
     <div
@@ -33,7 +34,10 @@ const TempUnits = ({ setUnits, units }) => {
         type="button"
         onClick={(e) => {
           addRippleEffect(e);
-          setUnits('metric');
+          setAppState((prevState) => ({
+            ...prevState,
+            units: 'metric',
+          }));
         }}
       >
         °C
@@ -47,7 +51,10 @@ const TempUnits = ({ setUnits, units }) => {
         type="button"
         onClick={(e) => {
           addRippleEffect(e);
-          setUnits('imperial');
+          setAppState((prevState) => ({
+            ...prevState,
+            units: 'imperial',
+          }));
         }}
       >
         °F

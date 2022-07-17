@@ -9,7 +9,7 @@ import { MAPBOX_API_TOKEN } from '../../api/apiKeys';
 
 import translate from '../../data/translate';
 
-const Map = ({ coords, timeZone, lang, location }) => {
+const Map = ({ appState, coords, location }) => {
   mapboxgl.accessToken = MAPBOX_API_TOKEN;
   const mapboxLanguage = new MapboxLanguage();
 
@@ -17,6 +17,7 @@ const Map = ({ coords, timeZone, lang, location }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
 
+  const { lang } = appState;
   const isCoords = Object.keys(coords).length;
 
   useEffect(() => {
@@ -91,7 +92,7 @@ const Map = ({ coords, timeZone, lang, location }) => {
       .addTo(map.current);
 
     setMarker(marker);
-  }, [coords, timeZone]);
+  }, [coords]);
 
   const formatCoord = (coord) => {
     const splitedCoord = coord.toFixed(4).toString().split('.');

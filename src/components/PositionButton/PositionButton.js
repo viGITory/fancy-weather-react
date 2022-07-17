@@ -11,16 +11,16 @@ import setBackground from '../../utils/setBackground';
 import translate from '../../data/translate';
 
 const PositionButton = ({
+  appState,
   currentUserLocation,
   setCoords,
   setLocation,
   setWeatherData,
   setSearchValue,
   setSearchError,
-  lang,
-  units,
 }) => {
   const [glow, setGlow] = useState({});
+  const { lang, units } = appState;
 
   const setInitialPosData = async () => {
     const weatherData = await getWeatherData(
