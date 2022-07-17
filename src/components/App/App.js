@@ -26,7 +26,7 @@ const App = () => {
   });
   const [weatherData, setWeatherData] = useState([]);
   const [location, setLocation] = useState([]);
-  const [coords, setCoords] = useState([]);
+  const [coords, setCoords] = useState();
   const [currentUserLocation, setCurrentUserLocation] = useState({});
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
 
@@ -101,12 +101,9 @@ const App = () => {
             location={location}
             setVoiceWeatherText={setVoiceWeatherText}
           />
-          <Map
-            appState={appState}
-            coords={coords}
-            timeZone={weatherData.timezone}
-            location={location}
-          />
+          {coords && (
+            <Map appState={appState} coords={coords} location={location} />
+          )}
         </div>
       </main>
     </div>

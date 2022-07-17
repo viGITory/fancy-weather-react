@@ -18,7 +18,6 @@ const Map = ({ appState, coords, location }) => {
   const map = useRef(null);
 
   const { lang } = appState;
-  const isCoords = Object.keys(coords).length;
 
   useEffect(() => {
     if (marker) marker.remove();
@@ -47,7 +46,7 @@ const Map = ({ appState, coords, location }) => {
   }, [coords.lat, coords.long, lang]);
 
   useEffect(() => {
-    if (!isCoords || map.current) return;
+    if (map.current) return;
 
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -99,7 +98,7 @@ const Map = ({ appState, coords, location }) => {
     return `${splitedCoord[0]}°${splitedCoord[1]}'`;
   };
 
-  return isCoords ? (
+  return (
     <div className="map">
       <div ref={mapContainer} className="map__container"></div>
       <div className="map__coords">
@@ -111,8 +110,6 @@ const Map = ({ appState, coords, location }) => {
         </p>
       </div>
     </div>
-  ) : (
-    <div></div>
   );
 };
 
