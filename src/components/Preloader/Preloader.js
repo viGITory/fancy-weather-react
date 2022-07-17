@@ -2,7 +2,7 @@ import './Preloader.css';
 
 import translate from '../../data/translate';
 
-const Preloader = ({ loading, lang }) => {
+const Preloader = ({ lang }) => {
   const date = new Date();
   const hours = date.getHours();
   const month = date.getMonth();
@@ -32,7 +32,7 @@ const Preloader = ({ loading, lang }) => {
     Math.floor(month / 3)
   ];
 
-  return loading ? (
+  return (
     <div className={hours >= 18 || hours < 6 ? 'dark preloader' : 'preloader'}>
       <img
         className="preloader__icon"
@@ -45,7 +45,7 @@ const Preloader = ({ loading, lang }) => {
       />
       <p className="preloader__text">{translate[lang].greeting[timeOfDay]}</p>
     </div>
-  ) : null;
+  );
 };
 
 export default Preloader;

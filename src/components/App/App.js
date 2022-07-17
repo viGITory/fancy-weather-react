@@ -30,7 +30,7 @@ const App = () => {
   const [currentUserLocation, setCurrentUserLocation] = useState({});
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
 
-  const { locale, lang, units } = appState;
+  const { loading, locale, lang, units } = appState;
 
   useEffect(() => {
     setAppState((prevState) => ({
@@ -78,7 +78,7 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="visually-hidden">{translate[lang].project_name}</h1>
-      <Preloader {...appState} />
+      {loading && <Preloader {...appState} />}
       <Header
         className={'app__header'}
         appState={appState}
