@@ -18,14 +18,14 @@ import getCountryFlag from '../../utils/getCountryFlag';
 
 const Search = ({
   appState,
-  setCoords,
-  setWeatherData,
-  setLocation,
   searchValue,
-  setSearchValue,
-  setSearchError,
   searchError,
   voiceWeatherText,
+
+  setLocation,
+  setWeatherData,
+  setSearchValue,
+  setSearchError,
 }) => {
   const [glow, setGlow] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -56,14 +56,15 @@ const Search = ({
 
       if (weatherData) setTimeout(() => setIsLoading(false), 1000);
 
-      setWeatherData(weatherData);
       setLocation({
+        coords: { lat, long },
         city,
         country,
-        flagUrl,
         country_code,
+        timezone,
+        flagUrl,
       });
-      setCoords({ lat, long });
+      setWeatherData(weatherData);
       setSearchError('');
 
       setBackground(imageData);
@@ -102,10 +103,10 @@ const Search = ({
         ) : null}
       </div>
       <VoiceSearch
-        getWeather={getWeather}
-        setSearchValue={setSearchValue}
         appState={appState}
         voiceWeatherText={voiceWeatherText}
+        getWeather={getWeather}
+        setSearchValue={setSearchValue}
       />
       <button
         className="search__button"

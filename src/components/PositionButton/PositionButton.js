@@ -4,6 +4,8 @@ import { useState } from 'react';
 import HoverGlow from '../HoverGlow/HoverGlow';
 
 import getWeatherData from '../../api/getWeatherData';
+import getLocationData from '../../api/getLocationData';
+import getCountryFlag from '../../utils/getCountryFlag';
 import getImageData from '../../api/getImageData';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
@@ -12,39 +14,37 @@ import translate from '../../data/translate';
 
 const PositionButton = ({
   appState,
-  currentUserLocation,
-  setCoords,
+  userCoords,
+
   setLocation,
   setWeatherData,
   setSearchValue,
   setSearchError,
 }) => {
   const [glow, setGlow] = useState({});
+
   const { lang, units } = appState;
+  const { lat, long } = userCoords;
 
   const setInitialPosData = async () => {
-    const weatherData = await getWeatherData(
-      currentUserLocation.coords.lat,
-      currentUserLocation.coords.long,
-      lang,
-      units
+    const weatherData = await getWeatherData(lat, long, lang, units);
+    const { city, country, country_code, timezone } = await getLocationData(
+      lat,
+      long,
+      lang
     );
-    const imageData = await getImageData(
-      weatherData.timezone,
-      currentUserLocation.coords.lat
-    );
+    const flagUrl = await getCountryFlag(country_code);
+    const imageData = await getImageData(weatherData.timezone, lat);
 
-    setWeatherData(weatherData);
-    setCoords({
-      lat: currentUserLocation.coords.lat,
-      long: currentUserLocation.coords.long,
-    });
     setLocation({
-      city: currentUserLocation.place.city,
-      country: currentUserLocation.place.country,
-      flagUrl: currentUserLocation.place.flagUrl,
-      country_code: currentUserLocation.place.country_code,
+      coords: { lat, long },
+      city,
+      country,
+      country_code,
+      timezone,
+      flagUrl,
     });
+    setWeatherData(weatherData);
     setSearchValue('');
     setSearchError('');
 

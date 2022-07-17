@@ -9,7 +9,7 @@ import { MAPBOX_API_TOKEN } from '../../api/apiKeys';
 
 import translate from '../../data/translate';
 
-const Map = ({ appState, coords, location }) => {
+const Map = ({ appState, location }) => {
   mapboxgl.accessToken = MAPBOX_API_TOKEN;
   const mapboxLanguage = new MapboxLanguage();
 
@@ -18,6 +18,7 @@ const Map = ({ appState, coords, location }) => {
   const map = useRef(null);
 
   const { lang } = appState;
+  const { coords, country_code } = location;
 
   useEffect(() => {
     if (marker) marker.remove();
@@ -34,7 +35,7 @@ const Map = ({ appState, coords, location }) => {
       map.current.setFilter('country-boundaries', [
         'in',
         'iso_3166_1',
-        location.country_code.toUpperCase(),
+        country_code.toUpperCase(),
       ]);
 
       const newMarker = new mapboxgl.Marker({ color: '#ef4444', scale: 0.8 })
@@ -82,7 +83,7 @@ const Map = ({ appState, coords, location }) => {
       map.current.setFilter('country-boundaries', [
         'in',
         'iso_3166_1',
-        location.country_code.toUpperCase(),
+        country_code.toUpperCase(),
       ]);
     });
 

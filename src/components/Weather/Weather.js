@@ -4,18 +4,18 @@ import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import DailyForecast from '../DailyForecast/DailyForecast';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 
-const Weather = ({ appState, weatherData, location, setVoiceWeatherText }) => {
-  return weatherData.current ? (
+const Weather = ({ appState, location, weatherData, setVoiceWeatherText }) => {
+  return weatherData ? (
     <div className="weather">
       <CurrentWeather
         appState={appState}
-        weatherData={weatherData}
         location={location}
+        weatherData={weatherData}
         setVoiceWeatherText={setVoiceWeatherText}
       />
       <HourlyForecast
-        weatherData={weatherData}
         className={'weather__hourly-forecast'}
+        weatherData={weatherData}
       />
       <DailyForecast appState={appState} weatherData={weatherData} />
     </div>

@@ -24,10 +24,9 @@ const App = () => {
     lang: localStorage.getItem('lang') || 'en',
     units: localStorage.getItem('units') || 'metric',
   });
-  const [weatherData, setWeatherData] = useState([]);
-  const [location, setLocation] = useState([]);
-  const [coords, setCoords] = useState();
-  const [currentUserLocation, setCurrentUserLocation] = useState({});
+  const [userCoords, setUserCoords] = useState({});
+  const [location, setLocation] = useState({});
+  const [weatherData, setWeatherData] = useState();
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
 
   const { loading, locale, lang, units } = appState;
@@ -49,19 +48,20 @@ const App = () => {
       const flagUrl = await getCountryFlag(country_code);
       const imageData = await getImageData(timezone, lat);
 
-      setCoords({ lat, long });
-      setCurrentUserLocation({
-        coords: { lat, long },
-        place: { city, country, flagUrl, country_code },
-      });
-
-      setWeatherData(weatherData);
-      setLocation({ city, country, flagUrl, country_code });
-
       setAppState((prevState) => ({
         ...prevState,
         loading: false,
       }));
+      setUserCoords({ lat, long });
+      setLocation({
+        coords: { lat, long },
+        city,
+        country,
+        country_code,
+        timezone,
+        flagUrl,
+      });
+      setWeatherData(weatherData);
 
       setBackground(imageData);
     };
@@ -82,28 +82,24 @@ const App = () => {
       <Header
         className={'app__header'}
         appState={appState}
-        currentUserLocation={currentUserLocation}
-        setCoords={setCoords}
+        userCoords={userCoords}
+        location={location}
+        voiceWeatherText={voiceWeatherText}
+        setAppState={setAppState}
         setLocation={setLocation}
         setWeatherData={setWeatherData}
-        setAppState={setAppState}
-        timeZone={weatherData.timezone}
-        latitude={weatherData.lat}
-        voiceWeatherText={voiceWeatherText}
       />
       <main className="main">
         <Location location={location} />
-        <DateTime appState={appState} timeZone={weatherData.timezone} />
+        <DateTime appState={appState} location={location} />
         <div className="main__wrapper">
           <Weather
             appState={appState}
-            weatherData={weatherData}
             location={location}
+            weatherData={weatherData}
             setVoiceWeatherText={setVoiceWeatherText}
           />
-          {coords && (
-            <Map appState={appState} coords={coords} location={location} />
-          )}
+          {location.coords && <Map appState={appState} location={location} />}
         </div>
       </main>
     </div>

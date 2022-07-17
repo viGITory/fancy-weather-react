@@ -12,8 +12,9 @@ import { useState } from 'react';
 
 const CurrentWeather = ({
   appState,
-  weatherData,
   location,
+  weatherData,
+
   setVoiceWeatherText,
 }) => {
   const [forecastVisibility, setForecastVisibility] = useState({});
@@ -23,6 +24,7 @@ const CurrentWeather = ({
   const extendedForecastRef = useRef(null);
 
   const { lang } = appState;
+  const { city, country } = location;
   const windDirection = getWindDirection(weatherData.current.wind_deg, lang);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const CurrentWeather = ({
       .join('. ');
 
     setVoiceWeatherText(
-      `${translate[lang].weather.weather_now} ${location.city}, ${location.country}. ` +
+      `${translate[lang].weather.weather_now} ${city}, ${country}. ` +
         weatherText
     );
   });
@@ -142,8 +144,8 @@ const CurrentWeather = ({
             marginTop: forecastVisibility.marginTop,
             opacity: forecastVisibility.opacity,
           }}
-          weatherData={weatherData}
           appState={appState}
+          weatherData={weatherData}
         />
       </div>
     </div>

@@ -11,32 +11,26 @@ import PositionButton from '../PositionButton/PositionButton';
 const Header = ({
   className,
   appState,
-  currentUserLocation,
-  setCoords,
+  userCoords,
+  location,
+  voiceWeatherText,
+
+  setAppState,
   setLocation,
   setWeatherData,
-  setAppState,
-  timeZone,
-  latitude,
-  voiceWeatherText,
 }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setSearchError] = useState('');
 
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
-      <BackgroundButton
-        appState={appState}
-        timeZone={timeZone}
-        latitude={latitude}
-      />
+      <BackgroundButton appState={appState} location={location} />
       <LanguageButton appState={appState} setAppState={setAppState} />
       <TempButtons appState={appState} setAppState={setAppState} />
       <VoiceNotice appState={appState} voiceWeatherText={voiceWeatherText} />
       <PositionButton
         appState={appState}
-        currentUserLocation={currentUserLocation}
-        setCoords={setCoords}
+        userCoords={userCoords}
         setLocation={setLocation}
         setWeatherData={setWeatherData}
         setSearchValue={setSearchValue}
@@ -44,14 +38,13 @@ const Header = ({
       />
       <Search
         appState={appState}
-        setWeatherData={setWeatherData}
-        setLocation={setLocation}
-        setCoords={setCoords}
         searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        setSearchError={setSearchError}
         searchError={searchError}
         voiceWeatherText={voiceWeatherText}
+        setLocation={setLocation}
+        setWeatherData={setWeatherData}
+        setSearchValue={setSearchValue}
+        setSearchError={setSearchError}
       />
     </header>
   );

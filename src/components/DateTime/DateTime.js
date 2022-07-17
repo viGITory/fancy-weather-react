@@ -2,11 +2,12 @@ import './DateTime.css';
 
 import { useEffect, useState } from 'react';
 
-const DateTime = ({ appState, timeZone }) => {
+const DateTime = ({ appState, location }) => {
   const [day, setDay] = useState([]);
   const [time, setTime] = useState([]);
 
   const { locale } = appState;
+  const { timezone } = location;
 
   useEffect(() => {
     const getTime = () => {
@@ -16,13 +17,13 @@ const DateTime = ({ appState, timeZone }) => {
         day: 'numeric',
         weekday: 'long',
         month: 'long',
-        timeZone: timeZone,
+        timeZone: timezone,
       });
       const currentTime = date.toLocaleString(locale, {
         hour: 'numeric',
         minute: 'numeric',
         second: 'numeric',
-        timeZone: timeZone,
+        timeZone: timezone,
       });
 
       setDay(currentDay);
@@ -30,7 +31,7 @@ const DateTime = ({ appState, timeZone }) => {
     };
 
     setTimeout(() => getTime(), 1000);
-  }, [day, time, timeZone, locale]);
+  }, [day, time, timezone, locale]);
 
   return (
     <div className="date-time">

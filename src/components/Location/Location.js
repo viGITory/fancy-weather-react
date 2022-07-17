@@ -1,14 +1,16 @@
 import './Location.css';
 
 const Location = ({ location }) => {
+  const { city, country, flagUrl } = location;
+
   return location.city ? (
     <p className="location">
-      {location.city}, {location.country.slice(0, -2)}
+      {city}, {country.slice(0, -2)}
       <span
         className="location__flag"
-        style={{ backgroundImage: `url(${location.flagUrl})` }}
+        style={{ backgroundImage: `url(${flagUrl})` }}
       >
-        {location.country.slice(-2)}
+        {country.slice(-2)}
       </span>
     </p>
   ) : (

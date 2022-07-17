@@ -10,10 +10,11 @@ import Pulse from '../Pulse/Pulse';
 import translate from '../../data/translate';
 
 const VoiceSearch = ({
-  getWeather,
-  setSearchValue,
   appState,
   voiceWeatherText,
+  getWeather,
+
+  setSearchValue,
 }) => {
   const recognition = window.speechSynthesis;
   const { lang, locale } = appState;

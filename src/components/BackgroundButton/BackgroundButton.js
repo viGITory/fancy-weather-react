@@ -9,12 +9,14 @@ import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
 import translate from '../../data/translate';
 
-const BackgroundButton = ({ appState, timeZone, latitude }) => {
+const BackgroundButton = ({ appState, location }) => {
   const [glow, setGlow] = useState({});
+
   const { lang } = appState;
+  const { coords, timezone } = location;
 
   const updateBackground = async () => {
-    const imageData = await getImageData(timeZone, latitude);
+    const imageData = await getImageData(timezone, coords.lat);
     setBackground(imageData);
   };
 
