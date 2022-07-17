@@ -1,12 +1,8 @@
 import './Preloader.css';
 
-import { useEffect, useState } from 'react';
-
 import translate from '../../data/translate';
 
-const Preloader = ({ lang }) => {
-  const [visible, setVisible] = useState(true);
-
+const Preloader = ({ loading, lang }) => {
   const date = new Date();
   const hours = date.getHours();
   const month = date.getMonth();
@@ -36,15 +32,7 @@ const Preloader = ({ lang }) => {
     Math.floor(month / 3)
   ];
 
-  useEffect(() => {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        setVisible(false);
-      }, 3000);
-    });
-  }, []);
-
-  return visible ? (
+  return loading ? (
     <div className={hours >= 18 || hours < 6 ? 'dark preloader' : 'preloader'}>
       <img
         className="preloader__icon"
@@ -57,9 +45,7 @@ const Preloader = ({ lang }) => {
       />
       <p className="preloader__text">{translate[lang].greeting[timeOfDay]}</p>
     </div>
-  ) : (
-    ''
-  );
+  ) : null;
 };
 
 export default Preloader;

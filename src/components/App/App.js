@@ -19,6 +19,7 @@ import translate from '../../data/translate';
 
 const App = () => {
   const [appState, setAppState] = useState({
+    loading: false,
     locale: localStorage.getItem('locale') || 'en',
     lang: localStorage.getItem('lang') || 'en',
     units: localStorage.getItem('units') || 'metric',
@@ -32,6 +33,11 @@ const App = () => {
   const { locale, lang, units } = appState;
 
   useEffect(() => {
+    setAppState((prevState) => ({
+      ...prevState,
+      loading: true,
+    }));
+
     const getData = async () => {
       const [lat, long] = await getCurrentPos();
       const weatherData = await getWeatherData(lat, long, lang, units);
@@ -51,6 +57,11 @@ const App = () => {
 
       setWeatherData(weatherData);
       setLocation({ city, country, flagUrl, country_code });
+
+      setAppState((prevState) => ({
+        ...prevState,
+        loading: false,
+      }));
 
       setBackground(imageData);
     };
