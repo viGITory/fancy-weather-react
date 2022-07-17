@@ -21,7 +21,6 @@ const Map = ({ appState, location }) => {
   const { coords, country_code } = location;
 
   useEffect(() => {
-    if (marker) marker.remove();
     if (map.current) {
       map.current.flyTo({
         center: [coords.long, coords.lat],
@@ -38,11 +37,7 @@ const Map = ({ appState, location }) => {
         country_code.toUpperCase(),
       ]);
 
-      const newMarker = new mapboxgl.Marker({ color: '#ef4444', scale: 0.8 })
-        .setLngLat([coords.long, coords.lat])
-        .addTo(map.current);
-
-      setMarker(newMarker);
+      marker.setLngLat([coords.long, coords.lat]);
     }
   }, [coords.lat, coords.long, lang]);
 
