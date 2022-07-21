@@ -3,7 +3,7 @@ import './Location.css';
 const Location = ({ location }) => {
   const { city, country, flagUrl } = location;
 
-  return location.city ? (
+  return (
     <p className="location">
       {city}, {country.slice(0, -2)}
       <span
@@ -13,8 +13,6 @@ const Location = ({ location }) => {
         {country.slice(-2)}
       </span>
     </p>
-  ) : (
-    <p></p>
   );
 };
 

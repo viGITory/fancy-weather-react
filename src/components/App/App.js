@@ -25,7 +25,7 @@ const App = () => {
     units: localStorage.getItem('units') || 'metric',
   });
   const [userCoords, setUserCoords] = useState({});
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState();
   const [weatherData, setWeatherData] = useState();
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
 
@@ -90,16 +90,18 @@ const App = () => {
         setWeatherData={setWeatherData}
       />
       <main className="main">
-        <Location location={location} />
-        <DateTime appState={appState} location={location} />
+        {location && <Location location={location} />}
+        {location && <DateTime appState={appState} location={location} />}
         <div className="main__wrapper">
-          <Weather
-            appState={appState}
-            location={location}
-            weatherData={weatherData}
-            setVoiceWeatherText={setVoiceWeatherText}
-          />
-          {location.coords && <Map appState={appState} location={location} />}
+          {weatherData && (
+            <Weather
+              appState={appState}
+              location={location}
+              weatherData={weatherData}
+              setVoiceWeatherText={setVoiceWeatherText}
+            />
+          )}
+          {location && <Map appState={appState} location={location} />}
         </div>
       </main>
     </div>

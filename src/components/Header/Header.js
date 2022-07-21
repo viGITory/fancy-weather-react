@@ -24,7 +24,7 @@ const Header = ({
 
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
-      <BackgroundButton appState={appState} location={location} />
+      {location && <BackgroundButton appState={appState} location={location} />}
       <LanguageButton appState={appState} setAppState={setAppState} />
       <TempButtons appState={appState} setAppState={setAppState} />
       <VoiceNotice appState={appState} voiceWeatherText={voiceWeatherText} />

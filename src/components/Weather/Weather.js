@@ -5,7 +5,7 @@ import DailyForecast from '../DailyForecast/DailyForecast';
 import HourlyForecast from '../HourlyForecast/HourlyForecast';
 
 const Weather = ({ appState, location, weatherData, setVoiceWeatherText }) => {
-  return weatherData ? (
+  return (
     <div className="weather">
       <CurrentWeather
         appState={appState}
@@ -19,8 +19,6 @@ const Weather = ({ appState, location, weatherData, setVoiceWeatherText }) => {
       />
       <DailyForecast appState={appState} weatherData={weatherData} />
     </div>
-  ) : (
-    <div></div>
   );
 };
 
