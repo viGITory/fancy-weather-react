@@ -3,6 +3,10 @@
   height: 45px;
 }
 
+.search__home-button {
+  margin-right: 10px;
+}
+
 .search__wrapper,
 .search__button {
   position: relative;

@@ -6,7 +6,6 @@ import LanguageButton from '../LanguageButton/LanguageButton';
 import TempButtons from '../TempButtons/TempButtons';
 import Search from '../Search/Search';
 import VoiceNotice from '../VoiceNotice/VoiceNotice';
-import HomeButton from '../HomeButton/HomeButton';
 
 const Header = ({
   className,
@@ -28,16 +27,9 @@ const Header = ({
       <LanguageButton appState={appState} setAppState={setAppState} />
       <TempButtons appState={appState} setAppState={setAppState} />
       <VoiceNotice appState={appState} voiceWeatherText={voiceWeatherText} />
-      <HomeButton
-        appState={appState}
-        userCoords={userCoords}
-        setLocation={setLocation}
-        setWeatherData={setWeatherData}
-        setSearchValue={setSearchValue}
-        setSearchError={setSearchError}
-      />
       <Search
         appState={appState}
+        userCoords={userCoords}
         searchValue={searchValue}
         searchError={searchError}
         voiceWeatherText={voiceWeatherText}

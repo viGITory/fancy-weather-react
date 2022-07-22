@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
+import HomeButton from '../HomeButton/HomeButton';
 import VoiceSearch from '../VoiceSearch/VoiceSearch';
 
 import { WEATHER_API_KEY } from '../../api/apiKeys';
@@ -18,6 +19,7 @@ import getCountryFlag from '../../utils/getCountryFlag';
 
 const Search = ({
   appState,
+  userCoords,
   searchValue,
   searchError,
   voiceWeatherText,
@@ -79,6 +81,17 @@ const Search = ({
 
   return (
     <div className="search">
+      {userCoords && (
+        <HomeButton
+          className="search__home-button"
+          appState={appState}
+          userCoords={userCoords}
+          setLocation={setLocation}
+          setWeatherData={setWeatherData}
+          setSearchValue={setSearchValue}
+          setSearchError={setSearchError}
+        />
+      )}
       <div className="search__wrapper">
         <input
           className="search__input"

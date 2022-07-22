@@ -13,6 +13,7 @@ import setBackground from '../../utils/setBackground';
 import translate from '../../data/translate';
 
 const HomeButton = ({
+  className,
   appState,
   userCoords,
 
@@ -53,7 +54,7 @@ const HomeButton = ({
 
   return (
     <button
-      className="home-button"
+      className={`${className ? `${className} ` : ''}home-button`}
       onClick={(e) => {
         setInitialPosData();
         addRippleEffect(e);

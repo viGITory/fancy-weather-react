@@ -24,7 +24,7 @@ const App = () => {
     lang: localStorage.getItem('lang') || 'en',
     units: localStorage.getItem('units') || 'metric',
   });
-  const [userCoords, setUserCoords] = useState({});
+  const [userCoords, setUserCoords] = useState();
   const [location, setLocation] = useState();
   const [weatherData, setWeatherData] = useState();
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
