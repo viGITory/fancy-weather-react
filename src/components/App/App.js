@@ -83,6 +83,7 @@ const App = () => {
         className={'app__header'}
         appState={appState}
         userCoords={userCoords}
+        weatherData={weatherData}
         location={location}
         voiceWeatherText={voiceWeatherText}
         setAppState={setAppState}

@@ -11,6 +11,7 @@ const Header = ({
   className,
   appState,
   userCoords,
+  weatherData,
   location,
   voiceWeatherText,
 
@@ -23,14 +24,17 @@ const Header = ({
 
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
-      <div className="header__left">
-        {location && (
+      {weatherData && (
+        <div className="header__left">
           <BackgroundButton appState={appState} location={location} />
-        )}
-        <LanguageButton appState={appState} setAppState={setAppState} />
-        <TempButtons appState={appState} setAppState={setAppState} />
-        <VoiceNotice appState={appState} voiceWeatherText={voiceWeatherText} />
-      </div>
+          <LanguageButton appState={appState} setAppState={setAppState} />
+          <TempButtons appState={appState} setAppState={setAppState} />
+          <VoiceNotice
+            appState={appState}
+            voiceWeatherText={voiceWeatherText}
+          />
+        </div>
+      )}
       <Search
         className="header__search"
         appState={appState}
