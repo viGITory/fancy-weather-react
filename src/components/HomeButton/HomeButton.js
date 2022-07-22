@@ -1,4 +1,4 @@
-import './PositionButton.css';
+import './HomeButton.css';
 import { useState } from 'react';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
@@ -12,7 +12,7 @@ import getCursorPos from '../../utils/getCursorPos';
 import setBackground from '../../utils/setBackground';
 import translate from '../../data/translate';
 
-const PositionButton = ({
+const HomeButton = ({
   appState,
   userCoords,
 
@@ -53,7 +53,7 @@ const PositionButton = ({
 
   return (
     <button
-      className="position-button"
+      className="home-button"
       onClick={(e) => {
         setInitialPosData();
         addRippleEffect(e);
@@ -78,4 +78,4 @@ const PositionButton = ({
   );
 };
 
-export default PositionButton;
+export default HomeButton;
