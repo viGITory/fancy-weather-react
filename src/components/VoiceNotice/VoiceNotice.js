@@ -1,5 +1,6 @@
 import './VoiceNotice.css';
 import { useState } from 'react';
+import useSpeechSynth from '../../hooks/useSpeechSynth';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
 
@@ -8,36 +9,16 @@ import getCursorPos from '../../utils/getCursorPos';
 import translate from '../../data/translate';
 
 const VoiceNotice = ({ appState, voiceWeatherText }) => {
-  const [isActive, setIsActive] = useState(false);
   const [glow, setGlow] = useState({});
 
   const { locale, lang } = appState;
-  const recognition = window.speechSynthesis;
-
-  const speak = (text) => {
-    recognition.cancel();
-
-    const speech = new SpeechSynthesisUtterance(text);
-    speech.lang = locale;
-
-    if (locale === 'ru-RU')
-      speech.voice = recognition
-        .getVoices()
-        .filter((voice) => voice.name === 'Google русский')[0];
-
-    recognition.speak(speech);
-    setIsActive(true);
-
-    speech.addEventListener('end', () => {
-      setIsActive(false);
-    });
-  };
+  const { isSpeak, setIsSpeak } = useSpeechSynth(voiceWeatherText, locale);
 
   return (
     <button
-      className={`voice-notice${isActive ? ' voice-notice--active' : ''}`}
+      className={`voice-notice${isSpeak ? ' voice-notice--active' : ''}`}
       onClick={(e) => {
-        isActive ? recognition.cancel() : speak(voiceWeatherText);
+        isSpeak ? setIsSpeak(false) : setIsSpeak(true);
         addRippleEffect(e);
       }}
       onMouseMove={(e) => {

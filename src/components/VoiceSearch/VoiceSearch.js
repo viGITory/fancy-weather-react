@@ -1,9 +1,10 @@
 import './VoiceSearch.css';
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
+import useSpeechSynth from '../../hooks/useSpeechSynth';
 
 import Pulse from '../Pulse/Pulse';
 
@@ -16,21 +17,17 @@ const VoiceSearch = ({
 
   setSearchValue,
 }) => {
-  const recognition = window.speechSynthesis;
   const { lang, locale } = appState;
+  const { isSpeak, setIsSpeak } = useSpeechSynth(voiceWeatherText, locale);
 
   const commands = [
     {
       command: [translate[lang].voice_commands.weather_now],
-      callback: () => {
-        speak(voiceWeatherText);
-      },
+      callback: () => setIsSpeak(true),
     },
     {
       command: [translate[lang].voice_commands.exit],
-      callback: () => {
-        exit();
-      },
+      callback: () => exit(),
     },
   ];
 
@@ -54,34 +51,19 @@ const VoiceSearch = ({
 
   const exit = () => {
     SpeechRecognition.abortListening();
-    recognition.cancel();
-    resetTranscript();
+    setIsSpeak(false);
   };
 
-  function speak(text) {
-    const speech = new SpeechSynthesisUtterance(text);
-
-    if (locale === 'ru-RU')
-      speech.voice = speechSynthesis
-        .getVoices()
-        .filter((voice) => voice.name === 'Google русский')[0];
-
-    speech.lang = locale;
-
-    speechSynthesis.speak(speech);
-    speech.addEventListener('end', () => resetTranscript());
-  }
-
   useEffect(() => {
+    resetTranscript();
+
     if (finalTranscript !== '') {
-      if (!commandNames.has(finalTranscript) && !recognition.speaking) {
+      if (!commandNames.has(finalTranscript) && !speechSynthesis.speaking) {
         setSearchValue(finalTranscript);
         getWeather(finalTranscript);
-
-        resetTranscript();
       }
     }
-  }, [finalTranscript]);
+  }, [finalTranscript, isSpeak]);
 
   return (
     <div className="voice-search">
