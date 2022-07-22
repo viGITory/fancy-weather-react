@@ -23,11 +23,16 @@ const Header = ({
 
   return (
     <header className={`${className ? `${className} ` : ''}header`}>
-      {location && <BackgroundButton appState={appState} location={location} />}
-      <LanguageButton appState={appState} setAppState={setAppState} />
-      <TempButtons appState={appState} setAppState={setAppState} />
-      <VoiceNotice appState={appState} voiceWeatherText={voiceWeatherText} />
+      <div className="header__left">
+        {location && (
+          <BackgroundButton appState={appState} location={location} />
+        )}
+        <LanguageButton appState={appState} setAppState={setAppState} />
+        <TempButtons appState={appState} setAppState={setAppState} />
+        <VoiceNotice appState={appState} voiceWeatherText={voiceWeatherText} />
+      </div>
       <Search
+        className="header__search"
         appState={appState}
         userCoords={userCoords}
         searchValue={searchValue}

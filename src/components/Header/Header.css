@@ -1,5 +1,17 @@
 .header {
-  display: flex;
   flex-wrap: wrap;
+}
+
+.header,
+.header__left {
+  display: flex;
   gap: 10px;
+}
+
+.header__left {
+  animation: fade-in 0.5s;
+}
+
+.header__search {
+  margin-left: auto;
 }

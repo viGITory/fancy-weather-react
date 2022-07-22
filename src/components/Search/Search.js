@@ -18,6 +18,7 @@ import getImageData from '../../api/getImageData';
 import getCountryFlag from '../../utils/getCountryFlag';
 
 const Search = ({
+  className,
   appState,
   userCoords,
   searchValue,
@@ -80,7 +81,7 @@ const Search = ({
   };
 
   return (
-    <div className="search">
+    <div className={`${className ? `${className} ` : ''}search`}>
       {userCoords && (
         <HomeButton
           className="search__home-button"
