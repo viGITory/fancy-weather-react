@@ -18,7 +18,7 @@ const Map = ({ appState, location }) => {
   const map = useRef(null);
 
   const { lang } = appState;
-  const { coords, country_code } = location;
+  const { coords, countryCode } = location;
 
   useEffect(() => {
     if (map.current) {
@@ -34,7 +34,7 @@ const Map = ({ appState, location }) => {
       map.current.setFilter('country-boundaries', [
         'in',
         'iso_3166_1',
-        country_code.toUpperCase(),
+        countryCode.toUpperCase(),
       ]);
 
       marker.setLngLat([coords.long, coords.lat]);
@@ -78,7 +78,7 @@ const Map = ({ appState, location }) => {
       map.current.setFilter('country-boundaries', [
         'in',
         'iso_3166_1',
-        country_code.toUpperCase(),
+        countryCode.toUpperCase(),
       ]);
     });
 

@@ -15,9 +15,8 @@ const Header = ({
   location,
   voiceWeatherText,
 
+  getApiData,
   setAppState,
-  setLocation,
-  setWeatherData,
 }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setSearchError] = useState('');
@@ -37,13 +36,12 @@ const Header = ({
       )}
       <Search
         className="header__search"
+        getApiData={getApiData}
         appState={appState}
         userCoords={userCoords}
         searchValue={searchValue}
         searchError={searchError}
         voiceWeatherText={voiceWeatherText}
-        setLocation={setLocation}
-        setWeatherData={setWeatherData}
         setSearchValue={setSearchValue}
         setSearchError={setSearchError}
       />

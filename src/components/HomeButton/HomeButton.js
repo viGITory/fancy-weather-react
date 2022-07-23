@@ -3,13 +3,9 @@ import { useState } from 'react';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
 
-import getWeatherData from '../../api/getWeatherData';
-import getLocationData from '../../api/getLocationData';
-import getCountryFlag from '../../utils/getCountryFlag';
-import getImageData from '../../api/getImageData';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
-import setBackground from '../../utils/setBackground';
+
 import translate from '../../data/translate';
 
 const HomeButton = ({
@@ -17,46 +13,26 @@ const HomeButton = ({
   appState,
   userCoords,
 
-  setLocation,
-  setWeatherData,
+  getApiData,
   setSearchValue,
   setSearchError,
 }) => {
   const [glow, setGlow] = useState({});
+  const { lang } = appState;
 
-  const { lang, units } = appState;
-  const { lat, long } = userCoords;
+  const setUserPosData = () => {
+    const { lat, long } = userCoords;
+    getApiData(lat, long);
 
-  const setInitialPosData = async () => {
-    const weatherData = await getWeatherData(lat, long, lang, units);
-    const { city, country, country_code, timezone } = await getLocationData(
-      lat,
-      long,
-      lang
-    );
-    const flagUrl = await getCountryFlag(country_code);
-    const imageData = await getImageData(weatherData.timezone, lat);
-
-    setLocation({
-      coords: { lat, long },
-      city,
-      country,
-      country_code,
-      timezone,
-      flagUrl,
-    });
-    setWeatherData(weatherData);
     setSearchValue('');
     setSearchError('');
-
-    setBackground(imageData);
   };
 
   return (
     <button
       className={`${className ? `${className} ` : ''}home-button`}
       onClick={(e) => {
-        setInitialPosData();
+        setUserPosData();
         addRippleEffect(e);
       }}
       onMouseMove={(e) => {

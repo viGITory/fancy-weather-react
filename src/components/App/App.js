@@ -1,5 +1,6 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Preloader from '../Preloader/Preloader';
 import Header from '../Header/Header';
@@ -8,19 +9,20 @@ import DateTime from '../DateTime/DateTime';
 import Weather from '../Weather/Weather';
 import Map from '../Map/Map';
 
-import getWeatherData from '../../api/getWeatherData';
-import getCurrentPos from '../../utils/getCurrentPos';
-import getLocationData from '../../api/getLocationData';
-import getCountryFlag from '../../utils/getCountryFlag';
-import getImageData from '../../api/getImageData';
+import createImageTags from '../../utils/createImageTags';
 import setBackground from '../../utils/setBackground';
 
+import {
+  WEATHER_API_KEY,
+  LOCATION_API_KEY,
+  IMAGES_API_KEY,
+} from '../../api/apiKeys';
 import translate from '../../data/translate';
 
 const App = () => {
   const [appState, setAppState] = useState({
     loading: false,
-    locale: localStorage.getItem('locale') || 'en',
+    locale: localStorage.getItem('locale') || 'en-US',
     lang: localStorage.getItem('lang') || 'en',
     units: localStorage.getItem('units') || 'metric',
   });
@@ -31,49 +33,99 @@ const App = () => {
 
   const { loading, locale, lang, units } = appState;
 
-  useEffect(() => {
-    setAppState((prevState) => ({
-      ...prevState,
-      loading: true,
-    }));
+  const getApiData = (lat, long) => {
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&lang=${lang}&units=${units}&appid=${WEATHER_API_KEY}`;
+    const locationUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&language=${lang}&key=${LOCATION_API_KEY}`;
 
-    const getData = async () => {
-      const [lat, long] = await getCurrentPos();
-      const weatherData = await getWeatherData(lat, long, lang, units);
-      const { city, country, country_code, timezone } = await getLocationData(
-        lat,
-        long,
-        lang
-      );
-      const flagUrl = await getCountryFlag(country_code);
-      const imageData = await getImageData(timezone, lat);
+    axios
+      .get(locationUrl)
+      .then((location) => {
+        const timezone = location.data.results[0].annotations.timezone.name;
+        const { country, country_code: countryCode } =
+          location.data.results[0].components;
 
-      setAppState((prevState) => ({
-        ...prevState,
-        loading: false,
-      }));
-      setUserCoords({ lat, long });
-      setLocation({
-        coords: { lat, long },
-        city,
-        country,
-        country_code,
-        timezone,
-        flagUrl,
+        const city = ['city', 'hamlet', 'county', 'state', 'heritage', 'suburb']
+          .map((type) => location.data.results[0].components[type])
+          .find((item) => item);
+
+        const imagesUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${IMAGES_API_KEY}&tags=${createImageTags(
+          timezone,
+          lat
+        )}&tag_mode=all&sort=relevance&per_page=500&extras=url_h&format=json&nojsoncallback=1`;
+
+        Promise.all([axios.get(weatherUrl), axios.get(imagesUrl)])
+          .then(([weather, images]) => {
+            setLocation({
+              coords: { lat, long },
+              city,
+              country,
+              countryCode,
+              timezone,
+              flagUrl: `https://flagcdn.com/${countryCode}.svg`,
+            });
+            setWeatherData(weather.data);
+
+            setBackground(images.data);
+          })
+          .catch((err) => console.log(err))
+          .finally(() =>
+            setAppState((prevState) => ({
+              ...prevState,
+              loading: false,
+            }))
+          );
+      })
+      .catch((err) => {
+        console.log(err);
+
+        setAppState((prevState) => ({
+          ...prevState,
+          loading: false,
+        }));
       });
-      setWeatherData(weatherData);
+  };
 
-      setBackground(imageData);
-    };
+  useEffect(() => {
+    if (!location) return;
 
-    getData();
+    const { lat, long } = location.coords;
+    getApiData(lat, long);
 
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('locale', locale);
       localStorage.setItem('lang', lang);
       localStorage.setItem('units', units);
     });
-  }, [lang, locale, units]);
+  }, [lang, units]);
+
+  useEffect(() => {
+    setAppState((prevState) => ({
+      ...prevState,
+      loading: true,
+    }));
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+
+        getApiData(latitude, longitude);
+        setUserCoords({
+          lat: latitude,
+          long: longitude,
+        });
+      },
+      (err) => {
+        console.log(err);
+
+        setTimeout(() => {
+          setAppState((prevState) => ({
+            ...prevState,
+            loading: false,
+          }));
+        }, 1000);
+      }
+    );
+  }, []);
 
   return (
     <div className="app">
@@ -81,14 +133,13 @@ const App = () => {
       {loading && <Preloader {...appState} />}
       <Header
         className={'app__header'}
+        getApiData={getApiData}
         appState={appState}
         userCoords={userCoords}
         weatherData={weatherData}
         location={location}
         voiceWeatherText={voiceWeatherText}
         setAppState={setAppState}
-        setLocation={setLocation}
-        setWeatherData={setWeatherData}
       />
       <main className="main">
         {location && <Location location={location} />}

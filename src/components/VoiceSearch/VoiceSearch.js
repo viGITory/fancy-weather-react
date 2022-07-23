@@ -13,8 +13,8 @@ import translate from '../../data/translate';
 const VoiceSearch = ({
   appState,
   voiceWeatherText,
-  getWeather,
 
+  getCityData,
   setSearchValue,
 }) => {
   const { lang, locale } = appState;
@@ -60,7 +60,7 @@ const VoiceSearch = ({
     if (finalTranscript !== '') {
       if (!commandNames.has(finalTranscript) && !speechSynthesis.speaking) {
         setSearchValue(finalTranscript);
-        getWeather(finalTranscript);
+        getCityData(finalTranscript);
       }
     }
   }, [finalTranscript, isSpeak]);

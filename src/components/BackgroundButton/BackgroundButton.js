@@ -1,12 +1,15 @@
 import './BackgroundButton.css';
 import { useState } from 'react';
+import axios from 'axios';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
 
-import getImageData from '../../api/getImageData';
 import setBackground from '../../utils/setBackground';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
+import createImageTags from '../../utils/createImageTags';
+
+import { IMAGES_API_KEY } from '../../api/apiKeys';
 import translate from '../../data/translate';
 
 const BackgroundButton = ({ appState, location }) => {
@@ -15,16 +18,24 @@ const BackgroundButton = ({ appState, location }) => {
   const { lang } = appState;
   const { coords, timezone } = location;
 
-  const updateBackground = async () => {
-    const imageData = await getImageData(timezone, coords.lat);
-    setBackground(imageData);
+  const updateBackground = () => {
+    axios
+      .get(
+        `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${IMAGES_API_KEY}&tags=${createImageTags(
+          timezone,
+          coords.lat
+        )}&tag_mode=all&sort=relevance&per_page=500&extras=url_h&format=json&nojsoncallback=1`
+      )
+      .then((response) => {
+        setBackground(response.data);
+      });
   };
 
   return (
     <button
       className="background-button"
       type="button"
-      onClick={async (e) => {
+      onClick={(e) => {
         updateBackground();
         addRippleEffect(e);
       }}

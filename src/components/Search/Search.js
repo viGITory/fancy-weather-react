@@ -6,16 +6,11 @@ import HoverGlow from '../HoverGlow/HoverGlow';
 import HomeButton from '../HomeButton/HomeButton';
 import VoiceSearch from '../VoiceSearch/VoiceSearch';
 
-import { WEATHER_API_KEY } from '../../api/apiKeys';
-import translate from '../../data/translate';
-
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
-import setBackground from '../../utils/setBackground';
-import getWeatherData from '../../api/getWeatherData';
-import getLocationData from '../../api/getLocationData';
-import getImageData from '../../api/getImageData';
-import getCountryFlag from '../../utils/getCountryFlag';
+
+import { WEATHER_API_KEY } from '../../api/apiKeys';
+import translate from '../../data/translate';
 
 const Search = ({
   className,
@@ -25,8 +20,7 @@ const Search = ({
   searchError,
   voiceWeatherText,
 
-  setLocation,
-  setWeatherData,
+  getApiData,
   setSearchValue,
   setSearchError,
 }) => {
@@ -35,49 +29,30 @@ const Search = ({
 
   const { lang, units } = appState;
 
-  const getWeather = async (searchValue) => {
+  const getCityData = (searchValue) => {
     if (!searchValue) return;
+    setIsLoading(true);
 
-    setIsLoading(!isLoading);
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`;
 
-    try {
-      // ### only to get coords & location name by city input
-      const { data } = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&lang=${lang}&appid=${WEATHER_API_KEY}&units=${units}`
-      );
-      // ###
-      const [lat, long] = [data.coord.lat, data.coord.lon];
+    axios
+      .get(weatherUrl)
+      .then((response) => {
+        const { lat, lon: long } = response.data.coord;
 
-      const weatherData = await getWeatherData(lat, long, lang, units);
-      const { city, country, country_code, timezone } = await getLocationData(
-        lat,
-        long,
-        lang
-      );
-      const imageData = await getImageData(timezone, lat);
-      const flagUrl = await getCountryFlag(country_code);
+        getApiData(lat, long);
+        setSearchError('');
 
-      if (weatherData) setTimeout(() => setIsLoading(false), 1000);
+        setTimeout(() => setIsLoading(false), 1000);
+      })
+      .catch((err) => {
+        console.log(err);
+        setTimeout(() => setIsLoading(false), 1000);
 
-      setLocation({
-        coords: { lat, long },
-        city,
-        country,
-        country_code,
-        timezone,
-        flagUrl,
+        err.response.status === 404
+          ? setSearchError(translate[lang].search.errors[404])
+          : setSearchError(translate[lang].search.errors.other);
       });
-      setWeatherData(weatherData);
-      setSearchError('');
-
-      setBackground(imageData);
-    } catch (err) {
-      setTimeout(() => setIsLoading(false), 1000);
-
-      err.response.status === 404
-        ? setSearchError(translate[lang].search.errors[404])
-        : setSearchError(translate[lang].search.errors.other);
-    }
   };
 
   return (
@@ -87,8 +62,7 @@ const Search = ({
           className="search__home-button"
           appState={appState}
           userCoords={userCoords}
-          setLocation={setLocation}
-          setWeatherData={setWeatherData}
+          getApiData={getApiData}
           setSearchValue={setSearchValue}
           setSearchError={setSearchError}
         />
@@ -100,7 +74,7 @@ const Search = ({
           value={searchValue}
           onInput={(e) => setSearchValue(e.target.value)}
           onKeyUp={(e) => {
-            if (e.code === 'Enter') getWeather(searchValue);
+            if (e.code === 'Enter') getCityData(searchValue);
           }}
           placeholder={translate[lang].search.input}
           aria-label={translate[lang].search.input}
@@ -119,14 +93,14 @@ const Search = ({
       <VoiceSearch
         appState={appState}
         voiceWeatherText={voiceWeatherText}
-        getWeather={getWeather}
+        getCityData={getCityData}
         setSearchValue={setSearchValue}
       />
       <button
         className="search__button"
         type="button"
         onClick={(e) => {
-          getWeather(searchValue);
+          getCityData(searchValue);
           addRippleEffect(e);
         }}
         onMouseMove={(e) => {
