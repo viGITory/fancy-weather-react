@@ -14,6 +14,11 @@ const translate = {
       evening: 'Good evening',
       night: 'Good night',
     },
+    api_loading: {
+      location: 'Waiting for location...',
+      weather: 'Waiting for weather...',
+      images: 'Waiting for images...',
+    },
     search: {
       input: 'Search city',
       errors: {
@@ -153,6 +158,11 @@ const translate = {
       afternoon: 'Добрый день',
       evening: 'Добрый вечер',
       night: 'Доброй ночи',
+    },
+    api_loading: {
+      location: 'Ждем местоположение...',
+      weather: 'Ждем погоду...',
+      images: 'Ждем изображения...',
     },
     day_time: {
       morning: 'Утро',
@@ -294,6 +304,11 @@ const translate = {
       evening: 'Buenas noches',
       night: 'Buenas noches',
     },
+    api_loading: {
+      location: 'Esperando la ubicación...',
+      weather: 'Esperando el clima...',
+      images: 'Esperando imagenes...',
+    },
     search: {
       input: 'Buscar de ciudad',
       errors: {
@@ -434,6 +449,11 @@ const translate = {
       evening: 'Bonsoir',
       night: 'Bonne nuit',
     },
+    api_loading: {
+      location: 'En attente de localisation...',
+      weather: 'En attendant la météo...',
+      images: `En attente d'images...`,
+    },
     search: {
       input: 'Recherche de ville',
       errors: {
@@ -573,6 +593,11 @@ const translate = {
       afternoon: 'Guten Tag',
       evening: 'Guten Abend',
       night: 'Gute Nacht',
+    },
+    api_loading: {
+      location: 'Warten auf Standort...',
+      weather: 'Wetter abwarten...',
+      images: 'Bilder warten...',
     },
     search: {
       input: 'Stadt suchen',

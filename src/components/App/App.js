@@ -22,6 +22,7 @@ import translate from '../../data/translate';
 const App = () => {
   const [appState, setAppState] = useState({
     loading: false,
+    loadingText: '',
     locale: localStorage.getItem('locale') || 'en-US',
     lang: localStorage.getItem('lang') || 'en',
     units: localStorage.getItem('units') || 'metric',
@@ -37,9 +38,19 @@ const App = () => {
     const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&lang=${lang}&units=${units}&appid=${WEATHER_API_KEY}`;
     const locationUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&language=${lang}&key=${LOCATION_API_KEY}`;
 
+    setAppState((prevState) => ({
+      ...prevState,
+      loadingText: translate[lang].api_loading.location,
+    }));
+
     axios
       .get(locationUrl)
       .then((location) => {
+        setAppState((prevState) => ({
+          ...prevState,
+          loadingText: translate[lang].api_loading.weather,
+        }));
+
         const timezone = location.data.results[0].annotations.timezone.name;
         const { country, country_code: countryCode } =
           location.data.results[0].components;
@@ -53,7 +64,16 @@ const App = () => {
           lat
         )}&tag_mode=all&sort=relevance&per_page=500&extras=url_h&format=json&nojsoncallback=1`;
 
-        Promise.all([axios.get(weatherUrl), axios.get(imagesUrl)])
+        Promise.all([
+          axios.get(weatherUrl).then((response) => {
+            setAppState((prevState) => ({
+              ...prevState,
+              loadingText: translate[lang].api_loading.images,
+            }));
+            return response;
+          }),
+          axios.get(imagesUrl),
+        ])
           .then(([weather, images]) => {
             setLocation({
               coords: { lat, long },
@@ -72,6 +92,7 @@ const App = () => {
             setAppState((prevState) => ({
               ...prevState,
               loading: false,
+              loadingText: '',
             }))
           );
       })

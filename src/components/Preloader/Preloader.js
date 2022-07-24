@@ -2,7 +2,7 @@ import './Preloader.css';
 
 import translate from '../../data/translate';
 
-const Preloader = ({ lang }) => {
+const Preloader = ({ lang, loadingText }) => {
   const date = new Date();
   const hours = date.getHours();
   const month = date.getMonth();
@@ -43,7 +43,10 @@ const Preloader = ({ lang }) => {
         }.svg`}
         alt="preloader"
       />
-      <p className="preloader__text">{translate[lang].greeting[timeOfDay]}</p>
+      <p className="preloader__greeting">
+        {translate[lang].greeting[timeOfDay]}
+      </p>
+      {loadingText && <p className="preloader__api">{loadingText}</p>}
     </div>
   );
 };
