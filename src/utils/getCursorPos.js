@@ -1,13 +1,11 @@
 const getCursorPos = (e, offsetParent) => {
-  let x = 0;
-  let y = 0;
+  const rect = e.target.getBoundingClientRect();
+  let x = e.clientX - rect.left;
+  let y = e.clientY - rect.top;
 
   if (offsetParent) {
-    x = e.pageX - e.target.offsetParent.offsetLeft;
-    y = e.pageY - e.target.offsetParent.offsetTop;
-  } else {
-    x = e.pageX - e.target.offsetLeft;
-    y = e.pageY - e.target.offsetTop;
+    x = e.clientX - e.target.offsetParent.offsetLeft;
+    y = e.clientY - e.target.offsetParent.offsetTop;
   }
 
   return { x, y };

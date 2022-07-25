@@ -20,7 +20,7 @@ const LanguageButton = ({ appState, setAppState }) => {
       onClick={() => (rotateDeg ? setRotateDeg(0) : setRotateDeg(180))}
       onBlur={() => setRotateDeg(0)}
       onMouseMove={(e) => {
-        const pos = getCursorPos(e, 'offsetParent');
+        const pos = getCursorPos(e);
         setGlow({ coordX: pos.x, coordY: pos.y, opacity: 1 });
       }}
       onMouseLeave={() => {
