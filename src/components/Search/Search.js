@@ -27,7 +27,7 @@ const Search = ({
   const [glow, setGlow] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const { lang, units } = appState;
+  const { loadingText, lang, units } = appState;
 
   const getCityData = (searchValue) => {
     if (!searchValue) return;
@@ -79,13 +79,7 @@ const Search = ({
           placeholder={translate[lang].search.input}
           aria-label={translate[lang].search.input}
         />
-        {isLoading && (
-          <img
-            className="search__loading-icon"
-            src="./assets/weather-icons/hurricane.svg"
-            alt="hurricane"
-          />
-        )}
+        {isLoading && <p className="search__loading">{loadingText}</p>}
         {searchError && !isLoading && (
           <p className="search__error">{searchError}</p>
         )}

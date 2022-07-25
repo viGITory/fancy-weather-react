@@ -3,13 +3,13 @@
   height: 45px;
 }
 
-.search__home-button {
-  margin-right: 10px;
-}
-
-.search__wrapper,
+.search,
 .search__button {
   position: relative;
+}
+
+.search__home-button {
+  margin-right: 10px;
 }
 
 .search__wrapper {
@@ -60,22 +60,11 @@
   border-bottom-right-radius: 5px;
 }
 
-.search__loading-icon,
+.search__loading,
 .search__error {
   position: absolute;
-  left: 0;
-}
-
-.search__loading-icon {
-  top: 0;
-  width: 20px;
-  height: 20px;
-
-  pointer-events: none;
-}
-
-.search__error {
   top: 45px;
+  left: 0;
 
   font-size: 14px;
   color: #86c3db;
