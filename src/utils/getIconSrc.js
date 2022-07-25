@@ -62,7 +62,9 @@ const getIconSrc = ({ iconId, iconCode, uvIndex, tempDiff, windSpeed }) => {
   }
 
   if (uvIndex || uvIndex === 0) {
-    src = src + `uv-index-${Math.round(uvIndex)}.svg`;
+    uvIndex > 11
+      ? (src = src + `uv-index-11.svg`)
+      : (src = src + `uv-index-${Math.round(uvIndex)}.svg`);
   }
 
   if (tempDiff) {
