@@ -88,6 +88,7 @@
 }
 
 .current-weather__button {
+  display: inline-flex;
   width: 20px;
   height: 20px;
 

@@ -5,6 +5,7 @@
 }
 
 .temp-buttons {
+  width: max-content;
   height: 45px;
 
   background-color: rgba(76, 82, 85, 0.4);

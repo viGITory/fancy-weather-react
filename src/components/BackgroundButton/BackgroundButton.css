@@ -5,9 +5,10 @@
   height: 45px;
 
   cursor: pointer;
-  background-color: transparent;
-  background-image: url('../../../public/assets/reload-icon.svg');
-  background-size: cover;
+  background-color: rgba(76, 82, 85, 0.4);
+  background-image: url('../../../public/assets/refresh.svg'),
+    url('../../../public/assets/bg-button.svg');
+  background-size: auto 40%, cover;
   background-position: center;
   background-repeat: no-repeat;
   border: 0;

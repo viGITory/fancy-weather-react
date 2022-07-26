@@ -10,11 +10,9 @@
   background-image: url('../../../public/assets/play.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 25px;
+  background-size: auto 40%;
   border-radius: 5px;
   border: 0;
-
-  transition: background-image 0.2s;
 }
 
 .voice-notice--active {

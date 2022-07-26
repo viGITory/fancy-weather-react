@@ -74,6 +74,7 @@ body {
   color: #fff;
 
   background-color: rgba(0, 0, 0, 0.6);
+  background-image: url('../public/assets/init-bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -86,6 +87,7 @@ body {
 .main__wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 }
 
