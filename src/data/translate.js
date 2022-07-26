@@ -140,6 +140,7 @@ const translate = {
       longitude: 'Longitude',
     },
     voice_commands: {
+      city_name: '(City name)',
       weather_now: 'Weather now',
       exit: 'Exit',
     },
@@ -285,6 +286,7 @@ const translate = {
       longitude: 'Долгота',
     },
     voice_commands: {
+      city_name: '(Название города)',
       weather_now: 'Погода сейчас',
       exit: 'Выйти',
     },
@@ -430,6 +432,7 @@ const translate = {
       longitude: 'Longitud',
     },
     voice_commands: {
+      city_name: '(Nombre de ciudad)',
       weather_now: 'Tiempo ahora',
       exit: 'Salida',
     },
@@ -575,6 +578,7 @@ const translate = {
       longitude: 'Longitude',
     },
     voice_commands: {
+      city_name: '(Nom de Ville)',
       weather_now: 'Temps maintenant',
       exit: 'Sortir',
     },
@@ -720,6 +724,7 @@ const translate = {
       longitude: 'Längengrad',
     },
     voice_commands: {
+      city_name: '(Stadtname)',
       weather_now: 'Wetter jetzt',
       exit: 'Ausfahrt',
     },

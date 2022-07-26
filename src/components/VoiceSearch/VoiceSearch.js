@@ -76,6 +76,21 @@ const VoiceSearch = ({
         <span className="visually-hidden">Mic</span>
       </button>
       {listening && <Pulse />}
+      <ul
+        className={`voice-search__commands${
+          listening ? ' voice-search__commands--show' : ''
+        }`}
+      >
+        <li className="voice-search__commands-item">
+          {translate[lang].voice_commands.city_name}
+        </li>
+        <li className="voice-search__commands-item">
+          {translate[lang].voice_commands.weather_now}
+        </li>
+        <li className="voice-search__commands-item">
+          {translate[lang].voice_commands.exit}
+        </li>
+      </ul>
     </div>
   );
 };
