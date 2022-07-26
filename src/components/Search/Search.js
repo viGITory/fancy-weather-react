@@ -50,8 +50,8 @@ const Search = ({
         setTimeout(() => setIsLoading(false), 1000);
 
         err.response.status === 404
-          ? setSearchError(translate[lang].search.errors[404])
-          : setSearchError(translate[lang].search.errors.other);
+          ? setSearchError(404)
+          : setSearchError('other');
       });
   };
 
@@ -81,7 +81,9 @@ const Search = ({
         />
         {isLoading && <p className="search__loading">{loadingText}</p>}
         {searchError && !isLoading && (
-          <p className="search__error">{searchError}</p>
+          <p className="search__error">
+            {translate[lang].search.errors[searchError]}
+          </p>
         )}
       </div>
       <VoiceSearch
