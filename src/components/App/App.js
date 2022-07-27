@@ -21,7 +21,7 @@ import translate from '../../data/translate';
 
 const App = () => {
   const [appState, setAppState] = useState({
-    loading: false,
+    loading: true,
     loadingText: '',
     locale: localStorage.getItem('locale') || 'en-US',
     lang: localStorage.getItem('lang') || 'en',
@@ -34,22 +34,30 @@ const App = () => {
 
   const { loading, locale, lang, units } = appState;
 
+  const replaceLoadingText = (text) => {
+    setAppState((prevState) => ({
+      ...prevState,
+      loadingText: translate[lang].api_loading[text],
+    }));
+  };
+
+  const resetLoading = () => {
+    setAppState((prevState) => ({
+      ...prevState,
+      loading: false,
+      loadingText: '',
+    }));
+  };
+
   const getApiData = (lat, long) => {
     const weatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&lang=${lang}&units=${units}&appid=${WEATHER_API_KEY}`;
     const locationUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&language=${lang}&key=${LOCATION_API_KEY}`;
 
-    setAppState((prevState) => ({
-      ...prevState,
-      loadingText: translate[lang].api_loading.location,
-    }));
-
+    replaceLoadingText('location');
     axios
       .get(locationUrl)
       .then((location) => {
-        setAppState((prevState) => ({
-          ...prevState,
-          loadingText: translate[lang].api_loading.weather,
-        }));
+        replaceLoadingText('weather');
 
         const timezone = location.data.results[0].annotations.timezone.name;
         const { country, country_code: countryCode } =
@@ -66,10 +74,7 @@ const App = () => {
 
         Promise.all([
           axios.get(weatherUrl).then((response) => {
-            setAppState((prevState) => ({
-              ...prevState,
-              loadingText: translate[lang].api_loading.images,
-            }));
+            replaceLoadingText('images');
             return response;
           }),
           axios.get(imagesUrl),
@@ -88,21 +93,11 @@ const App = () => {
             setBackground(images.data);
           })
           .catch((err) => console.log(err))
-          .finally(() =>
-            setAppState((prevState) => ({
-              ...prevState,
-              loading: false,
-              loadingText: '',
-            }))
-          );
+          .finally(() => resetLoading());
       })
       .catch((err) => {
         console.log(err);
-
-        setAppState((prevState) => ({
-          ...prevState,
-          loading: false,
-        }));
+        resetLoading();
       });
   };
 
@@ -120,11 +115,6 @@ const App = () => {
   }, [lang, units]);
 
   useEffect(() => {
-    setAppState((prevState) => ({
-      ...prevState,
-      loading: true,
-    }));
-
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
@@ -137,13 +127,7 @@ const App = () => {
       },
       (err) => {
         console.log(err);
-
-        setTimeout(() => {
-          setAppState((prevState) => ({
-            ...prevState,
-            loading: false,
-          }));
-        }, 1000);
+        setTimeout(() => resetLoading(), 1000);
       }
     );
   }, []);
