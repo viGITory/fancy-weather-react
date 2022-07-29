@@ -27,6 +27,9 @@ const CurrentWeather = ({
   const { city, country } = location;
   const windDirection = getWindDirection(weatherData.current.wind_deg, lang);
 
+  const isEasterEgg = city === translate['ru'].easter_eggs[48][17].city_name;
+  const easterEggCountry = translate['ru'].easter_eggs[48].country_name;
+
   useEffect(() => {
     // space after dot is needed for correct ending of words on selected locale
     const weatherText = [...containerTopRef.current.children]
@@ -42,8 +45,11 @@ const CurrentWeather = ({
       .join('. ');
 
     setVoiceWeatherText(
-      `${translate[lang].weather.weather_now} ${city}, ${country}. ` +
-        weatherText
+      `${translate[lang].weather.weather_now} ${city}, ${
+        isEasterEgg
+          ? `${easterEggCountry.slice(0, 2)}'${easterEggCountry.slice(2)}.`
+          : `${country}.`
+      } ` + weatherText
     );
   });
 

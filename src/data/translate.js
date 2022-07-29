@@ -290,6 +290,16 @@ const translate = {
       weather_now: 'Погода сейчас',
       exit: 'Выйти',
     },
+    easter_eggs: {
+      48: {
+        country_name: `Полонд`,
+        17: {
+          city_name: 'Жешув',
+          quote:
+            '"Мне надо бы снять койку за 1500 злотых в месяц и немного денег на кусок батона"',
+        },
+      },
+    },
   },
   es: {
     project_name: 'Clima de moda',

@@ -14,13 +14,16 @@ const Map = ({ appState, location }) => {
   const mapboxLanguage = new MapboxLanguage();
 
   const [marker, setMarker] = useState();
+  const [popup, setPopup] = useState();
   const mapContainer = useRef(null);
   const map = useRef(null);
 
   const { lang } = appState;
-  const { coords, countryCode } = location;
+  const { coords, city, countryCode } = location;
 
   useEffect(() => {
+    if (popup) popup.remove();
+
     if (map.current) {
       map.current.flyTo({
         center: [coords.long, coords.lat],
@@ -38,6 +41,17 @@ const Map = ({ appState, location }) => {
       ]);
 
       marker.setLngLat([coords.long, coords.lat]);
+
+      // easter egg
+      if (city === translate['ru'].easter_eggs[48][17].city_name) {
+        const popup = new mapboxgl.Popup()
+          .addClassName('map__easter-egg')
+          .setText(translate['ru'].easter_eggs[48][17].quote)
+          .addTo(map.current);
+
+        marker.setPopup(popup);
+        setPopup(popup);
+      }
     }
   }, [coords.lat, coords.long, lang]);
 

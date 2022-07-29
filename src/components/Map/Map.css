@@ -32,3 +32,46 @@
 .map__coords {
   text-align: right;
 }
+
+.map__easter-egg .mapboxgl-popup-content,
+.map__easter-egg .mapboxgl-popup-close-button {
+  color: #fff;
+}
+
+.map__easter-egg .mapboxgl-popup-content {
+  padding: 15px;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+
+  background-color: #ef4444;
+  border-radius: 5px;
+}
+
+.map__easter-egg.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.map__easter-egg.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
+.map__easter-egg.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
+  border-bottom-color: #ef4444;
+}
+
+.map__easter-egg.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: #ef4444;
+}
+
+.map__easter-egg.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.map__easter-egg.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+.map__easter-egg.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip {
+  border-top-color: #ef4444;
+}
+
+.map__easter-egg.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: #ef4444;
+}
+
+.map__easter-egg .mapboxgl-popup-close-button {
+  width: 20px;
+  height: 20px;
+
+  font-size: 20px;
+}
