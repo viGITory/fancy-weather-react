@@ -6,7 +6,7 @@
 .daily-forecast {
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 750px;
+  max-width: 75rem;
 
   list-style: none;
 }
@@ -16,7 +16,7 @@
 }
 
 .daily-forecast__day {
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 
   font-weight: 500;
   text-transform: uppercase;
@@ -31,17 +31,17 @@
 .daily-forecast__thermometer,
 .daily-forecast__icon {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
 }
 
 .daily-forecast__temp {
-  margin-left: -10px;
-  font-size: 44px;
+  margin-left: -1rem;
+  font-size: 200%;
 }
 
 .daily-forecast__icon {
   align-self: flex-start;
-  margin-top: -15px;
-  margin-left: -5px;
+  margin-top: -1.5rem;
+  margin-left: -0.5rem;
 }

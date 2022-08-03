@@ -1,17 +1,26 @@
 .extended-forecast {
-  padding: 10px 0;
+  position: relative;
+  z-index: -1;
+  padding: 1rem 0;
+  max-width: 75rem;
 
-  font-size: 16px;
+  font-size: 1.6rem;
 
   opacity: 0;
   pointer-events: none;
-  border-top: 1px solid rgba(76, 82, 85, 0.4);
+  border-top: 0.1rem solid rgba(76, 82, 85, 0.4);
 
   transition: margin 0.5s, opacity 0.5s;
 }
 
 .extended-forecast__top {
   align-items: flex-end;
+}
+
+.extended-forecast__top,
+.extended-forecast__moon {
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .extended-forecast__top,
@@ -30,23 +39,23 @@
 
 .extended-forecast__wrapper,
 .extended-forecast__time-wrapper {
-  gap: 10px;
+  gap: 1rem;
 }
 
 .extended-forecast__icon,
 .extended-forecast__phase-icon {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
 }
 
 .extended-forecast__temp {
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   border-collapse: collapse;
 }
 
 .extended-forecast__temp th {
-  padding: 5px;
+  padding: 0.5rem;
 
   font-weight: 500;
   letter-spacing: 0.05rem;
@@ -54,7 +63,7 @@
 }
 
 .extended-forecast__temp td:first-child {
-  padding-right: 5px;
+  padding-right: 0.5rem;
 }
 
 .extended-forecast__temp td:not(:first-child) {
@@ -71,5 +80,10 @@
 }
 
 .extended-forecast__phase-icon {
+  opacity: 0.3;
   transition: opacity 0.2s;
+}
+
+.extended-forecast__phase-icon--active {
+  opacity: 1;
 }

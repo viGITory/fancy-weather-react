@@ -28,7 +28,7 @@ const TempUnits = ({ appState, setAppState }) => {
       <button
         className={
           units === 'metric'
-            ? `temp-buttons__button active`
+            ? 'temp-buttons__button temp-buttons__button--active'
             : 'temp-buttons__button'
         }
         type="button"
@@ -45,7 +45,7 @@ const TempUnits = ({ appState, setAppState }) => {
       <button
         className={
           !(units === 'metric')
-            ? `temp-buttons__button active`
+            ? 'temp-buttons__button temp-buttons__button--active'
             : 'temp-buttons__button'
         }
         type="button"

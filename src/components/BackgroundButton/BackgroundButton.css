@@ -1,8 +1,8 @@
 .background-button {
   position: relative;
   overflow: hidden;
-  width: 45px;
-  height: 45px;
+  width: 4.5rem;
+  height: 4.5rem;
 
   cursor: pointer;
   background-color: rgba(76, 82, 85, 0.4);
@@ -12,5 +12,5 @@
   background-position: center;
   background-repeat: no-repeat;
   border: 0;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }

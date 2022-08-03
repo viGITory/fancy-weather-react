@@ -1,15 +1,14 @@
 .voice-search {
-  position: relative;
-  width: 45px;
-  height: 45px;
+  width: 4.5rem;
+  height: 4.5rem;
 
   background-image: url('../../../public/assets/mic.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 40%;
   background-color: rgba(76, 82, 85, 0.4);
-  border-top: 1px solid rgba(228, 227, 227, 0.2);
-  border-bottom: 1px solid rgba(228, 227, 227, 0.2);
+  border-top: 0.1rem solid rgba(228, 227, 227, 0.2);
+  border-bottom: 0.1rem solid rgba(228, 227, 227, 0.2);
 }
 
 .voice-search,
@@ -28,17 +27,18 @@
 
 .voice-search__commands {
   position: absolute;
-  top: 50px;
-  left: 50%;
+  top: 6.2rem;
+  right: 50%;
+  z-index: -1;
   width: max-content;
-  padding-left: 15px;
+  padding-right: 1.5rem;
   margin-top: -100%;
 
-  font-size: 14px;
+  font-size: 1.4rem;
   list-style: none;
+  text-align: right;
 
   opacity: 0;
-  pointer-events: none;
   transition: margin-top 0.5s, opacity 0.5s;
 }
 
@@ -48,14 +48,14 @@
 
   content: '';
   background-color: rgba(174, 181, 185, 0.5);
-  border-radius: 1px;
+  border-radius: 0.1rem;
 }
 
 .voice-search__commands::before {
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 85%;
+  top: -0.8rem;
+  right: 0;
+  width: 0.1rem;
+  height: 100%;
 }
 
 .voice-search__commands-item {
@@ -77,12 +77,13 @@
 
 .voice-search__commands-item::before {
   top: 50%;
-  left: -15px;
-  width: 10px;
-  height: 1px;
+  right: -1.5rem;
+  width: 1rem;
+  height: 0.1rem;
 }
 
 .voice-search__commands--show {
+  z-index: 0;
   margin-top: 0;
   opacity: 1;
 }

@@ -36,7 +36,7 @@ const DateTime = ({ appState, location }) => {
   return (
     <div className="date-time">
       <p>{day}</p>
-      <p>{time}</p>
+      <p className="date-time__time">{time}</p>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 .voice-notice {
   position: relative;
   overflow: hidden;
-  width: 45px;
-  height: 45px;
+  width: 4.5rem;
+  height: 4.5rem;
   margin-right: auto;
 
   cursor: pointer;
@@ -11,8 +11,10 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 40%;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   border: 0;
+
+  transition: background-image 0.2s;
 }
 
 .voice-notice--active {

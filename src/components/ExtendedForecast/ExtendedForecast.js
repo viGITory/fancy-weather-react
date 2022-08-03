@@ -126,10 +126,13 @@ const ExtendedForecast = ({ appState, weatherData, visibilityStyles }) => {
             return (
               <li key={`${item}`}>
                 <img
-                  className="extended-forecast__phase-icon"
+                  className={
+                    index === phaseNum
+                      ? 'extended-forecast__phase-icon extended-forecast__phase-icon--active'
+                      : 'extended-forecast__phase-icon'
+                  }
                   src={`./assets/weather-icons/${iconSrc}.svg`}
                   alt={translate[lang].weather.moon.phases[item]}
-                  style={{ opacity: `${index === phaseNum ? 1 : 0.4}` }}
                 />
               </li>
             );

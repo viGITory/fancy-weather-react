@@ -6,19 +6,19 @@
 
 .temp-buttons {
   width: max-content;
-  height: 45px;
+  height: 4.5rem;
 
   background-color: rgba(76, 82, 85, 0.4);
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 .temp-buttons__button {
-  width: 45px;
+  width: 4.5rem;
   height: 100%;
 
   font-weight: 500;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: inherit;
   letter-spacing: 0.05rem;
 
@@ -29,6 +29,6 @@
   transition: background-color 0.5s;
 }
 
-.active.temp-buttons__button {
+.temp-buttons__button--active {
   background-color: rgba(174, 181, 185, 0.5);
 }

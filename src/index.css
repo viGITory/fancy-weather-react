@@ -22,6 +22,7 @@
 }
 
 html {
+  font-size: 62.5%;
   scrollbar-width: none;
 }
 
@@ -30,14 +31,14 @@ html::-webkit-scrollbar {
 }
 
 body {
-  min-width: 320px;
-  max-width: 1440px;
+  min-width: 48rem;
+  max-width: 144rem;
   min-height: 100vh;
-  padding: 20px;
+  padding: 2rem;
   margin: 0 auto;
 
   font-family: Montserrat, sans-serif;
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: 300;
   color: #fff;
 
@@ -57,13 +58,14 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: 3rem;
 }
 
 /* ### JS ONLY ### */
 .ripple-circle {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
   left: 50%;
   top: 50%;
 

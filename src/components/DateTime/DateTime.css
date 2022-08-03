@@ -1,4 +1,9 @@
 .date-time {
   display: flex;
-  gap: 50px;
+  flex-wrap: wrap;
+  column-gap: 5rem;
+}
+
+.date-time__time {
+  font-variant-numeric: tabular-nums;
 }

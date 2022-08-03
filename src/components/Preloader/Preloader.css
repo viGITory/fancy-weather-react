@@ -16,8 +16,8 @@
 }
 
 .preloader__icon {
-  width: 200px;
-  height: 200px;
+  width: 20rem;
+  height: 20rem;
 }
 
 .preloader__greeting {
@@ -27,7 +27,7 @@
 }
 
 .preloader__api {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .dark.preloader {

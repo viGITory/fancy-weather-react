@@ -1,10 +1,11 @@
 .weather {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 
   animation: fade-in 1s;
 }
 
 .weather__hourly-forecast {
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }

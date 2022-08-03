@@ -11,13 +11,13 @@
 }
 
 .pulse__item {
-  width: 15px;
-  height: 15px;
+  width: 1.5rem;
+  height: 1.5rem;
 
   border-radius: 50%;
 
   transform: translate(-50%, -50%) scale(0);
-  animation: pulse 2s infinite;
+  animation: ripple 2s infinite;
 }
 
 .pulse__item--1 {
