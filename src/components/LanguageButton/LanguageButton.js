@@ -7,18 +7,18 @@ import getCursorPos from '../../utils/getCursorPos';
 import locales from '../../data/locales';
 
 const LanguageButton = ({ appState, setAppState }) => {
-  const [rotateDeg, setRotateDeg] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
   const [glow, setGlow] = useState({});
 
   const { lang } = appState;
 
-  useEffect(() => setRotateDeg(rotateDeg), [rotateDeg]);
+  useEffect(() => setIsOpen(isOpen), [isOpen]);
 
   return (
     <div
       className="language-button"
-      onClick={() => (rotateDeg ? setRotateDeg(0) : setRotateDeg(180))}
-      onBlur={() => setRotateDeg(0)}
+      onClick={() => setIsOpen(!isOpen)}
+      onBlur={() => setIsOpen(false)}
       onMouseMove={(e) => {
         const pos = getCursorPos(e);
         setGlow({ coordX: pos.x, coordY: pos.y, opacity: 1 });
@@ -45,8 +45,11 @@ const LanguageButton = ({ appState, setAppState }) => {
         <option value={'de'}>De</option>
       </select>
       <span
-        className="language-button__arrow"
-        style={{ transform: `translateY(-50%) rotate(${rotateDeg}deg)` }}
+        className={
+          isOpen
+            ? 'language-button__arrow language-button__arrow--open'
+            : 'language-button__arrow'
+        }
       ></span>
       <HoverGlow
         coordX={glow.coordX}

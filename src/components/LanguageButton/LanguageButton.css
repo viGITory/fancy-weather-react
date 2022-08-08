@@ -43,6 +43,10 @@
   transition: transform 0.2s;
 }
 
+.language-button__arrow--open {
+  transform: translateY(-50%) rotate(180deg);
+}
+
 .language-button__select option {
   background-color: #86c3db;
 }
