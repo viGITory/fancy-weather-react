@@ -64,7 +64,15 @@ const App = () => {
         const { country, country_code: countryCode } =
           location.data.results[0].components;
 
-        const city = ['city', 'hamlet', 'county', 'state', 'heritage', 'suburb']
+        const city = [
+          'city',
+          'town',
+          'hamlet',
+          'county',
+          'state',
+          'heritage',
+          'suburb',
+        ]
           .map((type) => location.data.results[0].components[type])
           .find((item) => item);
 
