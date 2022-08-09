@@ -41,16 +41,6 @@ body {
   font-size: 2.2rem;
   font-weight: 300;
   color: #fff;
-
-  background-color: rgba(0, 0, 0, 0.6);
-  background-image: url('../public/assets/init-bg.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-blend-mode: multiply;
-  background-attachment: fixed;
-
-  transition: background-image 0.5s;
 }
 
 .main__wrapper {

@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import HoverGlow from '../HoverGlow/HoverGlow';
 
-import setBackground from '../../utils/setBackground';
 import addRippleEffect from '../../utils/addRippleEffect';
 import getCursorPos from '../../utils/getCursorPos';
 import createImageTags from '../../utils/createImageTags';
@@ -12,7 +11,7 @@ import createImageTags from '../../utils/createImageTags';
 import { IMAGES_API_KEY } from '../../api/apiKeys';
 import translate from '../../data/translate';
 
-const BackgroundButton = ({ appState, location }) => {
+const BackgroundButton = ({ appState, location, setImagesData }) => {
   const [glow, setGlow] = useState({});
 
   const { lang } = appState;
@@ -27,7 +26,7 @@ const BackgroundButton = ({ appState, location }) => {
         )}&tag_mode=all&sort=relevance&per_page=500&extras=url_h&format=json&nojsoncallback=1`
       )
       .then((response) => {
-        setBackground(response.data);
+        setImagesData(response.data);
       });
   };
 

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Preloader from '../Preloader/Preloader';
+import Background from '../Background/Background';
 import Header from '../Header/Header';
 import Location from '../Location/Location';
 import DateTime from '../DateTime/DateTime';
@@ -10,7 +11,6 @@ import Weather from '../Weather/Weather';
 import Map from '../Map/Map';
 
 import createImageTags from '../../utils/createImageTags';
-import setBackground from '../../utils/setBackground';
 
 import {
   WEATHER_API_KEY,
@@ -30,6 +30,7 @@ const App = () => {
   const [userCoords, setUserCoords] = useState();
   const [location, setLocation] = useState();
   const [weatherData, setWeatherData] = useState();
+  const [imagesData, setImagesData] = useState();
   const [voiceWeatherText, setVoiceWeatherText] = useState('');
 
   const { loading, locale, lang, units } = appState;
@@ -89,8 +90,7 @@ const App = () => {
               flagUrl: `https://flagcdn.com/${countryCode}.svg`,
             });
             setWeatherData(weather.data);
-
-            setBackground(images.data);
+            setImagesData(images.data);
           })
           .catch((err) => console.log(err))
           .finally(() => resetLoading());
@@ -136,6 +136,7 @@ const App = () => {
     <div className="app">
       <h1 className="visually-hidden">{translate[lang].project_name}</h1>
       {loading && <Preloader {...appState} />}
+      <Background imagesData={imagesData} />
       <Header
         className={'app__header'}
         getApiData={getApiData}
@@ -145,6 +146,7 @@ const App = () => {
         location={location}
         voiceWeatherText={voiceWeatherText}
         setAppState={setAppState}
+        setImagesData={setImagesData}
       />
       <main className="main">
         {location && <Location location={location} />}

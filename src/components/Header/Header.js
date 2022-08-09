@@ -17,6 +17,7 @@ const Header = ({
 
   getApiData,
   setAppState,
+  setImagesData,
 }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchError, setSearchError] = useState('');
@@ -25,7 +26,11 @@ const Header = ({
     <header className={`${className ? `${className} ` : ''}header`}>
       {weatherData && (
         <div className="header__left">
-          <BackgroundButton appState={appState} location={location} />
+          <BackgroundButton
+            appState={appState}
+            location={location}
+            setImagesData={setImagesData}
+          />
           <LanguageButton appState={appState} setAppState={setAppState} />
           <TempButtons appState={appState} setAppState={setAppState} />
           <VoiceNotice
