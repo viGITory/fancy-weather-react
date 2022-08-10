@@ -43,11 +43,13 @@ const App = () => {
   };
 
   const resetLoading = () => {
-    setAppState((prevState) => ({
-      ...prevState,
-      loading: false,
-      loadingText: '',
-    }));
+    setTimeout(() => {
+      setAppState((prevState) => ({
+        ...prevState,
+        loading: false,
+        loadingText: '',
+      }));
+    }, 2000);
   };
 
   const getApiData = (lat, long) => {
@@ -135,7 +137,7 @@ const App = () => {
       },
       (err) => {
         console.log(err);
-        setTimeout(() => resetLoading(), 1000);
+        resetLoading();
       }
     );
   }, []);
