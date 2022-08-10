@@ -15,7 +15,7 @@
   background-color: #fff;
 }
 
-.preloader__icon {
+.preloader svg {
   width: 20rem;
   height: 20rem;
 }
