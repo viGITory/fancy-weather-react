@@ -17,17 +17,25 @@
   margin: 0;
 }
 
-*::selection {
+*::selection,
+html::-webkit-scrollbar-thumb {
   background-color: #86c3db;
 }
 
 html {
   font-size: 62.5%;
-  scrollbar-width: none;
+
+  scrollbar-width: thin;
+  scrollbar-color: #86c3db #fff;
 }
 
 html::-webkit-scrollbar {
-  width: 0;
+  width: 0.5vw;
+  height: 0.5vw;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #fff;
 }
 
 body {
