@@ -21,6 +21,26 @@ const Map = ({ appState, location }) => {
   const { lang } = appState;
   const { coords, city, countryCode } = location;
 
+  const updateCountryBoundaries = () => {
+    map.current.setFilter('country-boundaries', [
+      'all',
+      [
+        'match',
+        ['get', 'worldview'],
+        ['all', countryCode.toUpperCase()],
+        true,
+        false,
+      ],
+      [
+        'match',
+        ['get', 'iso_3166_1'],
+        ['all', countryCode.toUpperCase()],
+        true,
+        false,
+      ],
+    ]);
+  };
+
   useEffect(() => {
     if (popup) popup.remove();
 
@@ -34,12 +54,7 @@ const Map = ({ appState, location }) => {
         mapboxLanguage.setLanguage(map.current.getStyle(), lang)
       );
 
-      map.current.setFilter('country-boundaries', [
-        'in',
-        'iso_3166_1',
-        countryCode.toUpperCase(),
-      ]);
-
+      updateCountryBoundaries();
       marker.setLngLat([coords.long, coords.lat]);
 
       // easter egg
@@ -89,11 +104,7 @@ const Map = ({ appState, location }) => {
         'country-label'
       );
 
-      map.current.setFilter('country-boundaries', [
-        'in',
-        'iso_3166_1',
-        countryCode.toUpperCase(),
-      ]);
+      updateCountryBoundaries();
     });
 
     const marker = new mapboxgl.Marker({ color: '#ef4444', scale: 0.8 })
