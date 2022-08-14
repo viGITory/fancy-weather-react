@@ -1,6 +1,7 @@
 import './HomeButton.css';
 import { useState } from 'react';
 
+import { ReactComponent as HomeIcon } from '../../assets/home.svg';
 import HoverGlow from '../HoverGlow/HoverGlow';
 
 import addRippleEffect from '../../utils/addRippleEffect';
@@ -31,6 +32,7 @@ const HomeButton = ({
   return (
     <button
       className={`${className ? `${className} ` : ''}home-button`}
+      aria-label={`${translate[lang].buttons.position}`}
       onClick={(e) => {
         setUserPosData();
         addRippleEffect(e);
@@ -43,9 +45,7 @@ const HomeButton = ({
         setGlow({ opacity: 0 });
       }}
     >
-      <span className="visually-hidden">
-        {translate[lang].buttons.position}
-      </span>
+      <HomeIcon />
       <HoverGlow
         coordX={glow.coordX}
         coordY={glow.coordY}

@@ -2,6 +2,8 @@ import './VoiceNotice.css';
 import { useState } from 'react';
 import useSpeechSynth from '../../hooks/useSpeechSynth';
 
+import { ReactComponent as PlayIcon } from '../../assets/play.svg';
+import { ReactComponent as PauseIcon } from '../../assets/pause.svg';
 import HoverGlow from '../HoverGlow/HoverGlow';
 
 import addRippleEffect from '../../utils/addRippleEffect';
@@ -16,7 +18,8 @@ const VoiceNotice = ({ appState, voiceWeatherText }) => {
 
   return (
     <button
-      className={`voice-notice${isSpeak ? ' voice-notice--active' : ''}`}
+      className="voice-notice"
+      aria-label={`${translate[lang].buttons.voice_notice}`}
       onClick={(e) => {
         isSpeak ? setIsSpeak(false) : setIsSpeak(true);
         addRippleEffect(e);
@@ -29,9 +32,7 @@ const VoiceNotice = ({ appState, voiceWeatherText }) => {
         setGlow({ opacity: 0 });
       }}
     >
-      <span className="visually-hidden">
-        {translate[lang].buttons.voice_notice}
-      </span>
+      {isSpeak ? <PauseIcon /> : <PlayIcon />}
       <HoverGlow
         coordX={glow.coordX}
         coordY={glow.coordY}

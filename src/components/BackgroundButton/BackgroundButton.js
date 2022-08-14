@@ -2,6 +2,7 @@ import './BackgroundButton.css';
 import { useState } from 'react';
 import axios from 'axios';
 
+import { ReactComponent as RefreshIcon } from '../../assets/refresh.svg';
 import HoverGlow from '../HoverGlow/HoverGlow';
 
 import addRippleEffect from '../../utils/addRippleEffect';
@@ -34,6 +35,7 @@ const BackgroundButton = ({ appState, location, setImagesData }) => {
     <button
       className="background-button"
       type="button"
+      aria-label={`${translate[lang].buttons.background}`}
       onClick={(e) => {
         updateBackground();
         addRippleEffect(e);
@@ -46,9 +48,7 @@ const BackgroundButton = ({ appState, location, setImagesData }) => {
         setGlow({ opacity: 0 });
       }}
     >
-      <span className="visually-hidden">
-        {translate[lang].buttons.background}
-      </span>
+      <RefreshIcon />
       <HoverGlow
         coordX={glow.coordX}
         coordY={glow.coordY}

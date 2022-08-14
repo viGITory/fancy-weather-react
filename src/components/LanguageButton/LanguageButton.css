@@ -34,10 +34,11 @@
   height: 1.5rem;
 
   pointer-events: none;
-  background-image: url('../../../public/assets/arrow-down.svg');
+  background-image: url('../../assets/arrow-down.svg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  filter: invert(100%);
 
   transform: translateY(-50%);
   transition: transform 0.2s;

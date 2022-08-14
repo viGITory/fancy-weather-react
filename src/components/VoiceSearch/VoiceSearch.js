@@ -6,6 +6,7 @@ import SpeechRecognition, {
 } from 'react-speech-recognition';
 import useSpeechSynth from '../../hooks/useSpeechSynth';
 
+import { ReactComponent as MicIcon } from '../../assets/mic.svg';
 import Pulse from '../Pulse/Pulse';
 
 import translate from '../../data/translate';
@@ -69,11 +70,12 @@ const VoiceSearch = ({
     <div className="voice-search">
       <button
         className="voice-search__button"
+        aria-label={`${translate[lang].buttons.voice_control}`}
         onClick={() => {
           listening ? exit() : listen();
         }}
       >
-        <span className="visually-hidden">Mic</span>
+        <MicIcon />
       </button>
       {listening && <Pulse />}
       <ul

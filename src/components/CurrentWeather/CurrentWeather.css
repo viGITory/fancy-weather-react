@@ -78,16 +78,17 @@
 }
 
 .current-weather__button {
-  display: inline-flex;
   width: 2rem;
   height: 2rem;
 
   cursor: pointer;
   background-color: transparent;
-  background-image: url('../../../public/assets/arrow-down.svg');
-  background-position: center;
-  background-repeat: no-repeat;
   border: 0;
 
   transition: transform 0.5s;
+}
+
+.current-weather__button svg {
+  pointer-events: none;
+  fill: #fff;
 }

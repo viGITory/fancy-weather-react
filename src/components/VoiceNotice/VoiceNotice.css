@@ -1,22 +1,25 @@
 .voice-notice {
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 4.5rem;
   height: 4.5rem;
   margin-right: auto;
 
   cursor: pointer;
   background-color: rgba(174, 181, 185, 0.5);
-  background-image: url('../../../public/assets/play.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto 40%;
   border-radius: 0.5rem;
   border: 0;
 
   transition: background-image 0.2s;
 }
 
-.voice-notice--active {
-  background-image: url('../../../public/assets/pause.svg');
+.voice-notice svg {
+  width: auto;
+  height: 40%;
+
+  pointer-events: none;
+  fill: #fff;
 }

@@ -2,6 +2,7 @@ import './CurrentWeather.css';
 import { useRef, useEffect } from 'react';
 
 import ExtendedForecast from '../ExtendedForecast/ExtendedForecast';
+import { ReactComponent as ArrowIcon } from '../../assets/arrow-down.svg';
 
 import getIconSrc from '../../utils/getIconSrc';
 import getWindDirection from '../../utils/getWindDirection';
@@ -39,7 +40,7 @@ const CurrentWeather = ({
           : child.innerText
               .split('\n')
               .filter((text) => text)
-              .slice(0, -2)
+              .slice(0, -1)
       )
       .flat()
       .join('. ');
@@ -120,6 +121,7 @@ const CurrentWeather = ({
             </p>
             <button
               className="current-weather__button"
+              aria-label={`${translate[lang].buttons.show_more}`}
               style={{
                 transform: `rotate(${rotateDeg}deg)`,
               }}
@@ -137,9 +139,7 @@ const CurrentWeather = ({
               }}
               type="button"
             >
-              <span className="visually-hidden">
-                {translate[lang].buttons.show_more}
-              </span>
+              <ArrowIcon />
             </button>
           </div>
         </div>
