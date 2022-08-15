@@ -14,7 +14,7 @@ const Weather = ({ appState, location, weatherData, setVoiceWeatherText }) => {
         setVoiceWeatherText={setVoiceWeatherText}
       />
       <HourlyForecast
-        className={'weather__hourly-forecast'}
+        className="weather__hourly-forecast"
         weatherData={weatherData}
       />
       <DailyForecast appState={appState} weatherData={weatherData} />

@@ -148,7 +148,7 @@ const App = () => {
       {loading && <Preloader {...appState} />}
       <Background imagesData={imagesData} />
       <Header
-        className={'app__header'}
+        className="app__header"
         getApiData={getApiData}
         appState={appState}
         userCoords={userCoords}
