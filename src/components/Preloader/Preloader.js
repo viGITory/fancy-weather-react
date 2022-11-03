@@ -13,7 +13,7 @@ const Preloader = ({ lang, loadingText }) => {
     Math.floor(hours / 6)
   ];
   const season = ['winter', 'spring', 'summer', 'autumn'][
-    Math.floor(month / 3)
+    month === 11 ? 0 : Math.floor((month + 1) / 3)
   ];
 
   return (
