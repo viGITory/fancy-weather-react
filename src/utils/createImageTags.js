@@ -4,16 +4,18 @@ const createImageTags = (timezone, latitude) => {
     hour: 'numeric',
     timeZone: timezone,
   });
-  const month = date.toLocaleString('en-EN', {
+  const month = +date.toLocaleString('en-EN', {
     month: 'numeric',
     timeZone: timezone,
   });
 
   // different seasons for northern/southern hemisphere
+  const seasonIndex = month === 12 ? 0 : Math.floor(month / 3);
+
   const season =
     latitude < 0
-      ? ['summer', 'autumn', 'winter', 'spring'][Math.floor(month / 3)]
-      : ['winter', 'spring', 'summer', 'autumn'][Math.floor(month / 3)];
+      ? ['summer', 'autumn', 'winter', 'spring'][seasonIndex]
+      : ['winter', 'spring', 'summer', 'autumn'][seasonIndex];
 
   const timeOfDay = ['night', 'morning', 'afternoon', 'evening'][
     Math.floor(hours / 6)
